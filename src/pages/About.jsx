@@ -6,7 +6,7 @@ const About = () => {
         <div className="about min-h-screen pt-20 px-6 md:px-12 lg:px-20 flex items-center justify-center"> {/* padding global */}
         <div className="hero-content flex-col lg:flex-row-reverse items-center gap-12">
             <TiltedCard
-                imageSrc="./public/assets/her.jpg"
+                imageSrc="./assets/her.jpg"
                 altText="Raihan Alvian - Photo"
                 captionText="Raihan Alvian - Photo"
                 containerHeight="300px"
@@ -58,7 +58,7 @@ const About = () => {
                 </svg>
                 
                 <a
-                href="/CV RAIHAN ALVIAN NURYANSYAH.pdf"
+                href="/portfolio/CV RAIHAN ALVIAN NURYANSYAH.pdf"
                 download
                 className="text-white font-semibold"
                 >

@@ -38,7 +38,7 @@ const projectData = {
       "/assets/projects/sentiment/img1.png",
       "/assets/projects/sentiment/img3.png",
       "/assets/projects/sentiment/img4.png",
-      "/assets/projects/sentiment/img5.png",
+      "assets/projects/sentiment/img5.png",
       "/assets/projects/sentiment/img6.png",
       "/assets/projects/sentiment/img7.png"
     ]
