@@ -1,6 +1,5 @@
 import { Renderer, Program, Mesh, Color, Triangle } from "ogl";
-import { useEffect, useRef } from "react";
-
+import { useEffect, useRef, useState } from "react";
 
 const VERT = `#version 300 es
 in vec2 position;
@@ -96,8 +95,11 @@ void main() {
   
   float height = snoise(vec2(uv.x * 2.0 + uTime * 0.1, uTime * 0.25)) * 0.5 * uAmplitude;
   height = exp(height);
-  height = (uv.y * 2.0 - height + 0.9);
+  height = (uv.y * 2.0 - height + 1.5);
   float intensity = 0.6 * height;
+  
+  // CLAMP INTENSITY JADI GAK ADA YANG PUTIH TERANG
+  intensity = clamp(intensity, 0.0, 0.3); // BATAS MAKSIMAL 0.3 BIAR GAK PUTIH
   
   float midPoint = 0.20;
   float auroraAlpha = smoothstep(midPoint - uBlend * 0.5, midPoint + uBlend * 0.5, intensity);
@@ -110,96 +112,114 @@ void main() {
 
 export default function Aurora(props) {
   const {
-    colorStops = ["#2E073F", "#7A1CAC", "#000000"],
-    amplitude = 1.0,
-    blend = 0.5
+    colorStops = ["#2E073F", "#7A1CAC", "#1a0d2e"], // UBAH WARNA KETIGA DARI #000000
+    amplitude = 0.8, // KURANGI AMPLITUDE
+    blend = 0.3 // KURANGI BLEND
   } = props;
+  
   const propsRef = useRef(props);
   propsRef.current = props;
-
   const ctnDom = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+  }, []);
 
   useEffect(() => {
     const ctn = ctnDom.current;
-    if (!ctn) return;
+    if (!ctn || isMobile) return; // Skip di mobile
 
-    const renderer = new Renderer({
-      alpha: true,
-      premultipliedAlpha: true,
-      antialias: true
-    });
-    const gl = renderer.gl;
-    gl.clearColor(0, 0, 0, 0);
-    gl.enable(gl.BLEND);
-    gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
-    gl.canvas.style.backgroundColor = 'transparent';
+    try {
+      const renderer = new Renderer({
+        alpha: true,
+        premultipliedAlpha: true,
+        antialias: true
+      });
+      const gl = renderer.gl;
+      gl.clearColor(0, 0, 0, 0);
+      gl.enable(gl.BLEND);
+      gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+      gl.canvas.style.backgroundColor = 'transparent';
 
-    let program;
+      let program;
 
-    function resize() {
-      if (!ctn) return;
-      const width = ctn.offsetWidth;
-      const height = ctn.offsetHeight;
-      renderer.setSize(width, height);
-      if (program) {
-        program.uniforms.uResolution.value = [width, height];
+      function resize() {
+        if (!ctn) return;
+        const width = ctn.offsetWidth;
+        const height = ctn.offsetHeight;
+        renderer.setSize(width, height);
+        if (program) {
+          program.uniforms.uResolution.value = [width, height];
+        }
       }
-    }
-    window.addEventListener("resize", resize);
+      window.addEventListener("resize", resize);
 
-    const geometry = new Triangle(gl);
-    if (geometry.attributes.uv) {
-      delete geometry.attributes.uv;
-    }
-
-    const colorStopsArray = colorStops.map((hex) => {
-      const c = new Color(hex);
-      return [c.r, c.g, c.b];
-    });
-
-    program = new Program(gl, {
-      vertex: VERT,
-      fragment: FRAG,
-      uniforms: {
-        uTime: { value: 0 },
-        uAmplitude: { value: amplitude },
-        uColorStops: { value: colorStopsArray },
-        uResolution: { value: [ctn.offsetWidth, ctn.offsetHeight] },
-        uBlend: { value: blend }
+      const geometry = new Triangle(gl);
+      if (geometry.attributes.uv) {
+        delete geometry.attributes.uv;
       }
-    });
 
-    const mesh = new Mesh(gl, { geometry, program });
-    ctn.appendChild(gl.canvas);
-
-    let animateId = 0;
-    const update = (t) => {
-      animateId = requestAnimationFrame(update);
-      const { time = t * 0.01, speed = 1.0 } = propsRef.current;
-      program.uniforms.uTime.value = time * speed * 0.1;
-      program.uniforms.uAmplitude.value = propsRef.current.amplitude ?? 1.0;
-      program.uniforms.uBlend.value = propsRef.current.blend ?? blend;
-      const stops = propsRef.current.colorStops ?? colorStops;
-      program.uniforms.uColorStops.value = stops.map((hex) => {
+      const colorStopsArray = colorStops.map((hex) => {
         const c = new Color(hex);
         return [c.r, c.g, c.b];
       });
-      renderer.render({ scene: mesh });
-    };
-    animateId = requestAnimationFrame(update);
 
-    resize();
+      program = new Program(gl, {
+        vertex: VERT,
+        fragment: FRAG,
+        uniforms: {
+          uTime: { value: 0 },
+          uAmplitude: { value: amplitude },
+          uColorStops: { value: colorStopsArray },
+          uResolution: { value: [ctn.offsetWidth, ctn.offsetHeight] },
+          uBlend: { value: blend }
+        }
+      });
 
-    return () => {
-      cancelAnimationFrame(animateId);
-      window.removeEventListener("resize", resize);
-      if (ctn && gl.canvas.parentNode === ctn) {
-        ctn.removeChild(gl.canvas);
-      }
-      gl.getExtension("WEBGL_lose_context")?.loseContext();
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [amplitude]);
+      const mesh = new Mesh(gl, { geometry, program });
+      ctn.appendChild(gl.canvas);
 
-  return <div ref={ctnDom} className="aurora-container" />;
+      let animateId = 0;
+      const update = (t) => {
+        animateId = requestAnimationFrame(update);
+        const { time = t * 0.01, speed = 1.0 } = propsRef.current;
+        program.uniforms.uTime.value = time * speed * 0.1;
+        program.uniforms.uAmplitude.value = propsRef.current.amplitude ?? amplitude;
+        program.uniforms.uBlend.value = propsRef.current.blend ?? blend;
+        const stops = propsRef.current.colorStops ?? colorStops;
+        program.uniforms.uColorStops.value = stops.map((hex) => {
+          const c = new Color(hex);
+          return [c.r, c.g, c.b];
+        });
+        renderer.render({ scene: mesh });
+      };
+      animateId = requestAnimationFrame(update);
+
+      resize();
+
+      return () => {
+        cancelAnimationFrame(animateId);
+        window.removeEventListener("resize", resize);
+        if (ctn && gl.canvas.parentNode === ctn) {
+          ctn.removeChild(gl.canvas);
+        }
+        gl.getExtension("WEBGL_lose_context")?.loseContext();
+      };
+    } catch (error) {
+      console.error('Aurora failed:', error);
+    }
+  }, [amplitude, isMobile]);
+
+  return (
+    <div 
+      ref={ctnDom} 
+      className="aurora-container w-full h-full"
+      style={{
+        background: isMobile 
+          ? `linear-gradient(135deg, ${colorStops[0]}, ${colorStops[1]}, ${colorStops[2]})`
+          : 'transparent'
+      }}
+    />
+  );
 }

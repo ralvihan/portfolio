@@ -18,7 +18,7 @@ function App() {
       <div className="fixed inset-0 -z-10 w-full">
        <Aurora
   colorStops={["#2E073F", "#000000", "#2E073F"]}
-  blend={0.5}
+  blend={0.7}
   amplitude={1.0}
   speed={1}
 />

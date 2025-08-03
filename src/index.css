@@ -16,8 +16,6 @@
 }
 
 
-
-
 /* Firefox */
 * {
   scrollbar-width: thin;
@@ -56,6 +54,7 @@ html{
 body {
   @apply text-white;
   font-family: 'Poppins', sans-serif;
+  
 
   
   /* background: linear-gradient(120deg, #2E073F, #000000, #2E073F, #3B185F, #000000);
