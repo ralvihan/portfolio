@@ -68,7 +68,7 @@ const DetailPage = ({ type, id, onBack }) => {
         {/* Back Button */}
         <motion.button
           onClick={onBack}
-          className="mb-6 flex items-center space-x-2 text-white hover:text-[#916BBF] transition-colors duration-300"
+          className="mb-6 flex items-center space-x-2 text-black hover:text-gray-700 transition-colors duration-300"
           initial={{ x: -20, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.3 }}
@@ -90,7 +90,7 @@ const DetailPage = ({ type, id, onBack }) => {
           {/* Header */}
           <div className="p-6">
             <motion.h1
-              className="text-2xl md:text-3xl font-bold text-white mb-2"
+              className="text-2xl md:text-3xl font-bold text-black mb-2"
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.3 }}
@@ -99,7 +99,7 @@ const DetailPage = ({ type, id, onBack }) => {
             </motion.h1>
             {type === 'experience' && (
               <motion.div
-                className="text-[#916BBF] font-semibold"
+                className="text-black font-semibold"
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
@@ -138,7 +138,7 @@ const DetailPage = ({ type, id, onBack }) => {
                   <>
                     <button
                       onClick={prevImage}
-                      className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-[#916BBF] bg-opacity-70 text-white p-1 rounded-full hover:bg-opacity-90 transition-all z-10"
+                      className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 text-black p-1 rounded-full hover:bg-opacity-90 transition-all z-10"
                     >
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -146,7 +146,7 @@ const DetailPage = ({ type, id, onBack }) => {
                     </button>
                     <button
                       onClick={nextImage}
-                      className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-[#916BBF] bg-opacity-70 text-white p-1 rounded-full hover:bg-opacity-90 transition-all z-10"
+                      className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 text-black p-1 rounded-full hover:bg-opacity-90 transition-all z-10"
                     >
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -154,7 +154,7 @@ const DetailPage = ({ type, id, onBack }) => {
                     </button>
 
                     {/* Image Counter */}
-                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-opacity-80 bg-[#916BBF] text-white px-3 py-1 rounded-full text-xs font-semibold">
+                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-opacity-80 bg-white text-black px-3 py-1 rounded-full text-xs font-semibold">
                       {currentImageIndex + 1} / {data.images.length}
                     </div>
                   </>
@@ -170,8 +170,8 @@ const DetailPage = ({ type, id, onBack }) => {
                       onClick={() => setCurrentImageIndex(index)}
                       className={`w-2 h-2 rounded-full transition-all duration-300 ${
                         index === currentImageIndex 
-                          ? 'bg-[#916BBF] scale-125' 
-                          : 'bg-white bg-opacity-40 hover:bg-opacity-60'
+                          ? 'bg-black scale-125' 
+                          : 'bg-gray-500 bg-opacity-40 hover:bg-opacity-60'
                       }`}
                     />
                   ))}
@@ -186,10 +186,10 @@ const DetailPage = ({ type, id, onBack }) => {
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.6 }}
             >
-              <h2 className="text-xl font-semibold text-white mb-4 border-b border-[#916BBF] border-opacity-30">
+              <h2 className="text-xl font-semibold text-black mb-4 border-b border-black border-opacity-30">
                 Deskripsi
               </h2>
-              <div className="text-gray-200 leading-relaxed text-justify">
+              <div className="text-black leading-relaxed text-justify">
                 {renderTextWithLineBreaks(data.description)}
               </div>
             </motion.div>

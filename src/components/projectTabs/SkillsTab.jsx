@@ -55,7 +55,7 @@ const SkillsTab = ({ isVisible, animationKey }) => {
                     whileHover={{ 
                     scale: 1.3,
                     rotate: 360,
-                    filter: "drop-shadow(0 0 15px rgba(145, 107, 191, 0.5))"
+                    filter: "drop-shadow(0 0 15px rgba(107, 114, 128, 0.5))"
                     }}
                     whileTap={{ scale: 0.9 }}
                     transition={{ 
@@ -79,7 +79,7 @@ const SkillsTab = ({ isVisible, animationKey }) => {
                 ].map((skill, index) => (
                 <motion.span 
                     key={`${skill}-${animationKey}`}
-                    className="bg-[#916BBF] px-3 py-1 rounded-full transition-all duration-300 ease-in-out transform hover:scale-110 hover:shadow-lg hover:-translate-y-1"
+                    className="bg-gray-500 px-3 py-1 rounded-full transition-all duration-300 ease-in-out transform hover:scale-110 hover:shadow-lg hover:-translate-y-1"
                     initial={{ opacity: 0, x: -20 }}
                     animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
                     transition={{ 
@@ -122,7 +122,7 @@ const SkillsTab = ({ isVisible, animationKey }) => {
                 ].map((skill, index) => (
                 <motion.span 
                     key={`${skill}-${animationKey}`}
-                    className="bg-[#916BBF] px-3 py-1 rounded-full transition-all duration-300 ease-in-out transform hover:scale-110 hover:shadow-lg hover:-translate-y-1"
+                    className="bg-gray-500 px-3 py-1 rounded-full transition-all duration-300 ease-in-out transform hover:scale-110 hover:shadow-lg hover:-translate-y-1"
                     initial={{ opacity: 0, x: 20 }}
                     animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
                     transition={{ 

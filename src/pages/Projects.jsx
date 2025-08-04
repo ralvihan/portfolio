@@ -103,8 +103,8 @@ const Projects = () => {
                   onClick={() => handleTabChange(tab.id)}
                   className={`px-6 py-3 font-semibold transition-all duration-300 relative ${
                     activeTab === tab.id
-                      ? "bg-gradient-to-r bg-[#2E073F] text-white z-10 rounded-t-lg"
-                      : "text-white hover:text-[#916BBF] hover:bg-white hover:bg-opacity-10 rounded-t-lg"
+                      ? "bg-gradient-to-r border-l-2 border-r-2 border-t-2 bg-white text-black z-10 rounded-t-lg"
+                      : "text-black hover:text-black hover:bg-gray-400 hover:bg-opacity-10 rounded-t-lg"
                   }`}
                   style={{
                     borderTopLeftRadius: '0.5rem',
@@ -120,7 +120,7 @@ const Projects = () => {
 
             {/* Content Box */}
             <div 
-              className="bg-gradient-to-b from-[#2E073F] to-[#916BBF] rounded-lg shadow-2xl p-8 h-[400px] overflow-y-auto"
+              className="bg-gradient-to-b border-2 from-white to-white rounded-lg shadow-2xl p-8 h-[400px] overflow-y-auto"
               style={{
                 borderTopLeftRadius: activeTab === "projects" ? '0' : '0rem',
                 borderTopRightRadius: '0rem',

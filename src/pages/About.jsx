@@ -25,11 +25,11 @@ const About = () => {
                 }
                 />
             <div>
-            <h1 className="text-4xl font-bold">Hi, I'm Raihan Alvian Nuryansyah!</h1>
-            <p className="py-6">
+            <h1 className="text-4xl font-bold text-black">Hi, I'm Raihan Alvian Nuryansyah!</h1>
+            <p className="py-6 text-black">
                 Saya merupakan mahasiswa aktif Semester 5 Program Studi Teknik Informatika di Jakarta Global University dengan ketertarikan dalam pengembangan website dan perangkat lunak.
-                Saya menguasai beberapa bahasa pemrograman seperti {" "}<span className="bg-[#542269] px-0.5 rounded-sm">Java, Python, dan C++,</span>{" "} serta memiliki kemampuan di bidang front-end development menggunakan {" "}<span className="bg-[#542269] px-0.5 rounded-sm">HTML, CSS, JavaScript, React JS, dan Tailwind CSS.</span>{" "}
-                Saya juga berpengalaman menggunakan {" "}<span className="bg-[#542269] px-0.5 rounded-sm">MySQL</span>{" "}untuk pengelolaan basis data dalam proyek aplikasi. Aktif dalam organisasi kampus dan memiliki kemampuan komunikasi yang baik, saya mampu bekerja secara mandiri maupun dalam tim.
+                Saya menguasai beberapa bahasa pemrograman seperti {" "}<span className="bg-gray-300 px-0.5 rounded-sm">Java, Python, dan C++,</span>{" "} serta memiliki kemampuan di bidang front-end development menggunakan {" "}<span className="bg-gray-300 px-0.5 rounded-sm">HTML, CSS, JavaScript, React JS, dan Tailwind CSS.</span>{" "}
+                Saya juga berpengalaman menggunakan {" "}<span className="bg-gray-300 px-0.5 rounded-sm">MySQL</span>{" "}untuk pengelolaan basis data dalam proyek aplikasi. Aktif dalam organisasi kampus dan memiliki kemampuan komunikasi yang baik, saya mampu bekerja secara mandiri maupun dalam tim.
                 Saya memiliki semangat belajar yang tinggi dan saat ini sedang mencari kesempatan magang untuk mengembangkan keterampilan teknis serta mendapatkan pengalaman di lingkungan profesional.
             </p>
             
@@ -37,11 +37,11 @@ const About = () => {
             <motion.button
                 whileHover={{
                 scale: 1.1,
-                boxShadow: "0 0 20px rgba(145, 107, 191, 1)",
+                boxShadow: "0 0 20px rgba(128, 128, 128, 1)",
                 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ duration: 0.2 }}
-                className="flex items-center gap-2 bg-[#542269] text-white px-4 py-2 rounded-lg w-fit"
+                className="flex items-center gap-2 bg-black text-white px-4 py-2 rounded-lg w-fit"
             >
                 <svg
                 className="w-[24px] h-[24px] text-white"

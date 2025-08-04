@@ -272,18 +272,18 @@ const ProjectsTab = ({ isVisible, animationKey, openDetailPage }) => {
                 transition={{ duration: 0.3 }}
               />
             </figure>
-            <div className="card-body bg-[#2E073F] text-sm p-4">
+            <div className="card-body bg-black text-sm p-4">
               <h2 className="card-title text-base line-clamp-2">
                 {projectData[id].title}
               </h2>
               <p className="line-clamp-3 text-ellipsis overflow-hidden break-words">{projectData[id].shortDescription}</p>
               <div className="card-actions font-semibold justify-end">
                 <motion.button 
-                  className="bg-sm rounded-full px-2 bg-[#542269]"
+                  className="bg-sm rounded-full px-2 bg-gray-500"
                   onClick={() => openDetailPage('project', id)}
                   whileHover={{ 
                     scale: 1.1,
-                    boxShadow: "0 0 20px rgba(145, 107, 191, 0.5)"
+                    boxShadow: "0 0 20px rgba(107, 114, 128, 0.5)"
                   }}
                   whileTap={{ scale: 0.95 }}
                   transition={{ duration: 0.2 }}

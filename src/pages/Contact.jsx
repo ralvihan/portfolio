@@ -39,17 +39,17 @@ const Contact = () => {
     <div className="pt-28 md:pt-20 lg:pt-[105px] px-4 md:px-8 lg:px-16">
       <div className="max-w-2xl lg:max-w-5xl mx-auto">
         <div className="text-center">
-          <h1 className="text-2xl font-semibold text-white sm:text-3xl">
+          <h1 className="text-2xl font-semibold text-black sm:text-3xl">
             Get in Touch
           </h1>
-          <p className="mt-1 text-sm text-white/70">
+          <p className="mt-1 text-sm text-black/70">
             Got something in mind or just wanna say hi? Feel free to drop a message!
           </p>
         </div>
 
         <div className="mt-10 grid items-center lg:grid-cols-1 gap-6">
-          <div className="flex flex-col border border-[#832dc1] rounded-xl p-4 sm:p-5 lg:p-6">
-            <h2 className="mb-6 text-lg font-medium text-white">Contact form</h2>
+          <div className="flex flex-col border border-black rounded-xl p-4 sm:p-5 lg:p-6">
+            <h2 className="mb-6 text-lg font-medium text-black">Contact form</h2>
 
             <form onSubmit={sendEmail}>
               <div className="grid gap-3">
@@ -60,7 +60,7 @@ const Contact = () => {
                     placeholder="First Name"
                     required
                     className="py-1.5 px-3 block w-full border rounded-md text-xs focus:outline-none bg-neutral-900 text-neutral-300"
-                    style={{ borderColor: '#542269' }}
+                    style={{ borderColor: '#000000' }}
                   />
                   <input
                     type="text"
@@ -68,7 +68,7 @@ const Contact = () => {
                     placeholder="Last Name"
                     required
                     className="py-1.5 px-3 block w-full border rounded-md text-xs focus:outline-none bg-neutral-900 text-neutral-300"
-                    style={{ borderColor: '#542269' }}
+                    style={{ borderColor: '#000000' }}
                   />
                 </div>
 
@@ -78,7 +78,7 @@ const Contact = () => {
                   placeholder="Email"
                   required
                   className="py-1.5 px-3 block w-full border rounded-md text-xs focus:outline-none bg-neutral-900 text-neutral-300"
-                  style={{ borderColor: '#542269' }}
+                  style={{ borderColor: '#000000' }}
                 />
 
                 <input
@@ -86,7 +86,7 @@ const Contact = () => {
                   name="phone"
                   placeholder="Phone Number"
                   className="py-1.5 px-3 block w-full border rounded-md text-xs focus:outline-none bg-neutral-900 text-neutral-300"
-                  style={{ borderColor: '#542269' }}
+                  style={{ borderColor: '#000000' }}
                 />
 
                 <div className="relative">
@@ -99,7 +99,7 @@ const Contact = () => {
                     value={message}
                     onChange={handleMessageChange}
                     className="py-1.5 px-3 block w-full border rounded-md text-xs focus:outline-none bg-neutral-900 text-neutral-300"
-                    style={{ borderColor: '#542269' }}
+                    style={{ borderColor: '#000000' }}
                   ></textarea>
                   {/* <div className="absolute bottom-1 right-2 text-[10px] text-neutral-400 text-gray-400">
                     {message.length}/{charLimit}
@@ -109,12 +109,12 @@ const Contact = () => {
 
               <button
                 type="submit"
-                className="mt-3 w-full py-2 px-3 inline-flex justify-center items-center gap-x-2 text-xs font-medium rounded-md bg-[#832dc1] text-white hover:bg-[#532475] focus:outline-none"
+                className="mt-3 w-full py-2 px-3 inline-flex justify-center items-center gap-x-2 text-xs font-medium rounded-md bg-black text-white hover:bg-gray-400 focus:outline-none"
               >
                 Send Message
               </button>
 
-              <p className="mt-3 text-xs text-center text-neutral-400">
+              <p className="mt-3 text-xs text-center text-neutral-400 text-black">
                 I'll get back to you within 1 business days
               </p>
             </form>
@@ -122,7 +122,7 @@ const Contact = () => {
         </div>
 
         {/* Footer Section */}
-        <footer className="text-white py-6">
+        <footer className="text-black py-6">
           <div className="flex flex-col md:flex-row items-center justify-center md:justify-between">
             <div className="flex space-x-4 mb-4 md:mb-0 pt-5">
               <a href="https://github.com/differentlv" target="_blank" rel="noopener noreferrer">
