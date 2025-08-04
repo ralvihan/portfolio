@@ -144,6 +144,7 @@ const Home = () => {
                     </div>
 
                     {/* Mobile version */}
+                    <div className="relative flex-shrink-0 flex justify-center lg:justify-end w-full lg:w-auto lg:-top-12">
                     <div className="block md:hidden">
                         <CardSwap
                             width={320}
@@ -199,6 +200,7 @@ const Home = () => {
                                 </div>
                             </Card>
                         </CardSwap>
+                    </div>
                     </div>
                 </div>
             </div>
