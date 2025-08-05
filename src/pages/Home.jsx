@@ -12,7 +12,7 @@ const Home = () => {
                         Portfolio
                     </h1>
                     <h2 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-black dark:text-white leading-tight mb-2 transition-colors duration-300">
-                        From <u>Student</u> to <u>Front-End Developer</u> <br />
+                        {/* From <u>Student</u> to <u>Front-End Developer</u> <br /> */}Proses Pengerjaan hingga selesai
                     </h2>
                     <p className="text-base sm:text-lg text-gray-500 dark:text-gray-400 mb-6 lg:mb-8 transition-colors duration-300">
                         Just look at it go!
@@ -37,7 +37,7 @@ const Home = () => {
                                 </div>
                                 <div className="flex-1 bg-gradient-to-br from-orange-400 via-red-400 to-pink-400 rounded-xl shadow-lg relative overflow-hidden">
                                     <img 
-                                        src="/assets/her.jpg" 
+                                        src="/assets/profile-2.jpg" 
                                         alt="Customizable feature" 
                                         className="w-full h-full object-cover rounded-xl"
                                     />
@@ -53,7 +53,7 @@ const Home = () => {
                                 </div>
                                 <div className="flex-1 rounded-xl shadow-lg overflow-hidden">
                                     <img 
-                                        src="/assets/bg.jpg" 
+                                        src="/assets/profile-2.jpg" 
                                         alt="Reliable feature" 
                                         className="w-full h-full object-cover rounded-xl"
                                     />
@@ -68,7 +68,7 @@ const Home = () => {
                                 </div>
                                 <div className="flex-1 rounded-xl shadow-lg overflow-hidden">
                                     <img 
-                                        src="/assets/bg.jpg" 
+                                        src="/assets/profile-2.jpg" 
                                         alt="Smooth feature" 
                                         className="w-full h-full object-cover rounded-xl"
                                     />
@@ -99,7 +99,7 @@ const Home = () => {
                                 </div>
                                 <div className="flex-1 bg-gradient-to-br from-orange-400 via-red-400 to-pink-400 rounded-2xl shadow-lg relative overflow-hidden">
                                     <img 
-                                        src="/assets/her.jpg" 
+                                        src="/assets/profile-2.jpg" 
                                         alt="Customizable feature" 
                                         className="w-full h-full object-cover rounded-2xl"
                                     />
@@ -115,7 +115,7 @@ const Home = () => {
                                 </div>
                                 <div className="flex-1 rounded-2xl shadow-lg overflow-hidden">
                                     <img 
-                                        src="/assets/bg.jpg" 
+                                        src="/assets/profile-2.jpg" 
                                         alt="Reliable feature" 
                                         className="w-full h-full object-cover rounded-2xl"
                                     />
@@ -130,7 +130,7 @@ const Home = () => {
                                 </div>
                                 <div className="flex-1 rounded-2xl shadow-lg overflow-hidden">
                                     <img 
-                                        src="/assets/bg.jpg" 
+                                        src="/assets/profile-2.jpg" 
                                         alt="Smooth feature" 
                                         className="w-full h-full object-cover rounded-2xl"
                                     />
@@ -158,7 +158,7 @@ const Home = () => {
                                 </div>
                                 <div className="flex-1 bg-gradient-to-br from-orange-400 via-red-400 to-pink-400 rounded-lg shadow-lg relative overflow-hidden">
                                     <img 
-                                        src="/assets/her.jpg" 
+                                        src="/assets/profile-2.jpg" 
                                         alt="Customizable feature" 
                                         className="w-full h-full object-cover rounded-lg"
                                     />
@@ -173,7 +173,7 @@ const Home = () => {
                                 </div>
                                 <div className="flex-1 rounded-lg shadow-lg overflow-hidden">
                                     <img 
-                                        src="/assets/bg.jpg" 
+                                        src="/assets/profile-2.jpg" 
                                         alt="Reliable feature" 
                                         className="w-full h-full object-cover rounded-lg"
                                     />
@@ -188,7 +188,7 @@ const Home = () => {
                                 </div>
                                 <div className="flex-1 rounded-lg shadow-lg overflow-hidden">
                                     <img 
-                                        src="/assets/bg.jpg" 
+                                        src="/assets/profile-2.jpg" 
                                         alt="Smooth feature" 
                                         className="w-full h-full object-cover rounded-lg"
                                     />

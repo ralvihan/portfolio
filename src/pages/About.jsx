@@ -7,7 +7,7 @@ const About = () => {
             <div className="hero-content flex-col lg:flex-row-reverse gap-8 lg:gap-12 max-w-7xl mx-auto w-full py-8 lg:py-0">
                 <div className="flex-shrink-0">
                     <TiltedCard
-                        imageSrc="./assets/her.jpg"
+                        imageSrc="./assets/profile-1.jpg"
                         altText="Raihan Alvian - Photo"
                         captionText="Raihan Alvian - Photo"
                         containerHeight="250px"
@@ -73,7 +73,7 @@ const About = () => {
                             </svg>
                             
                             <a
-                                href="/portfolio/CV RAIHAN ALVIAN NURYANSYAH.pdf"
+                                href="./CV RAIHAN ALVIAN NURYANSYAH.pdf"
                                 download
                                 className="text-white dark:text-black font-semibold transition-colors duration-300 text-sm sm:text-base"
                             >

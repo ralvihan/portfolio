@@ -14,7 +14,7 @@ const CertificateTab = ({ isVisible, animationKey }) => {
 
       <div className="carousel rounded-box w-64 border border-gray-200 dark:border-gray-700">
         <div className="carousel-item w-full">
-          <img
+          {/* <img
             src="https://img.daisyui.com/images/stock/photo-1559703248-dcaaec9fab78.webp"
             className="w-full"
             alt="Certificate 1" />
@@ -53,7 +53,7 @@ const CertificateTab = ({ isVisible, animationKey }) => {
           <img
             src="https://img.daisyui.com/images/stock/photo-1601004890684-d8cbf643f5f2.webp"
             className="w-full"
-            alt="Certificate 7" />
+            alt="Certificate 7" /> */}
         </div>
       </div>
     </div>
