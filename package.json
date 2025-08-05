@@ -11,12 +11,19 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/material": "^7.3.0",
+    "@radix-ui/react-avatar": "^1.1.10",
     "@react-three/drei": "^10.6.1",
     "@react-three/fiber": "^9.3.0",
     "@react-three/rapier": "^2.1.0",
     "@tailwindcss/vite": "^4.1.11",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "framer-motion": "^12.23.12",
     "gsap": "^3.13.0",
+    "lucide-react": "^0.536.0",
     "matter-js": "^0.20.0",
     "meshline": "^3.3.1",
     "ogl": "^1.0.11",
@@ -24,6 +31,8 @@
     "react-dom": "^19.1.0",
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.7.1",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss-animate": "^1.0.7",
     "three": "^0.178.0"
   },
   "devDependencies": {

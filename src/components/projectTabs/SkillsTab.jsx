@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const SkillsTab = ({ isVisible, animationKey }) => {
     return (
-        <div className="text-white text-lg">
+        <div className="text-gray-900 dark:text-gray-100 text-lg">
         <div className="flex flex-col items-center justify-center h-full space-y-8">
             
             {/* Hard Skills Section */}
@@ -14,7 +14,7 @@ const SkillsTab = ({ isVisible, animationKey }) => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             >
             <motion.h2 
-                className="text-2xl font-bold mb-6 text-center"
+                className="text-2xl font-bold mb-6 text-center text-gray-900 dark:text-gray-100"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={isVisible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
@@ -49,7 +49,7 @@ const SkillsTab = ({ isVisible, animationKey }) => {
                     key={`${icon.alt}-${animationKey}`}
                     src={icon.src} 
                     alt={icon.alt} 
-                    className="w-12 h-12 cursor-pointer"
+                    className="w-12 h-12 cursor-pointer filter dark:brightness-110 dark:contrast-110"
                     initial={{ opacity: 0, scale: 0, rotate: -180 }}
                     animate={isVisible ? { opacity: 1, scale: 1, rotate: 0 } : { opacity: 0, scale: 0, rotate: -180 }}
                     whileHover={{ 
@@ -79,7 +79,7 @@ const SkillsTab = ({ isVisible, animationKey }) => {
                 ].map((skill, index) => (
                 <motion.span 
                     key={`${skill}-${animationKey}`}
-                    className="bg-gray-500 px-3 py-1 rounded-full transition-all duration-300 ease-in-out transform hover:scale-110 hover:shadow-lg hover:-translate-y-1"
+                    className="bg-gray-300 dark:bg-gray-600 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-full transition-all duration-300 ease-in-out transform hover:scale-110 hover:shadow-lg hover:-translate-y-1 hover:bg-gray-500 dark:hover:bg-gray-500"
                     initial={{ opacity: 0, x: -20 }}
                     animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
                     transition={{ 
@@ -103,7 +103,7 @@ const SkillsTab = ({ isVisible, animationKey }) => {
             transition={{ duration: 0.6, delay: 1.2, ease: "easeOut" }}
             >
             <motion.h2 
-                className="text-2xl font-bold mb-6 text-center"
+                className="text-2xl font-bold mb-6 text-center text-gray-900 dark:text-gray-100"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={isVisible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.5, delay: 1.3 }}
@@ -122,7 +122,7 @@ const SkillsTab = ({ isVisible, animationKey }) => {
                 ].map((skill, index) => (
                 <motion.span 
                     key={`${skill}-${animationKey}`}
-                    className="bg-gray-500 px-3 py-1 rounded-full transition-all duration-300 ease-in-out transform hover:scale-110 hover:shadow-lg hover:-translate-y-1"
+                    className="bg-gray-300 dark:bg-gray-600 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-full transition-all duration-300 ease-in-out transform hover:scale-110 hover:shadow-lg hover:-translate-y-1 hover:bg-gray-500 dark:hover:bg-gray-500"
                     initial={{ opacity: 0, x: 20 }}
                     animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
                     transition={{ 

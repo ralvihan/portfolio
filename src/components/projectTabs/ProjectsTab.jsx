@@ -243,12 +243,12 @@ const ProjectsTab = ({ isVisible, animationKey, openDetailPage }) => {
   }, []);
 
   return (
-    <div className="text-white text-lg">
+    <div className="text-gray-900 dark:text-gray-100 text-lg">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 justify-items-center">
         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((id, index) => (
           <motion.div 
             key={`${id}-${animationKey}`} 
-            className="card bg-base-100 w-64 shadow-sm cursor-pointer"
+            className="card bg-white dark:bg-gray-800 w-64 shadow-sm border border-gray-200 dark:border-gray-700 cursor-pointer transition-colors duration-300"
             initial={{ opacity: 0, y: 50, scale: 0.8 }}
             animate={isVisible ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 50, scale: 0.8 }}
             whileHover={{ 
@@ -263,7 +263,7 @@ const ProjectsTab = ({ isVisible, animationKey, openDetailPage }) => {
               ease: "easeOut"
             }}
           >
-            <figure>
+            <figure className="overflow-hidden">
               <motion.img
                 src={projectData[id].images[carouselIndexes[id]]}
                 alt={`Project ${id}`}
@@ -272,14 +272,14 @@ const ProjectsTab = ({ isVisible, animationKey, openDetailPage }) => {
                 transition={{ duration: 0.3 }}
               />
             </figure>
-            <div className="card-body bg-black text-sm p-4">
+            <div className="card-body bg-gray-900 dark:bg-gray-900 text-white text-sm p-4">
               <h2 className="card-title text-base line-clamp-2">
                 {projectData[id].title}
               </h2>
-              <p className="line-clamp-3 text-ellipsis overflow-hidden break-words">{projectData[id].shortDescription}</p>
+              <p className="line-clamp-3 text-ellipsis overflow-hidden break-words text-gray-300">{projectData[id].shortDescription}</p>
               <div className="card-actions font-semibold justify-end">
                 <motion.button 
-                  className="bg-sm rounded-full px-2 bg-gray-500"
+                  className="bg-gray-600 hover:bg-gray-500 dark:bg-gray-500 dark:hover:bg-gray-400 rounded-full px-3 py-1 text-white transition-colors duration-200"
                   onClick={() => openDetailPage('project', id)}
                   whileHover={{ 
                     scale: 1.1,

@@ -2,6 +2,7 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+
 /* Animasi fade-in */
 .fade-in-section {
   opacity: 0;
@@ -41,16 +42,34 @@
   background-color: rgba(136, 136, 136, 0.5);
 }
 
-html{
+/* Dark mode scrollbar */
+.dark *::-webkit-scrollbar-thumb {
+  background-color: rgba(200, 200, 200, 0.3);
+}
+
+.dark *::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(200, 200, 200, 0.5);
+}
+
+html {
   scroll-behavior: smooth;
   scroll-restoration: manual;
 }
 
 body {
-  @apply text-white;
   font-family: "Inter", sans-serif;
-  background-color: #f3f4f6;
   position: relative;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light mode body styles */
+body {
+  @apply text-gray-900 bg-gray-100;
+}
+
+/* Dark mode body styles */
+.dark body {
+  @apply text-gray-100 bg-gray-900;
 }
 
 .no-scrollbar::-webkit-scrollbar {
@@ -143,7 +162,13 @@ body {
   z-index: 3;
 }
 
- .card-swap-container {
+/* Dark mode tilted card caption */
+.dark .tilted-card-caption {
+  background-color: #1f2937;
+  color: #f3f4f6;
+}
+
+.card-swap-container {
   position: relative;
   perspective: 900px;
   overflow: visible;
@@ -161,4 +186,9 @@ body {
   will-change: transform;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+}
+
+/* Theme transition untuk smooth color changes */
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }

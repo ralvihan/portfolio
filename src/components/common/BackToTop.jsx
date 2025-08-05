@@ -18,12 +18,12 @@ const BackToTop = () => {
 
     return (
         isVisible && (
-        <button
-            onClick={scrollToTop}
-            className="fixed bottom-6 right-6 bg-black text-white px-3 py-2 rounded-full shadow-lg hover:bg-gray-400 transition-all"
-        >
-            ↑
-        </button>
+            <button
+                onClick={scrollToTop}
+                className="fixed bottom-6 right-6 bg-black dark:bg-white text-white dark:text-black px-3 py-2 rounded-full shadow-lg hover:bg-gray-700 dark:hover:bg-gray-200 transition-all duration-300"
+            >
+                ↑
+            </button>
         )
     );
 };

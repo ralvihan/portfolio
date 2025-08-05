@@ -58,39 +58,38 @@ const DetailPage = ({ type, id, onBack }) => {
 
   return (
     <motion.div
-      className="pt-[80px] px-4 md:px-8 lg:px-16" // Background dihapus
+      className="pt-[80px] px-4 md:px-8 lg:px-16 bg-gray-100 dark:bg-gray-900 min-h-screen transition-colors duration-300"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
       <div className="max-w-7xl mx-auto">
-        {/* Back Button */}
-        <motion.button
-          onClick={onBack}
-          className="mb-6 flex items-center space-x-2 text-black hover:text-gray-700 transition-colors duration-300"
-          initial={{ x: -20, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.3 }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
-          <span className="font-semibold">Kembali</span>
-        </motion.button>
-
         {/* Content Container */}
         <motion.div
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          {/* Header */}
-          <div className="p-6">
+          {/* Header with Back Button */}
+          <div className="p-6 bg-white dark:bg-gray-800 rounded-t-lg shadow-sm">
+            {/* Back Button - Now inside the header container */}
+            <motion.button
+              onClick={onBack}
+              className="mb-4 flex items-center space-x-2 text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-300 transition-colors duration-300"
+              initial={{ x: -20, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.3 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              <span className="font-semibold">Kembali</span>
+            </motion.button>
             <motion.h1
-              className="text-2xl md:text-3xl font-bold text-black mb-2"
+              className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2"
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.3 }}
@@ -99,27 +98,27 @@ const DetailPage = ({ type, id, onBack }) => {
             </motion.h1>
             {type === 'experience' && (
               <motion.div
-                className="text-black font-semibold"
+                className="text-gray-900 dark:text-gray-100 font-semibold"
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
                 <p className="text-lg">{data.company}</p>
-                <p className="text-gray-300 text-sm">{data.period}</p>
+                <p className="text-gray-600 dark:text-gray-400 text-sm">{data.period}</p>
               </motion.div>
             )}
           </div>
 
           {/* Main Content */}
-          <div className="flex flex-col">
+          <div className="flex flex-col bg-white dark:bg-gray-800 shadow-sm rounded-b-lg">
             {/* Image Section */}
             <motion.div
-              className="w-full relative mb-2"
+              className="w-full relative mb-2 p-4"
               initial={{ x: -30, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.5 }}
             >
-              <div className="relative h-48 md:h-64 lg:h-80 max-w-2xl mx-auto">
+              <div className="relative h-48 md:h-64 lg:h-80 max-w-2xl mx-auto bg-white dark:bg-gray-800 rounded-lg overflow-hidden">
                 <AnimatePresence mode="wait">
                   <motion.img
                     key={currentImageIndex}
@@ -138,7 +137,7 @@ const DetailPage = ({ type, id, onBack }) => {
                   <>
                     <button
                       onClick={prevImage}
-                      className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 text-black p-1 rounded-full hover:bg-opacity-90 transition-all z-10"
+                      className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white dark:bg-gray-800 bg-opacity-80 dark:bg-opacity-80 text-gray-900 dark:text-gray-100 p-2 rounded-full hover:bg-opacity-100 dark:hover:bg-opacity-100 transition-all z-10 shadow-lg"
                     >
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -146,7 +145,7 @@ const DetailPage = ({ type, id, onBack }) => {
                     </button>
                     <button
                       onClick={nextImage}
-                      className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 text-black p-1 rounded-full hover:bg-opacity-90 transition-all z-10"
+                      className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white dark:bg-gray-800 bg-opacity-80 dark:bg-opacity-80 text-gray-900 dark:text-gray-100 p-2 rounded-full hover:bg-opacity-100 dark:hover:bg-opacity-100 transition-all z-10 shadow-lg"
                     >
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -154,7 +153,7 @@ const DetailPage = ({ type, id, onBack }) => {
                     </button>
 
                     {/* Image Counter */}
-                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-opacity-80 bg-white text-black px-3 py-1 rounded-full text-xs font-semibold">
+                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white dark:bg-gray-800 bg-opacity-90 dark:bg-opacity-90 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-full text-xs font-semibold shadow-lg">
                       {currentImageIndex + 1} / {data.images.length}
                     </div>
                   </>
@@ -163,15 +162,15 @@ const DetailPage = ({ type, id, onBack }) => {
 
               {/* Dot Indicators */}
               {data.images.length > 1 && (
-                <div className="flex justify-center py-3 space-x-2 ">
+                <div className="flex justify-center py-3 space-x-2">
                   {data.images.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => setCurrentImageIndex(index)}
                       className={`w-2 h-2 rounded-full transition-all duration-300 ${
                         index === currentImageIndex 
-                          ? 'bg-black scale-125' 
-                          : 'bg-gray-500 bg-opacity-40 hover:bg-opacity-60'
+                          ? 'bg-gray-900 dark:bg-gray-100 scale-125' 
+                          : 'bg-gray-400 dark:bg-gray-600 hover:bg-gray-600 dark:hover:bg-gray-400'
                       }`}
                     />
                   ))}
@@ -186,10 +185,10 @@ const DetailPage = ({ type, id, onBack }) => {
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.6 }}
             >
-              <h2 className="text-xl font-semibold text-black mb-4 border-b border-black border-opacity-30">
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4 border-b border-gray-300 dark:border-gray-600 pb-2">
                 Deskripsi
               </h2>
-              <div className="text-black leading-relaxed text-justify">
+              <div className="text-gray-800 dark:text-gray-200 leading-relaxed text-justify">
                 {renderTextWithLineBreaks(data.description)}
               </div>
             </motion.div>

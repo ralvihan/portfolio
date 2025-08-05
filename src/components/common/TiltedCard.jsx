@@ -85,7 +85,7 @@ export default function TiltedCard({
         onMouseLeave={handleMouseLeave}
         >
         {showMobileWarning && (
-            <div className="tilted-card-mobile-alert">
+            <div className="tilted-card-mobile-alert text-gray-700 dark:text-gray-300">
             This effect is not optimized for mobile. Check on desktop.
             </div>
         )}
@@ -121,7 +121,7 @@ export default function TiltedCard({
 
         {showTooltip && (
             <motion.figcaption
-            className="tilted-card-caption"
+            className="tilted-card-caption bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-600"
             style={{
                 x,
                 y,

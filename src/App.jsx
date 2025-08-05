@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { ThemeProvider } from './components/common/ThemeProvider';
 import Navbar from "./components/common/Navbar";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -8,8 +9,7 @@ import FadeInSection from "./components/effects/FadeInSection";
 import BackToTop from "./components/common/BackToTop";
 import './index.css'
 
-function App() {
-  
+function AppContent() {
   useEffect(() => {
     // Disable browser's automatic scroll restoration
     if ('scrollRestoration' in history) {
@@ -42,7 +42,7 @@ function App() {
   }, []);
   
   return (
-    <div className="relative min-h-screen w-full overflow-hidden">
+    <div className="relative min-h-screen w-full overflow-hidden bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
       {/* Konten utama */}
       <Navbar />
       <FadeInSection id="Home"><Home /></FadeInSection>
@@ -52,6 +52,14 @@ function App() {
 
       <BackToTop />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 }
 
