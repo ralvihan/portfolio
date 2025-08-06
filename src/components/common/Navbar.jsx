@@ -4,7 +4,7 @@ import ImageAvatars from "./ImageAvatar";
 
 
 const Navbar = () => {
-    const NavItem = ["Home", "About Me", "Projects", "Contact"];
+    const NavItem = ["About Me", "Projects", "Contact"];
     const [activeSection, setActiveSection] = useState("Home");
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
