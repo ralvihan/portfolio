@@ -42,7 +42,7 @@ function AppContent() {
   }, []);
   
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
+    <div className="relative min-h-screen w-full bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
       {/* Konten utama */}
       
       <Navbar />

@@ -96,27 +96,28 @@ const Projects = () => {
         <div className="w-full overflow-x-auto">
           <div className="max-w-7xl mx-auto">
             {/* Tab Navigation */}
-            <div className="flex space-x-1 mb-0 overflow-x-auto">
-              {tabs.map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => handleTabChange(tab.id)}
-                  className={`px-6 py-3 font-semibold transition-all duration-300 relative ${
-                    activeTab === tab.id
-                      ? "bg-white dark:bg-gray-800 text-black dark:text-white border-gray-200 dark:border-gray-600 z-10 rounded-t-lg"
-                      : "text-gray-400 dark:text-gray-500 hover:text-black dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 hover:bg-opacity-50 rounded-t-lg"
-                  }`}
-                  style={{
-                    borderTopLeftRadius: '0.5rem',
-                    borderTopRightRadius: '0.5rem',
-                    borderBottomLeftRadius: '0',
-                    borderBottomRightRadius: '0',
-                  }}
-                >
-                  {tab.title}
-                </button>
-              ))}
-            </div>
+            <div className="flex mb-0 overflow-x-auto">
+  {tabs.map((tab) => (
+    <button
+      key={tab.id}
+      onClick={() => handleTabChange(tab.id)}
+      className={`px-2 sm:px-4 py-3 font-semibold transition-all duration-300 relative ${
+        activeTab === tab.id
+          ? "bg-white dark:bg-gray-800 text-black dark:text-white border-gray-200 dark:border-gray-600 z-10 rounded-t-lg"
+          : "text-gray-400 dark:text-gray-500 hover:text-black dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 hover:bg-opacity-50 rounded-t-lg"
+      }`}
+      style={{
+        borderTopLeftRadius: '0.5rem',
+        borderTopRightRadius: '0.5rem',
+        borderBottomLeftRadius: '0',
+        borderBottomRightRadius: '0',
+        marginRight: '0', // Hilangkan margin antar tab
+      }}
+    >
+      {tab.title}
+    </button>
+  ))}
+</div>
 
             {/* Content Box */}
             <div 

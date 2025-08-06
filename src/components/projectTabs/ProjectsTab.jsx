@@ -248,7 +248,7 @@ const ProjectsTab = ({ isVisible, animationKey, openDetailPage }) => {
         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((id, index) => (
           <motion.div 
             key={`${id}-${animationKey}`} 
-            className="card bg-white dark:bg-gray-800 w-64 shadow-sm border border-gray-200 dark:border-gray-700 cursor-pointer transition-colors duration-300"
+            className="card bg-white dark:bg-gray-700 w-64 shadow-sm border border-gray-200 dark:border-gray-700 cursor-pointer transition-colors duration-300"
             initial={{ opacity: 0, y: 50, scale: 0.8 }}
             animate={isVisible ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 50, scale: 0.8 }}
             whileHover={{ 
