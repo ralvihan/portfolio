@@ -38,7 +38,7 @@ const Navbar = () => {
         <div className="fixed w-full top-0 left-0 z-50 px-7 md:px-9 lg:px-8">
             <div
                 className={`w-full rounded-b-3xl transition-all duration-500 ease-in-out ${
-                    scrolled ? "py-0.5" : "py-1"
+                    scrolled ? "py-1" : "py-2"
                 } backdrop-blur-md shadow-[0_4px_20px_rgba(128,128,128,0.3)] bg-white/90 dark:bg-gray-800 dark:shadow-[0_4px_20px_rgba(0,0,0,0.4)]`}
             >
                 <div className="max-w-screen-xl mx-auto flex items-center justify-between px-4 sm:px-8 md:px-12 lg:px-16">
