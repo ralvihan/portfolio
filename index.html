@@ -2,20 +2,37 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml+png" href="/white-logo.png" />
+    <!-- Favicon default (akan diubah via JS) -->
+    <link id="favicon" rel="icon" type="image/svg+xml" href="/logo_black.svg" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio Raihan Alvian</title>
 
     <!-- Font Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    >
+    
+    <script>
+      function updateFavicon() {
+        const favicon = document.getElementById("favicon");
+        const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        favicon.href = isDark ? "/logo_white.svg" : "/logo_black.svg";
+      }
 
+      // set favicon saat pertama kali load
+      updateFavicon();
+
+      // update favicon kalau user ganti tema OS/browser
+      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", updateFavicon);
+    </script>
   </head>
+
   <body class="scrollbar-thin scrollbar-track-[#090014] scrollbar-thumb-[#1a1a2e]">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
-    
   </body>
 </html>

@@ -72,11 +72,11 @@ export const WavyBackground = ({
   };
 
   const waveColors = colors ?? [
-    "#38bdf8",
-    "#818cf8",
-    "#c084fc",
-    "#e879f9",
-    "#22d3ee",
+    "#0A400C",
+    "#819067",
+    "#B1AB86",
+    "#93DA97",
+    "#5E936C",
   ];
 
   const drawWave = (n) => {
@@ -101,7 +101,7 @@ export const WavyBackground = ({
 
   // Set background full opaque, tidak transparan
   ctx.globalAlpha = 1.0;
-  const themeBackground = isDarkMode ? "#111827" : "#f3f4f6";
+  const themeBackground = isDarkMode ? "#1C1B1B" : "#f3f4f6";
   ctx.fillStyle = backgroundFill || themeBackground;
   ctx.fillRect(0, 0, w, h);
 
@@ -121,7 +121,7 @@ export const WavyBackground = ({
 
   const [isSafari, setIsSafari] = useState(false);
   useEffect(() => {
-    // I'm sorry but i have got to support it on safari.
+    
     setIsSafari(typeof window !== "undefined" &&
       navigator.userAgent.includes("Safari") &&
       !navigator.userAgent.includes("Chrome"));

@@ -36,7 +36,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="pt-28 md:pt-20 lg:pt-[105px] px-4 md:px-8 lg:px-16 bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
+    <div className="pt-28 md:pt-20 lg:pt-[105px] px-4 md:px-8 lg:px-16 transition-colors duration-300">
       <div className="max-w-2xl lg:max-w-5xl mx-auto">
         <div className="text-center">
           <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 sm:text-3xl">
@@ -121,7 +121,7 @@ const Contact = () => {
         <footer className="text-gray-900 dark:text-gray-100 py-6">
           <div className="flex flex-col md:flex-row items-center justify-center md:justify-between">
             <div className="flex space-x-4 mb-4 md:mb-0 pt-5">
-              <a href="https://github.com/differentlv" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/ralvihan" target="_blank" rel="noopener noreferrer">
                 <FaGithub className="w-6 h-6 hover:text-gray-600 dark:hover:text-gray-400 transition-colors duration-200" />
               </a>
               <a href="https://linkedin.com/in/raihanalviannuryansyah" target="_blank" rel="noopener noreferrer">

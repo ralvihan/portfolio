@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 
 const projectData = {
@@ -210,9 +211,9 @@ Fitur yang dikembangkan mencakup:
     ]
   },
   11: {
-    title: "Smart Home IoT System",
-    shortDescription: "C++",
-    description: "Deskripsi lengkap untuk project kesebelas. Sistem IoT untuk smart home dengan kontrol otomatis perangkat elektronik dan monitoring real-time.",
+    title: "-",
+    shortDescription: "-",
+    description: "-",
     images: [
       "https://img.daisyui.com/images/stock/photo-1565098772267-60af42b81ef2.webp",
       "https://img.daisyui.com/images/stock/photo-1494253109108-2e30c049369b.webp",
@@ -298,6 +299,7 @@ const ProjectsTab = ({ isVisible, animationKey, openDetailPage }) => {
     </div>
   );
 };
+
 
 export { projectData };
 export default ProjectsTab;
