@@ -69,7 +69,7 @@ body {
 
 /* Dark mode body styles */
 .dark body {
-  @apply text-gray-100 bg-gray-900;
+  @apply text-gray-100 bg-[#1C1B1B];
 }
 
 .no-scrollbar::-webkit-scrollbar {
