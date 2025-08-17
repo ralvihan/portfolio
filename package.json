@@ -16,7 +16,7 @@
     "@mui/material": "^7.3.0",
     "@radix-ui/react-avatar": "^1.1.10",
     "@react-three/drei": "^9.122.0",
-    "@react-three/fiber": "^8.18.0",
+    "@react-three/fiber": "^9.0.4",
     "@react-three/rapier": "^2.1.0",
     "@tailwindcss/vite": "^4.1.11",
     "class-variance-authority": "^0.7.1",
