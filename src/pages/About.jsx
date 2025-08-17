@@ -95,7 +95,7 @@ const About = () => {
                 rel="noopener noreferrer" 
                 className="underline text-black dark:text-white hover:underline transition-colors duration-200"
                 >
-                {"Riwayat Pendidikans >"}
+                {"Riwayat Pendidikan >"}
                 </a>
             </div>
             </div>
