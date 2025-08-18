@@ -137,7 +137,7 @@ const DetailPage = ({ type, id, onBack }) => {
                   <>
                     <button
                       onClick={prevImage}
-                      className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white dark:bg-[#030202] bg-opacity-80 dark:bg-opacity-80 text-gray-900 dark:text-gray-100 p-2 rounded-full hover:bg-opacity-100 dark:hover:bg-opacity-100 transition-all z-10 shadow-lg"
+                      className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white dark:bg-[#1C1B1B] bg-opacity-80 dark:bg-opacity-80 text-gray-900 dark:text-gray-100 p-2 rounded-full hover:bg-opacity-100 dark:hover:bg-opacity-100 transition-all z-10 shadow-lg"
                     >
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -145,7 +145,7 @@ const DetailPage = ({ type, id, onBack }) => {
                     </button>
                     <button
                       onClick={nextImage}
-                      className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white dark:bg-[#030202] bg-opacity-80 dark:bg-opacity-80 text-gray-900 dark:text-gray-100 p-2 rounded-full hover:bg-opacity-100 dark:hover:bg-opacity-100 transition-all z-10 shadow-lg"
+                      className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white dark:bg-[#1C1B1B] bg-opacity-80 dark:bg-opacity-80 text-gray-900 dark:text-gray-100 p-2 rounded-full hover:bg-opacity-100 dark:hover:bg-opacity-100 transition-all z-10 shadow-lg"
                     >
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -153,7 +153,7 @@ const DetailPage = ({ type, id, onBack }) => {
                     </button>
 
                     {/* Image Counter */}
-                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white dark:bg-[#030202] bg-opacity-90 dark:bg-opacity-90 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-full text-xs font-semibold shadow-lg">
+                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white dark:bg-[#1C1B1B] bg-opacity-90 dark:bg-opacity-90 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-full text-xs font-semibold shadow-lg">
                       {currentImageIndex + 1} / {data.images.length}
                     </div>
                   </>

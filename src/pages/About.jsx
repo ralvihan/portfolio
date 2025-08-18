@@ -88,15 +88,54 @@ const About = () => {
                 Curriculum Vitae
                 </motion.a>
 
-                {/* Buka Education */}
-                <a 
-                href="/education.html" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="underline text-black dark:text-white hover:underline transition-colors duration-200"
-                >
-                {"Riwayat Pendidikan >"}
-                </a>
+                
+               {/* Buka Education */}
+<button
+  onClick={() => setShowEducation(true)}
+  className="underline text-black dark:text-white hover:text-gray-700 dark:hover:text-gray-300 transition-colors duration-300"
+>
+  {"Riwayat Pendidikan >"}
+</button>
+
+{/* Modal Education */}
+{showEducation && (
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    className="fixed inset-0 flex items-center justify-center bg-[#1C1B1B] bg-opacity-50 z-50"
+    onClick={() => setShowEducation(false)} // Klik luar modal untuk close
+  >
+    <motion.div
+      initial={{ scale: 0.8, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      exit={{ scale: 0.8, opacity: 0 }}
+      transition={{ duration: 0.3 }}
+      className="bg-white dark:bg-[#030202] rounded-xl shadow-xl p-6 max-w-2xl w-full mx-4 relative"
+      onClick={(e) => e.stopPropagation()} // biar klik dalam modal ga nutup
+    >
+      {/* Tombol close */}
+      <button
+        onClick={() => setShowEducation(false)}
+        className="absolute top-3 right-3 text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white"
+      >
+        ✕
+      </button>
+
+      {/* Isi Riwayat Pendidikan */}
+      <h2 className="text-xl font-bold mb-4 text-black dark:text-[#EEEEEE] hover:text-gray-700 dark:hover:text-gray-300 transition-colors duration-300">
+        Riwayat Pendidikan
+      </h2>
+      <ul className="list-disc list-inside space-y-2 text-black dark:text-[#EEEEEE]">
+        <li>SDN Mekarjaya 13 Depok (2010 - 2016)</li>
+        <li>SMP PGRI Depok II Tengah (2017 - 2020)</li>
+        <li>SMK Negeri 3 Depok - Teknik Komputer dan Jaringan (2020 - 2023)</li>
+        <li>Jakarta Global University - Teknik Informatika (2023 - Sekarang)</li>
+      </ul>
+    </motion.div>
+  </motion.div>
+)} 
+
             </div>
             </div>
         </div>

@@ -76,7 +76,8 @@ Fitur yang dikembangkan mencakup:
 **Tools yang digunakan:**
 - Python
 - Tkinter
-- Library Eksternal: Pandas, NumPy, Matplotlib, Seaborn, Datetime, os, csv`,
+- Library Eksternal: Pandas, NumPy, Matplotlib, Seaborn, Datetime, os, csv
+- VSCode`,
     images: [
       "/assets/projects/saw/saw1.png",
       "/assets/projects/saw/saw2.png",
@@ -122,15 +123,22 @@ Fitur yang dikembangkan mencakup:
     ]
   },
   6: {
-    title: "Web portfolio",
-    shortDescription: "Python",
-    description: "Deskripsi lengkap untuk project keenam. Aplikasi mobile-first dengan cross-platform compatibility dan real-time synchronization capabilities.",
+    title: "Personal Portfolio Website",
+    shortDescription: "JavaScript",
+    description: `Project ini dibuat sebagai media personal branding dan dokumentasi hasil karya. Website portfolio ini dirancang agar bisa menampilkan informasi tentang diri, keahlian, pengalaman, serta proyek-proyek yang pernah dikerjakan dengan tampilan modern, interaktif, dan mudah diakses baik melalui desktop maupun perangkat mobile.
+
+Selain itu, website ini juga menjadi wadah untuk mengimplementasikan berbagai teknologi front-end modern dan mengasah keterampilan dalam membangun aplikasi web yang responsif, dinamis, serta mendukung dark mode/light mode otomatis sesuai preferensi browser pengguna.
+
+
+**Tools yang digunakan:**
+- JavaScript
+- React.js, Tailwind CSS, Vite
+- EmailJS
+- VSCode
+`,
     images: [
-      "https://img.daisyui.com/images/stock/photo-1572635148818-ef6fd45eb394.webp",
-      "https://img.daisyui.com/images/stock/photo-1559703248-dcaaec9fab78.webp",
-      "https://img.daisyui.com/images/stock/photo-1494253109108-2e30c049369b.webp",
-      "https://img.daisyui.com/images/stock/photo-1565098772267-60af42b81ef2.webp",
-      "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+      "/assets/projects/portfolio/port1.png",
+      "/assets/projects/portfolio/port2.png",
     ]
   },
   7: {
