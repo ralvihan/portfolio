@@ -45,11 +45,11 @@ const Navbar = () => {
                     {/* Logo */}
                     <div className="Logo flex items-center gap-2">
                         <ImageAvatars />
-                        <h1 className="text-xl font-bold text-black dark:text-white">Portfolio</h1>
+                        <h1 className="text-xl font-bold text-black dark:text-gray-100">Portfolio</h1>
                     </div>
 
                     {/* Desktop Menu */}
-                    <ul className="hidden md:flex items-center gap-6 font-medium text-black dark:text-white">
+                    <ul className="hidden md:flex items-center gap-6 font-medium text-black dark:text-gray-100">
                         {NavItem.map((item) => {
                             const id = item.replace(/\s+/g, "");
                             const isActive = activeSection === id;
@@ -57,8 +57,8 @@ const Navbar = () => {
                                 <li key={item}>
                                     <a
                                         href={`#${id}`}
-                                        className={`px-0 py-1 rounded transition-all duration-200 hover:border-b-2 hover:border-black dark:hover:border-white ${
-                                            isActive ? "border-b-2 border-black dark:border-white" : ""
+                                        className={`px-0 py-1 rounded transition-all duration-200 hover:border-b-2 hover:border-black dark:hover:border-gray-100 ${
+                                            isActive ? "border-b-2 border-black dark:border-gray-100" : ""
                                         }`}
                                     >
                                         {item}
@@ -72,7 +72,7 @@ const Navbar = () => {
                     <div className="md:hidden flex items-center justify-center w-10 h-10">
                         <button
                             onClick={() => setMenuOpen(!menuOpen)}
-                            className="text-black dark:text-white focus:outline-none"
+                            className="text-black dark:text-gray-100 focus:outline-none"
                         >
                             <svg
                                 className="w-6 h-6"
@@ -94,7 +94,7 @@ const Navbar = () => {
 
                 {/* Dropdown menu for mobile */}
                 {menuOpen && (
-                    <ul className="md:hidden flex flex-col items-end gap-6 py-4 font-medium text-black dark:text-white">
+                    <ul className="md:hidden flex flex-col items-end gap-6 py-4 font-medium text-black dark:text-gray-100">
                         {NavItem.map((item) => {
                             const id = item.replace(/\s+/g, "");
                             const isActive = activeSection === id;
@@ -103,8 +103,8 @@ const Navbar = () => {
                                     <a
                                         href={`#${id}`}
                                         onClick={() => setMenuOpen(false)}
-                                        className={`px-0 py-1 rounded transition-all duration-200 hover:border-b-2 hover:border-black dark:hover:border-white ${
-                                            isActive ? "border-b-2 border-black dark:border-white" : ""
+                                        className={`px-0 py-1 rounded transition-all duration-200 hover:border-b-2 hover:border-black dark:hover:border-gray-100 ${
+                                            isActive ? "border-b-2 border-black dark:border-gray-100" : ""
                                         }`}
                                     >
                                         {item}

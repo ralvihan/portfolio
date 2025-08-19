@@ -122,7 +122,7 @@ export default function TiltedCard({
 
         {showTooltip && (
             <motion.figcaption
-            className="tilted-card-caption bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-600"
+            className="tilted-card-caption bg-white dark:bg-[#1C1B1B] text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-600"
             style={{
                 x,
                 y,

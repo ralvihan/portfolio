@@ -123,7 +123,7 @@ Fitur yang dikembangkan mencakup:
     ]
   },
   6: {
-    title: "Personal Portfolio Website",
+    title: "Personal Portfolio Website Using React",
     shortDescription: "JavaScript",
     description: `Project ini dibuat sebagai media personal branding dan dokumentasi hasil karya. Website portfolio ini dirancang agar bisa menampilkan informasi tentang diri, keahlian, pengalaman, serta proyek-proyek yang pernah dikerjakan dengan tampilan modern, interaktif, dan mudah diakses baik melalui desktop maupun perangkat mobile.
 
@@ -252,12 +252,12 @@ const ProjectsTab = ({ isVisible, animationKey, openDetailPage }) => {
   }, []);
 
   return (
-    <div className="text-gray-900 dark:text-gray-100 text-lg">
+    <div className="text-[#1C1B1B] dark:text-gray-100 text-lg">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 justify-items-center">
         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((id, index) => (
           <motion.div 
             key={`${id}-${animationKey}`} 
-            className="card bg-white dark:bg-gray-700 w-64 shadow-sm border border-gray-200 dark:border-gray-700 cursor-pointer transition-colors duration-300"
+            className="card bg-white dark:bg-[#1C1B1B] w-64 shadow-sm border border-gray-200 dark:border-[#1C1B1B] cursor-pointer transition-colors duration-300"
             initial={{ opacity: 0, y: 50, scale: 0.8 }}
             animate={isVisible ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 50, scale: 0.8 }}
             whileHover={{ 
@@ -281,18 +281,22 @@ const ProjectsTab = ({ isVisible, animationKey, openDetailPage }) => {
                 transition={{ duration: 0.3 }}
               />
             </figure>
-            <div className="card-body bg-gray-900 dark:bg-gray-900 text-white text-sm p-4">
+            <div className="card-body bg-gray-100 dark:bg-[#1C1B1B] text-black dark:text-white text-sm p-4">
               <h2 className="card-title text-base line-clamp-2">
                 {projectData[id].title}
               </h2>
-              <p className="line-clamp-3 text-ellipsis overflow-hidden break-words text-gray-300">{projectData[id].shortDescription}</p>
+              <div className="flex mb-2">
+  <span className="bg-gray-300 px-1 py-0.5 rounded-lg text-xs font-medium text-gray-950 min-w-16 text-center">
+    {projectData[id].shortDescription}
+  </span>
+</div>
+
               <div className="card-actions font-semibold justify-end">
                 <motion.button 
-                  className="bg-gray-600 hover:bg-gray-500 dark:bg-gray-500 dark:hover:bg-gray-400 rounded-full px-3 py-1 text-white transition-colors duration-200"
+                  className="bg-[#1C1B1B] hover:bg-[#030202] dark:bg-[#030202] dark:hover:bg-gray-950 rounded-full px-3 py-1 text-white transition-colors duration-200"
                   onClick={() => openDetailPage('project', id)}
                   whileHover={{ 
                     scale: 1.1,
-                    boxShadow: "0 0 20px rgba(107, 114, 128, 0.5)"
                   }}
                   whileTap={{ scale: 0.95 }}
                   transition={{ duration: 0.2 }}

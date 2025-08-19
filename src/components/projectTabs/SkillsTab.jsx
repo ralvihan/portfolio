@@ -55,7 +55,6 @@ const SkillsTab = ({ isVisible, animationKey }) => {
                     whileHover={{ 
                     scale: 1.3,
                     rotate: 360,
-                    filter: "drop-shadow(0 0 15px rgba(107, 114, 128, 0.5))"
                     }}
                     whileTap={{ scale: 0.9 }}
                     transition={{ 
@@ -79,7 +78,7 @@ const SkillsTab = ({ isVisible, animationKey }) => {
                 ].map((skill, index) => (
                 <motion.span 
                     key={`${skill}-${animationKey}`}
-                    className="bg-gray-300 dark:bg-gray-600 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-full transition-all duration-300 ease-in-out transform hover:scale-110 hover:shadow-lg hover:-translate-y-1 hover:bg-gray-500 dark:hover:bg-gray-500"
+                    className="bg-gray-100 dark:bg-[#1C1B1B] text-gray-900 dark:text-gray-100 px-1.5 py-1 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-110 hover:shadow-lg hover:-translate-y-1 hover:bg-gray-200 dark:hover:bg-gray-950"
                     initial={{ opacity: 0, x: -20 }}
                     animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
                     transition={{ 
@@ -122,7 +121,7 @@ const SkillsTab = ({ isVisible, animationKey }) => {
                 ].map((skill, index) => (
                 <motion.span 
                     key={`${skill}-${animationKey}`}
-                    className="bg-gray-300 dark:bg-gray-600 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-full transition-all duration-300 ease-in-out transform hover:scale-110 hover:shadow-lg hover:-translate-y-1 hover:bg-gray-500 dark:hover:bg-gray-500"
+                    className="bg-gray-100 dark:bg-[#1C1B1B] text-gray-900 dark:text-gray-100 px-1.5 py-1 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-110 hover:shadow-lg hover:-translate-y-1 hover:bg-gray-200 dark:hover:bg-gray-950"
                     initial={{ opacity: 0, x: 20 }}
                     animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
                     transition={{ 

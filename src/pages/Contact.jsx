@@ -78,12 +78,12 @@ const Contact = () => {
                   className="py-1.5 px-3 block w-full border border-gray-300 dark:border-gray-600 rounded-md text-xs focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
                 />
 
-                <input
+                {/* <input
                   type="text"
                   name="phone"
                   placeholder="Phone Number"
                   className="py-1.5 px-3 block w-full border border-gray-300 dark:border-gray-600 rounded-md text-xs focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
-                />
+                /> */}
 
                 <div className="relative">
                   <textarea

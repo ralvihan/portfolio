@@ -11,7 +11,7 @@ const About = () => {
             <div className="flex-shrink-0 flex flex-col items-center gap-4">
             <TiltedCard
                 imageSrc="./assets/profile-1.jpg"
-                altText="Raihan Alvian - Photo"
+                altText="Raihan Alvian Photo"
                 captionText="Raihan Alvian - Photo"
                 containerHeight="250px"
                 containerWidth="250px"
@@ -39,15 +39,15 @@ const About = () => {
     Informatika di Jakarta Global University dengan ketertarikan dalam
     pengembangan website dan perangkat lunak. Saya menguasai beberapa
     bahasa pemrograman seperti{" "}
-    <span className="bg-black text-white dark:bg-[#EEEEEE] dark:text-black px-1 py-0.5 rounded-lg transition-colors duration-300">
+    <span className="bg-black text-gray-100 dark:bg-[#EEEEEE] dark:text-black px-1 py-0.5 rounded-lg transition-colors duration-300">
       Java, Python, dan C++,
     </span>{" "}
     serta memiliki kemampuan di bidang front-end development menggunakan{" "}
-    <span className="bg-black text-white dark:bg-[#EEEEEE] dark:text-black px-1 py-0.5 rounded-lg transition-colors duration-300">
+    <span className="bg-black text-gray-100 dark:bg-[#EEEEEE] dark:text-black px-1 py-0.5 rounded-lg transition-colors duration-300">
       HTML, CSS, JavaScript, React JS, dan Tailwind CSS.
     </span>{" "}
     Saya juga berpengalaman menggunakan{" "}
-    <span className="bg-black text-white dark:bg-[#EEEEEE] dark:text-black px-1 py-0.5 rounded-lg transition-colors duration-300">
+    <span className="bg-black text-gray-100 dark:bg-[#EEEEEE] dark:text-black px-1 py-0.5 rounded-lg transition-colors duration-300">
       MySQL
     </span>{" "}
     untuk pengelolaan basis data dalam proyek aplikasi. Aktif dalam
@@ -70,10 +70,10 @@ const About = () => {
                 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ duration: 0.2, ease: "easeInOut" }}
-                className="flex items-center gap-2 bg-black dark:bg-white text-[#EEEEEE] dark:text-black px-4 py-2 rounded-lg w-fit transition-all duration-300 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50"
+                className="flex items-center gap-2 bg-black dark:bg-gray-100 text-[#EEEEEE] dark:text-black px-4 py-2 rounded-lg w-fit transition-all duration-300 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50"
                 >
                 <svg
-                    className="w-5 h-5 text-white dark:text-black transition-colors duration-300"
+                    className="w-5 h-5 text-gray-100 dark:text-black transition-colors duration-300"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"
@@ -92,7 +92,7 @@ const About = () => {
                {/* Buka Education */}
 <button
   onClick={() => setShowEducation(true)}
-  className="underline text-black dark:text-white hover:text-gray-700 dark:hover:text-gray-300 transition-colors duration-300"
+  className="underline text-black dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-300 transition-colors duration-300"
 >
   {"Riwayat Pendidikan >"}
 </button>
@@ -111,13 +111,13 @@ const About = () => {
       animate={{ scale: 1, opacity: 1 }}
       exit={{ scale: 0.8, opacity: 0 }}
       transition={{ duration: 0.3 }}
-      className="bg-white dark:bg-[#030202] rounded-xl shadow-xl p-6 max-w-2xl w-full mx-4 relative"
+      className="bg-gray-100 dark:bg-[#030202] rounded-xl shadow-xl p-6 max-w-2xl w-full mx-4 relative"
       onClick={(e) => e.stopPropagation()} // biar klik dalam modal ga nutup
     >
       {/* Tombol close */}
       <button
         onClick={() => setShowEducation(false)}
-        className="absolute top-3 right-3 text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white"
+        className="absolute top-3 right-3 text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-gray-100"
       >
         ✕
       </button>

@@ -14,12 +14,12 @@ const Home = () => {
       <div className="relative z-10 text-center max-w-7xl mx-auto">
 
         <div className="flex items-center justify-center">
-          <div className="text-black dark:text-white rounded-lg px-3 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold">
+          <div className="text-black dark:text-gray-100 rounded-lg px-3 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold">
             Portfolio
           </div>
           <RotatingText
             texts={["Raihan", "Alvian", "Nuryansyah", "Student"]}
-            mainClassName="bg-black dark:bg-white text-white dark:text-black rounded-lg px-3 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white"
+            mainClassName="bg-black dark:bg-gray-100 text-gray-100 dark:text-black rounded-lg px-3 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-100"
             staggerFrom={"last"}
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
@@ -31,7 +31,7 @@ const Home = () => {
           />
         </div>
 
-        <p className="font-bold text-black dark:text-white transition-colors duration-300 mb-4 lg:mb-6">
+        <p className="font-bold text-black dark:text-gray-100 transition-colors duration-300 mb-4 lg:mb-6">
           
         </p>
         
