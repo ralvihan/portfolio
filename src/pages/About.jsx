@@ -70,7 +70,7 @@ const About = () => {
                 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ duration: 0.2, ease: "easeInOut" }}
-                className="flex items-center gap-2 bg-black dark:bg-gray-100 text-[#EEEEEE] dark:text-black px-4 py-2 rounded-lg w-fit transition-all duration-300 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50"
+                className="flex items-center gap-2 bg-black dark:bg-gray-100 text-[#EEEEEE] dark:text-black text-sm font-semibold px-2 py-2 rounded-lg w-fit transition-all duration-300 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50"
                 >
                 <svg
                     className="w-5 h-5 text-gray-100 dark:text-black transition-colors duration-300"
@@ -103,7 +103,7 @@ const About = () => {
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     exit={{ opacity: 0 }}
-    className="fixed inset-0 flex items-center justify-center bg-[#1C1B1B] bg-opacity-50 z-50"
+    className="fixed inset-0 flex items-center justify-center bg-gray-100/50 dark:bg-[#1C1B1B]/50 z-50"
     onClick={() => setShowEducation(false)} // Klik luar modal untuk close
   >
     <motion.div
@@ -111,7 +111,7 @@ const About = () => {
       animate={{ scale: 1, opacity: 1 }}
       exit={{ scale: 0.8, opacity: 0 }}
       transition={{ duration: 0.3 }}
-      className="bg-gray-100 dark:bg-[#030202] rounded-xl shadow-xl p-6 max-w-2xl w-full mx-4 relative"
+      className="bg-white dark:bg-[#030202] rounded-xl shadow-xl p-6 max-w-2xl w-full mx-4 relative"
       onClick={(e) => e.stopPropagation()} // biar klik dalam modal ga nutup
     >
       {/* Tombol close */}
@@ -123,15 +123,42 @@ const About = () => {
       </button>
 
       {/* Isi Riwayat Pendidikan */}
-      <h2 className="text-xl font-bold mb-4 text-black dark:text-[#EEEEEE] hover:text-gray-700 dark:hover:text-gray-300 transition-colors duration-300">
-        Riwayat Pendidikan
-      </h2>
-      <ul className="list-disc list-inside space-y-2 text-black dark:text-[#EEEEEE]">
-        <li>SDN Mekarjaya 13 Depok (2010 - 2016)</li>
-        <li>SMP PGRI Depok II Tengah (2017 - 2020)</li>
-        <li>SMK Negeri 3 Depok - Teknik Komputer dan Jaringan (2020 - 2023)</li>
-        <li>Jakarta Global University - Teknik Informatika (2023 - Sekarang)</li>
-      </ul>
+      <h2 className="text-xl font-bold mb-6 text-black dark:text-[#EEEEEE] hover:text-gray-700 dark:hover:text-gray-300 transition-colors duration-300">
+  Riwayat Pendidikan
+</h2>
+
+<div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+  {/* Kartu SMK */}
+  {/* Kartu SMK */}
+<div className="flex flex-col items-center bg-gray-100 dark:bg-[#1C1B1B] rounded-lg p-4 shadow-md">
+  <img
+    src="./assets/smkn3.png"
+    alt="Logo SMK Negeri 3 Depok"
+    className="w-32 h-24 object-contain rounded-md mb-3"
+  />
+  <p className="text-center text-black dark:text-[#EEEEEE] font-medium">
+    SMK NEGERI 3 DEPOK
+  </p>
+  <p className="text-center text-gray-600 dark:text-gray-400 text-xs mt-1">
+    2020 - 2023
+  </p>
+</div>
+
+{/* Kartu Kampus */}
+<div className="flex flex-col items-center bg-gray-100 dark:bg-[#1C1B1B] rounded-lg p-4 shadow-md">
+  <img
+    src="./assets/jgu.png"
+    alt="Logo Jakarta Global University"
+    className="w-32 h-24 object-contain rounded-md mb-3"
+  />
+  <p className="text-center text-black dark:text-[#EEEEEE] font-medium">
+    Jakarta Global University
+  </p>
+  <p className="text-center text-gray-600 dark:text-gray-400 text-xs mt-1">
+    2023 - 2027
+  </p>
+</div>
+</div>
     </motion.div>
   </motion.div>
 )} 

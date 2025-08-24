@@ -124,7 +124,7 @@ Fitur yang dikembangkan mencakup:
   },
   6: {
     title: "Personal Portfolio Website Using React",
-    shortDescription: "JavaScript",
+    shortDescription: "React JS",
     description: `Project ini dibuat sebagai media personal branding dan dokumentasi hasil karya. Website portfolio ini dirancang agar bisa menampilkan informasi tentang diri, keahlian, pengalaman, serta proyek-proyek yang pernah dikerjakan dengan tampilan modern, interaktif, dan mudah diakses baik melalui desktop maupun perangkat mobile.
 
 Selain itu, website ini juga menjadi wadah untuk mengimplementasikan berbagai teknologi front-end modern dan mengasah keterampilan dalam membangun aplikasi web yang responsif, dinamis, serta mendukung dark mode/light mode otomatis sesuai preferensi browser pengguna.
@@ -219,7 +219,7 @@ Selain itu, website ini juga menjadi wadah untuk mengimplementasikan berbagai te
     ]
   },
   11: {
-    title: "-",
+    title: "Landing Page",
     shortDescription: "-",
     description: "-",
     images: [
