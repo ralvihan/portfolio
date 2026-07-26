@@ -1,0 +1,1199 @@
+===== ./index.html =====
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio - Raihan Alvian Nuryansyah</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script>
+  (function(l) {
+    if (l.search[1] === '/') {
+      var decoded = l.search.slice(1).split('&').map(function(s) {
+        return s.replace(/~and~/g, '&');
+      }).join('?');
+      window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
+    }
+  }(window.location));
+</script>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+
+===== ./public/404.html =====
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Redirecting...</title>
+    <script>
+      var segmentCount = 1;
+      var l = window.location;
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        l.pathname.split('/').slice(0, 1 + segmentCount).join('/') + '/?/' +
+        l.pathname.slice(1).split('/').slice(segmentCount).join('/').replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.hash
+      );
+    </script>
+  </head>
+  <body></body>
+</html>
+===== ./src/App.css =====
+.counter {
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+  margin-bottom: 24px;
+
+  &:hover {
+    border-color: var(--accent-border);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+.hero {
+  position: relative;
+
+  .base,
+  .framework,
+  .vite {
+    inset-inline: 0;
+    margin: 0 auto;
+  }
+
+  .base {
+    width: 170px;
+    position: relative;
+    z-index: 0;
+  }
+
+  .framework,
+  .vite {
+    position: absolute;
+  }
+
+  .framework {
+    z-index: 1;
+    top: 34px;
+    height: 28px;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
+      scale(1.4);
+  }
+
+  .vite {
+    z-index: 0;
+    top: 107px;
+    height: 26px;
+    width: auto;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
+      scale(0.8);
+  }
+}
+
+#center {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  place-content: center;
+  place-items: center;
+  flex-grow: 1;
+
+  @media (max-width: 1024px) {
+    padding: 32px 20px 24px;
+    gap: 18px;
+  }
+}
+
+#next-steps {
+  display: flex;
+  border-top: 1px solid var(--border);
+  text-align: left;
+
+  & > div {
+    flex: 1 1 0;
+    padding: 32px;
+    @media (max-width: 1024px) {
+      padding: 24px 20px;
+    }
+  }
+
+  .icon {
+    margin-bottom: 16px;
+    width: 22px;
+    height: 22px;
+  }
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+#docs {
+  border-right: 1px solid var(--border);
+
+  @media (max-width: 1024px) {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+#next-steps ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 8px;
+  margin: 32px 0 0;
+
+  .logo {
+    height: 18px;
+  }
+
+  a {
+    color: var(--text-h);
+    font-size: 16px;
+    border-radius: 6px;
+    background: var(--social-bg);
+    display: flex;
+    padding: 6px 12px;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      box-shadow: var(--shadow);
+    }
+    .button-icon {
+      height: 18px;
+      width: 18px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    li {
+      flex: 1 1 calc(50% - 8px);
+    }
+
+    a {
+      width: 100%;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+  }
+}
+
+#spacer {
+  height: 88px;
+  border-top: 1px solid var(--border);
+  @media (max-width: 1024px) {
+    height: 48px;
+  }
+}
+
+.ticks {
+  position: relative;
+  width: 100%;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: -4.5px;
+    border: 5px solid transparent;
+  }
+
+  &::before {
+    left: 0;
+    border-left-color: var(--border);
+  }
+  &::after {
+    right: 0;
+    border-right-color: var(--border);
+  }
+}
+
+===== ./src/App.jsx =====
+import { Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import ProjectDetail from "./pages/ProjectDetail";
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/techstack" element={<HomePage />} />
+      <Route path="/projects" element={<HomePage />} />
+      <Route path="/about" element={<HomePage />} />
+      <Route path="/contact" element={<HomePage />} />
+      <Route path="/projects/:slug" element={<ProjectDetail />} />
+    </Routes>
+  );
+}
+===== ./src/components/About.jsx =====
+export default function About() {
+  return (
+    <section id="about" className="max-w-5xl mx-auto px-4 sm:px-6 py-16 sm:py-24 border-t border-[var(--color-line)]">
+      <h2 className="font-[var(--font-mono)] text-xs sm:text-sm text-[var(--color-muted)] mb-6 sm:mb-8">
+        04 / about
+      </h2>
+      <p className="text-xl sm:text-2xl md:text-3xl font-[var(--font-display)] font-medium leading-snug max-w-3xl">
+        I study Informatics Engineering and build across the stack — Laravel,
+        React, and beyond — with a habit of picking projects that need
+        something more thoughtful than a CRUD app.
+      </p>
+    </section>
+  );
+}
+===== ./src/components/Contact.jsx =====
+function IconGithub() {
+  return (
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="#181717">
+      <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+    </svg>
+  );
+}
+
+function IconLinkedin() {
+  return (
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="#0A66C2">
+      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+    </svg>
+  );
+}
+
+function IconInstagram() {
+  return (
+    <svg viewBox="0 0 24 24" width="16" height="16">
+      <defs>
+        <radialGradient id="ig-gradient" cx="30%" cy="107%" r="150%">
+          <stop offset="0%" stopColor="#fdf497" />
+          <stop offset="5%" stopColor="#fdf497" />
+          <stop offset="45%" stopColor="#fd5949" />
+          <stop offset="60%" stopColor="#d6249f" />
+          <stop offset="90%" stopColor="#285AEB" />
+        </radialGradient>
+      </defs>
+      <path
+        fill="url(#ig-gradient)"
+        d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"
+      />
+    </svg>
+  );
+}
+
+const socials = [
+  { label: "GitHub", href: "https://github.com/ralvihan", Icon: IconGithub },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/raihanalviannuryansyah/", Icon: IconLinkedin },
+  { label: "Instagram", href: "/#", Icon: IconInstagram }, // ganti # ini ke link IG asli lo
+];
+
+export default function Contact() {
+  return (
+    <section id="contact" className="max-w-5xl mx-auto px-4 sm:px-6 py-16 sm:py-24 border-t border-[var(--color-line)]">
+      <h2 className="font-[var(--font-mono)] text-xs sm:text-sm text-[var(--color-muted)] mb-6 sm:mb-8">
+        05 / contact
+      </h2>
+      <a href="mailto:raihanalvian20@gmail.com" className="font-[var(--font-display)] text-2xl sm:text-4xl md:text-6xl font-semibold tracking-tight hover:text-[var(--color-accent)] transition-colors break-all hover:underline underline-offset-4">
+        raihanalvian20@gmail.com
+      </a>
+      <div className="mt-6 sm:mt-8 flex flex-wrap gap-4 sm:gap-6 font-[var(--font-mono)] text-xs sm:text-sm text-[var(--color-muted)]">
+        {socials.map(({ label, href, Icon }) => (
+          <a key={label} href={href} className="flex items-center gap-1.5 hover:text-[var(--color-ink)] transition-colors">
+            <Icon />
+            {label}
+          </a>
+        ))}
+      </div>
+      <p className="mt-10 sm:mt-16 font-[var(--font-mono)] text-xs text-[var(--color-muted)]">
+        © {new Date().getFullYear()} Jok
+      </p>
+    </section>
+  );
+}
+===== ./src/components/Hero.jsx =====
+import { Link } from "react-router-dom";
+
+export default function Hero() {
+  return (
+    <section id="home" className="max-w-5xl mx-auto px-4 sm:px-6 pt-24 sm:pt-32 pb-10 sm:pb-16">
+      <p className="font-[var(--font-mono)] text-xs sm:text-sm text-[var(--color-accent)] mb-4">
+        status: available for internship
+      </p>
+      <h1 className="font-[var(--font-display)] text-3xl sm:text-5xl md:text-7xl font-semibold tracking-tight leading-[1.1] md:leading-[1.05] max-w-3xl">
+        Building systems that make decisions clearer.
+      </h1>
+      <p className="mt-4 sm:mt-6 text-base sm:text-lg text-[var(--color-muted)] max-w-xl">
+        Informatics Engineering student focused on full-stack web development —
+        from diagnostic systems to interactive 3D experiences.
+      </p>
+      <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4 font-[var(--font-mono)] text-sm">
+        <Link to="/projects" className="px-5 py-3 bg-[var(--color-ink)] text-[var(--color-bg)] rounded-md hover:bg-[var(--color-accent)] transition-colors text-center">
+          view_projects()
+        </Link>
+        <Link to="/contact" className="px-5 py-3 border border-[var(--color-line)] rounded-md hover:border-[var(--color-ink)] transition-colors text-center">
+          say_hello()
+        </Link>
+      </div>
+    </section>
+  );
+}
+===== ./src/components/ImageSlider.jsx =====
+import { useState } from "react";
+
+function IconChevronLeft() {
+  return (
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M15 18l-6-6 6-6" />
+    </svg>
+  );
+}
+
+function IconChevronRight() {
+  return (
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M9 18l6-6-6-6" />
+    </svg>
+  );
+}
+
+export default function ImageSlider({ images, alt }) {
+  const [index, setIndex] = useState(0);
+
+  if (!images || images.length === 0) return null;
+
+  const prev = () => setIndex((i) => (i === 0 ? images.length - 1 : i - 1));
+  const next = () => setIndex((i) => (i === images.length - 1 ? 0 : i + 1));
+
+  return (
+    <div className="mt-8">
+      <div className="relative rounded-lg border border-[var(--color-line)] overflow-hidden">
+        <img
+          src={images[index]}
+          alt={`${alt} ${index + 1}`}
+          className="w-full aspect-video object-cover"
+        />
+
+        {images.length > 1 && (
+          <>
+            <button
+              onClick={prev}
+              aria-label="Previous image"
+              className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[var(--color-bg)]/90 border border-[var(--color-line)] flex items-center justify-center text-[var(--color-ink)] hover:bg-[var(--color-bg)] transition-colors"
+            >
+              <IconChevronLeft />
+            </button>
+            <button
+              onClick={next}
+              aria-label="Next image"
+              className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[var(--color-bg)]/90 border border-[var(--color-line)] flex items-center justify-center text-[var(--color-ink)] hover:bg-[var(--color-bg)] transition-colors"
+            >
+              <IconChevronRight />
+            </button>
+
+            <span className="absolute bottom-3 right-3 font-[var(--font-mono)] text-xs bg-[var(--color-bg)]/90 border border-[var(--color-line)] rounded-full px-2.5 py-1 text-[var(--color-muted)]">
+              {index + 1} / {images.length}
+            </span>
+          </>
+        )}
+      </div>
+
+      {images.length > 1 && (
+        <div className="flex gap-2 mt-3 justify-center">
+          {images.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setIndex(i)}
+              aria-label={`Go to image ${i + 1}`}
+              className={`h-2 rounded-full transition-all ${
+                i === index ? "w-6 bg-[var(--color-ink)]" : "w-2 bg-[var(--color-line)]"
+              }`}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+===== ./src/components/Layout.jsx =====
+import { Outlet } from "react-router-dom";
+import Navbar from "./Navbar";
+
+export default function Layout() {
+  return (
+    <>
+      <Navbar />
+      <Outlet />
+    </>
+  );
+}
+===== ./src/components/Navbar.jsx =====
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
+function IconMenu() {
+  return (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+  );
+}
+
+function IconClose() {
+  return (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M6 6l12 12M18 6L6 18" />
+    </svg>
+  );
+}
+
+const links = [
+  { label: "Tech Stack", to: "/techstack", id: "techstack" },
+  { label: "Projects", to: "/projects", id: "projects" },
+  { label: "About", to: "/about", id: "about" },
+  { label: "Contact", to: "/contact", id: "contact" },
+];
+
+export default function Navbar() {
+  const [open, setOpen] = useState(false);
+  const [activeId, setActiveId] = useState(null);
+
+  useEffect(() => {
+    const ids = ["home", ...links.map((l) => l.id)];
+    const sections = ids.map((id) => document.getElementById(id)).filter(Boolean);
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.find((entry) => entry.isIntersecting);
+        if (visible) {
+          setActiveId(visible.target.id === "home" ? null : visible.target.id);
+        }
+      },
+      { threshold: 0, rootMargin: "-45% 0px -45% 0px" }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <nav className="fixed top-0 w-full z-50 bg-[var(--color-bg)]/90 backdrop-blur border-b border-[var(--color-line)]">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between">
+        <Link
+          to="/"
+          onClick={() => setOpen(false)}
+          className="font-[var(--font-display)] font-semibold text-base sm:text-lg tracking-tight"
+        >
+          ralvihan<span className="text-[var(--color-accent)]">.</span>
+        </Link>
+
+        {/* nav links desktop */}
+        <div className="hidden sm:flex gap-8 font-[var(--font-mono)] text-sm text-[var(--color-muted)]">
+          {links.map((link) => {
+            const isActive = activeId === link.id;
+            return (
+              <Link
+                key={link.to}
+                to={link.to}
+                className={`pb-1 border-b-2 transition-colors ${
+                  isActive
+                    ? "border-[var(--color-ink)] text-[var(--color-ink)]"
+                    : "border-transparent hover:text-[var(--color-ink)]"
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
+        </div>
+
+        {/* hamburger mobile */}
+        <button
+          type="button"
+          aria-label={open ? "Close menu" : "Open menu"}
+          onClick={() => setOpen((v) => !v)}
+          className="sm:hidden text-[var(--color-ink)]"
+        >
+          {open ? <IconClose /> : <IconMenu />}
+        </button>
+      </div>
+
+      {/* dropdown mobile */}
+      {open && (
+        <div className="sm:hidden border-t border-[var(--color-line)] bg-[var(--color-bg)]">
+          <div className="px-4 py-3 flex flex-col gap-3 font-[var(--font-mono)] text-sm text-[var(--color-muted)]">
+            {links.map((link) => {
+              const isActive = activeId === link.id;
+              return (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  onClick={() => setOpen(false)}
+                  className={`transition-colors ${
+                    isActive ? "text-[var(--color-ink)] font-semibold" : "hover:text-[var(--color-ink)]"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      )}
+    </nav>
+  );
+}
+===== ./src/components/Projects.jsx =====
+import { Link } from "react-router-dom";
+import { projects } from "../data/projects";
+import TechBadge from "./TechBadge";
+
+function truncate(text, max = 200) {
+  if (!text) return "";
+  return text.length > max ? `${text.slice(0, max).trimEnd()}...` : text;
+}
+
+export default function Projects() {
+  return (
+    <section id="projects" className="max-w-5xl mx-auto px-4 sm:px-6 py-10 sm:py-16 border-t border-[var(--color-line)]">
+      <h2 className="font-[var(--font-mono)] text-xs sm:text-sm text-[var(--color-muted)] mb-8 sm:mb-12">
+        03 / selected_projects
+      </h2>
+      <div className="space-y-px">
+        {projects.map((project) => (
+          <div
+            key={project.slug}
+            className="py-6 sm:py-8 border-b border-[var(--color-line)] grid grid-cols-1 md:grid-cols-[80px_1fr] gap-2 sm:gap-3 items-start"
+          >
+            <span className="font-[var(--font-mono)] font-bold text-[var(--color-bg)] bg-[var(--color-ink)] w-8 h-8 rounded-full flex items-center justify-center text-sm">
+              {project.index}
+            </span>
+            <div className="flex flex-col-reverse sm:flex-row sm:items-start sm:justify-between gap-4 sm:gap-6">
+              <div className="flex-1 min-w-0">
+                <Link
+                    to={`/projects/${project.slug}`}
+                    className="inline-block font-[var(--font-display)] text-xl sm:text-2xl font-semibold tracking-tight hover:text-[var(--color-accent)] hover:underline underline-offset-4 decoration-2 transition-colors"
+                    >
+                    {project.title}
+                    </Link>
+                {project.period && (
+                  <p className="font-[var(--font-mono)] text-xs text-[var(--color-muted)] mt-1">
+                    {project.period}
+                  </p>
+                )}
+                <div className="flex flex-wrap gap-2 mt-3">
+                  {project.stack.map((tech) => (
+                    <TechBadge key={tech} tech={tech} />
+                  ))}
+                </div>
+                <p className="mt-3 text-sm sm:text-base text-[var(--color-muted)]">
+                  {truncate(project.detail)}
+                </p>
+              </div>
+              <Link to={`/projects/${project.slug}`} className="block shrink-0 w-full sm:w-56">
+                <img
+                  src={project.images[0]}
+                  alt={project.title}
+                  className="w-full aspect-video object-cover rounded-lg border border-[var(--color-line)]"
+                />
+              </Link>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+===== ./src/components/TechBadge.jsx =====
+function LaravelIcon() {
+  return (
+    <svg viewBox="0 0 128 128" width="16" height="16">
+      <path fill="#f0513f" d="M27.271.11c-.2.078-5.82 3.28-12.487 7.112-8.078 4.644-12.227 7.09-12.449 7.32-.19.225-.34.482-.438.76-.167.564-.179 82.985-.01 83.578.061.23.26.568.44.754.436.46 48.664 28.19 49.25 28.324.272.065.577.054.88-.03.658-.165 48.76-27.834 49.188-28.286.175-.195.375-.532.44-.761.084-.273.115-4.58.115-13.655v-13.26l11.726-6.735c11.056-6.357 11.733-6.755 12.017-7.191l.29-.47V43.287c0-15.548.03-14.673-.585-15.235-.165-.146-5.798-3.433-12.53-7.31L100.89 13.71h-1.359l-11.963 6.87c-6.586 3.788-12.184 7.027-12.457 7.203-.272.18-.597.512-.73.753l-.242.417-.054 13.455-.048 13.46-9.879 5.69c-5.434 3.124-9.957 5.71-10.053 5.734-.175.049-.187-1.232-.187-25.966V15.293l-.26-.447c-.326-.545 1.136.324-13.544-8.114C27.803-.348 28.098-.2 27.27.11zm11.317 10.307c5.15 2.955 9.364 5.4 9.364 5.43 0 .031-4.516 2.641-10.035 5.813l-10.041 5.765-10.023-5.764c-5.507-3.173-10.02-5.783-10.02-5.814 0-.03 4.505-2.64 10.013-5.805l9.999-5.752.69.376c3.357 1.907 6.708 3.824 10.053 5.751zm71.668 13.261c5.422 3.122 9.908 5.702 9.95 5.744.114.103-19.774 11.535-20.046 11.523-.272-.008-19.915-11.335-19.907-11.473.01-.157 19.773-11.527 19.973-11.496.091.022 4.607 2.59 10.03 5.702zM16.3 25.328l9.558 5.503.055 27.247.05 27.252.233.368c.122.194.352.459.52.581.158.115 5.477 3.146 11.818 6.724l11.52 6.506v11.527c0 6.326-.043 11.516-.097 11.516-.041 0-10-5.699-22.124-12.676L5.793 97.201l-.03-38.966-.019-38.954.49.271c.283.15 4.807 2.748 10.065 5.775zm33.754 19.18v25.109l-.387.253c-.525.332-19.667 11.335-19.732 11.335-.03 0-.054-11.336-.054-25.193l.012-25.182 10-5.752c5.499-3.165 10.034-5.733 10.088-5.714.039.024.073 11.34.073 25.144zm38.15-5.775 10.023 5.763V55.92c0 10.838-.011 11.42-.176 11.357-.107-.041-4.642-2.64-10.083-5.774l-9.91-5.69v-11.42c0-6.287.032-11.424.062-11.424.043 0 4.577 2.592 10.084 5.764zm34.164 5.587c0 6.254-.042 11.412-.084 11.462-.072.115-19.896 11.538-20.022 11.538-.031 0-.062-5.135-.062-11.423v-11.42l10-5.756c5.507-3.16 10.042-5.752 10.084-5.752.053 0 .084 5.105.084 11.351zM95.993 70.933 52.005 96.04 32.056 84.693S76 59.277 76.176 59.343zm2.215 14.827-.034 11.442-22.028 12.676c-12.12 6.976-22.082 12.675-22.132 12.675-.053 0-.095-4.658-.095-11.516V99.51l22.08-12.592c12.132-6.923 22.101-12.59 22.154-12.602.043 0 .062 5.148.054 11.443z" />
+    </svg>
+  );
+}
+
+function InertiaIcon() {
+  return (
+    <svg viewBox="0 0 128 128" width="16" height="16">
+      <defs>
+        <linearGradient id="inertia-grad" x1="0" x2="128" y1="64" y2="64" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stopColor="#9553e9" />
+          <stop offset="1" stopColor="#6d74ed" />
+        </linearGradient>
+      </defs>
+      <path fill="url(#inertia-grad)" d="M92.433 28.433H55.625L91.192 64 55.625 99.567h36.808L128 64zm-55.625 0H0L35.567 64 0 99.567h36.808L72.375 64z" />
+    </svg>
+  );
+}
+
+function ReactIcon() {
+  return (
+    <svg viewBox="0 0 128 128" width="16" height="16">
+      <g fill="#61DAFB">
+        <circle cx="64" cy="64" r="11.4" />
+        <path d="M107.3 45.2c-2.2-.8-4.5-1.6-6.9-2.3.6-2.4 1.1-4.8 1.5-7.1 2.1-13.2-.2-22.5-6.6-26.1-1.9-1.1-4-1.6-6.4-1.6-7 0-15.9 5.2-24.9 13.9-9-8.7-17.9-13.9-24.9-13.9-2.4 0-4.5.5-6.4 1.6-6.4 3.7-8.7 13-6.6 26.1.4 2.3.9 4.7 1.5 7.1-2.4.7-4.7 1.4-6.9 2.3C8.2 50 1.4 56.6 1.4 64s6.9 14 19.3 18.8c2.2.8 4.5 1.6 6.9 2.3-.6 2.4-1.1 4.8-1.5 7.1-2.1 13.2.2 22.5 6.6 26.1 1.9 1.1 4 1.6 6.4 1.6 7.1 0 16-5.2 24.9-13.9 9 8.7 17.9 13.9 24.9 13.9 2.4 0 4.5-.5 6.4-1.6 6.4-3.7 8.7-13 6.6-26.1-.4-2.3-.9-4.7-1.5-7.1 2.4-.7 4.7-1.4 6.9-2.3 12.5-4.8 19.3-11.4 19.3-18.8s-6.8-14-19.3-18.8zM92.5 14.7c4.1 2.4 5.5 9.8 3.8 20.3-.3 2.1-.8 4.3-1.4 6.6-5.2-1.2-10.7-2-16.5-2.5-3.4-4.8-6.9-9.1-10.4-13 7.4-7.3 14.9-12.3 21-12.3 1.3 0 2.5.3 3.5.9zM81.3 74c-1.8 3.2-3.9 6.4-6.1 9.6-3.7.3-7.4.4-11.2.4-3.9 0-7.6-.1-11.2-.4-2.2-3.2-4.2-6.4-6-9.6-1.9-3.3-3.7-6.7-5.3-10 1.6-3.3 3.4-6.7 5.3-10 1.8-3.2 3.9-6.4 6.1-9.6 3.7-.3 7.4-.4 11.2-.4 3.9 0 7.6.1 11.2.4 2.2 3.2 4.2 6.4 6 9.6 1.9 3.3 3.7 6.7 5.3 10-1.7 3.3-3.4 6.6-5.3 10zm8.3-3.3c1.5 3.5 2.7 6.9 3.8 10.3-3.4.8-7 1.4-10.8 1.9 1.2-1.9 2.5-3.9 3.6-6 1.2-2.1 2.3-4.2 3.4-6.2zM64 97.8c-2.4-2.6-4.7-5.4-6.9-8.3 2.3.1 4.6.2 6.9.2 2.3 0 4.6-.1 6.9-.2-2.2 2.9-4.5 5.7-6.9 8.3zm-18.6-15c-3.8-.5-7.4-1.1-10.8-1.9 1.1-3.3 2.3-6.8 3.8-10.3 1.1 2 2.2 4.1 3.4 6.1 1.2 2.2 2.4 4.1 3.6 6.1zm-7-25.5c-1.5-3.5-2.7-6.9-3.8-10.3 3.4-.8 7-1.4 10.8-1.9-1.2 1.9-2.5 3.9-3.6 6-1.2 2.1-2.3 4.2-3.4 6.2zM64 30.2c2.4 2.6 4.7 5.4 6.9 8.3-2.3-.1-4.6-.2-6.9-.2-2.3 0-4.6.1-6.9.2 2.2-2.9 4.5-5.7 6.9-8.3zm22.2 21l-3.6-6c3.8.5 7.4 1.1 10.8 1.9-1.1 3.3-2.3 6.8-3.8 10.3-1.1-2.1-2.2-4.2-3.4-6.2zM31.7 35c-1.7-10.5-.3-17.9 3.8-20.3 1-.6 2.2-.9 3.5-.9 6 0 13.5 4.9 21 12.3-3.5 3.8-7 8.2-10.4 13-5.8.5-11.3 1.4-16.5 2.5-.6-2.3-1-4.5-1.4-6.6zM7 64c0-4.7 5.7-9.7 15.7-13.4 2-.8 4.2-1.5 6.4-2.1 1.6 5 3.6 10.3 6 15.6-2.4 5.3-4.5 10.5-6 15.5C15.3 75.6 7 69.6 7 64zm28.5 49.3c-4.1-2.4-5.5-9.8-3.8-20.3.3-2.1.8-4.3 1.4-6.6 5.2 1.2 10.7 2 16.5 2.5 3.4 4.8 6.9 9.1 10.4 13-7.4 7.3-14.9 12.3-21 12.3-1.3 0-2.5-.3-3.5-.9zM96.3 93c1.7 10.5.3 17.9-3.8 20.3-1 .6-2.2.9-3.5.9-6 0-13.5-4.9-21-12.3 3.5-3.8 7-8.2 10.4-13 5.8-.5 11.3-1.4 16.5-2.5.6 2.3 1 4.5 1.4 6.6zm9-15.6c-2 .8-4.2 1.5-6.4 2.1-1.6-5-3.6-10.3-6-15.6 2.4-5.3 4.5-10.5 6-15.5 13.8 4 22.1 10 22.1 15.6 0 4.7-5.8 9.7-15.7 13.4z" />
+      </g>
+    </svg>
+  );
+}
+
+function TailwindIcon() {
+  return (
+    <svg viewBox="0 0 128 128" width="16" height="16">
+      <path fill="#38bdf8" d="M64.004 25.602c-17.067 0-27.73 8.53-32 25.597 6.398-8.531 13.867-11.73 22.398-9.597 4.871 1.214 8.352 4.746 12.207 8.66C72.883 56.629 80.145 64 96.004 64c17.066 0 27.73-8.531 32-25.602-6.399 8.536-13.867 11.735-22.399 9.602-4.87-1.215-8.347-4.746-12.207-8.66-6.27-6.367-13.53-13.738-29.394-13.738zM32.004 64c-17.066 0-27.73 8.531-32 25.602C6.402 81.066 13.87 77.867 22.402 80c4.871 1.215 8.352 4.746 12.207 8.66 6.274 6.367 13.536 13.738 29.395 13.738 17.066 0 27.73-8.53 32-25.597-6.399 8.531-13.867 11.73-22.399 9.597-4.87-1.214-8.347-4.746-12.207-8.66C55.128 71.371 47.868 64 32.004 64zm0 0" />
+    </svg>
+  );
+}
+
+function MysqlIcon() {
+  return (
+    <svg viewBox="0 0 128 128" width="16" height="16">
+      <path fill="#00618A" d="M117.688 98.242c-6.973-.191-12.297.461-16.852 2.379-1.293.547-3.355.559-3.566 2.18.711.746.82 1.859 1.387 2.777 1.086 1.754 2.922 4.113 4.559 5.352 1.789 1.348 3.633 2.793 5.551 3.961 3.414 2.082 7.223 3.27 10.504 5.352 1.938 1.23 3.859 2.777 5.75 4.164.934.684 1.563 1.75 2.773 2.18v-.195c-.637-.812-.801-1.93-1.387-2.777l-2.578-2.578c-2.52-3.344-5.719-6.281-9.117-8.719-2.711-1.949-8.781-4.578-9.91-7.73l-.199-.199c1.922-.219 4.172-.914 5.949-1.391 2.98-.797 5.645-.59 8.719-1.387l4.164-1.187v-.793c-1.555-1.594-2.664-3.707-4.359-5.152-4.441-3.781-9.285-7.555-14.273-10.703-2.766-1.746-6.184-2.883-9.117-4.363-.988-.496-2.719-.758-3.371-1.586-1.539-1.961-2.379-4.449-3.566-6.738-2.488-4.793-4.93-10.023-7.137-15.066-1.504-3.437-2.484-6.828-4.359-9.91-9-14.797-18.687-23.73-33.695-32.508-3.195-1.867-7.039-2.605-11.102-3.57l-6.543-.395c-1.332-.555-2.715-2.184-3.965-2.977C16.977 3.52 4.223-3.312.539 5.672-1.785 11.34 4.016 16.871 6.09 19.746c1.457 2.012 3.32 4.273 4.359 6.539.688 1.492.805 2.984 1.391 4.559 1.438 3.883 2.695 8.109 4.559 11.695.941 1.816 1.98 3.727 3.172 5.352.727.996 1.98 1.438 2.18 2.973-1.227 1.715-1.297 4.375-1.984 6.543-3.098 9.77-1.926 21.91 2.578 29.137 1.383 2.223 4.641 6.98 9.117 5.156 3.918-1.598 3.043-6.539 4.164-10.902.254-.988.098-1.715.594-2.379v.199l3.57 7.133c2.641 4.254 7.324 8.699 11.297 11.699 2.059 1.555 3.68 4.242 6.344 5.152v-.199h-.199c-.516-.805-1.324-1.137-1.98-1.781-1.551-1.523-3.277-3.414-4.559-5.156-3.613-4.902-6.805-10.27-9.711-15.855-1.391-2.668-2.598-5.609-3.77-8.324-.453-1.047-.445-2.633-1.387-3.172-1.281 1.988-3.172 3.598-4.164 5.945-1.582 3.754-1.789 8.336-2.375 13.082-.348.125-.195.039-.398.199-2.762-.668-3.73-3.508-4.758-5.949-2.594-6.164-3.078-16.09-.793-23.191.59-1.836 3.262-7.617 2.18-9.316-.516-1.691-2.219-2.672-3.172-3.965-1.18-1.598-2.355-3.703-3.172-5.551-2.125-4.805-3.113-10.203-5.352-15.062-1.07-2.324-2.875-4.676-4.359-6.738-1.645-2.289-3.484-3.977-4.758-6.742-.453-.984-1.066-2.559-.398-3.566.215-.684.516-.969 1.191-1.191 1.148-.887 4.352.297 5.547.793 3.18 1.32 5.832 2.578 8.527 4.363 1.289.855 2.598 2.512 4.16 2.973h1.785c2.789.641 5.914.195 8.523.988 4.609 1.402 8.738 3.582 12.488 5.949 11.422 7.215 20.766 17.48 27.156 29.734 1.027 1.973 1.473 3.852 2.379 5.945 1.824 4.219 4.125 8.559 5.941 12.688 1.816 4.113 3.582 8.27 6.148 11.695 1.348 1.801 6.551 2.766 8.918 3.766 1.66.699 4.379 1.43 5.949 2.379 3 1.809 5.906 3.965 8.723 5.945 1.402.992 5.73 3.168 5.945 4.957zm-88.605-75.52c-1.453-.027-2.48.156-3.566.395v.199h.195c.695 1.422 1.918 2.34 2.777 3.566l1.98 4.164.199-.195c1.227-.867 1.789-2.25 1.781-4.363-.492-.52-.562-1.164-.992-1.785-.562-.824-1.66-1.289-2.375-1.98zm0 0" />
+    </svg>
+  );
+}
+
+function GodotIcon() {
+  return (
+    <svg viewBox="0 0 128 128" width="16" height="16">
+      <path d="M114.906 84.145s-.172-1.04-.27-1.028l-18.823 1.817a3.062 3.062 0 00-2.77 2.84l-.516 7.413-14.566 1.04-.988-6.72a3.089 3.089 0 00-3.04-2.62H54.067a3.089 3.089 0 00-3.039 2.62l-.988 6.72-14.566-1.04-.516-7.414a3.058 3.058 0 00-2.77-2.84l-18.835-1.816c-.094-.012-.168 1.028-.266 1.028l-.024 4.074 15.954 2.574.52 7.477a3.084 3.084 0 002.843 2.847l20.059 1.434c.078.004.152.008.226.008a3.087 3.087 0 003.031-2.621l1.02-6.915h14.57l1.02 6.915a3.088 3.088 0 003.254 2.613l20.062-1.434a3.084 3.084 0 002.844-2.847l.52-7.477 15.945-2.586zm0 0" fill="#fff" />
+      <path d="M13.086 53.422v30.723c.059 0 .113.003.168.007L32.09 85.97a2.027 2.027 0 011.828 1.875l.582 8.316 16.426 1.172 1.133-7.672a2.03 2.03 0 012.007-1.734h19.868a2.03 2.03 0 012.007 1.734l1.133 7.672 16.43-1.172.578-8.316a2.027 2.027 0 011.828-1.875l18.828-1.817c.055-.004.11-.007.168-.007V81.69h.008V53.42c2.652-3.335 5.16-7.019 7.086-10.116-2.941-5.008-6.543-9.48-10.395-13.625a101.543 101.543 0 00-10.316 6.004c-1.64-1.633-3.484-2.965-5.3-4.36-1.782-1.43-3.79-2.48-5.696-3.703.566-4.223.848-8.379.96-12.719-4.913-2.476-10.155-4.113-15.456-5.293-2.117 3.559-4.055 7.41-5.738 11.176-2-.332-4.008-.457-6.02-.48V20.3c-.016 0-.027.004-.039.004s-.023-.004-.04-.004v.004c-2.01.023-4.019.148-6.019.48-1.683-3.765-3.62-7.617-5.738-11.176-5.3 1.18-10.543 2.817-15.457 5.293.113 4.34.395 8.496.961 12.72-1.906 1.222-3.914 2.273-5.695 3.702-1.813 1.395-3.66 2.727-5.301 4.36a101.543 101.543 0 00-10.316-6.004C12.543 33.824 8.94 38.297 6 43.305c2.313 3.629 4.793 7.273 7.086 10.117zm0 0" fill="#478cbf" />
+      <path d="M98.008 89.84l-.582 8.36a2.024 2.024 0 01-1.88 1.878l-20.062 1.434c-.046.004-.097.004-.144.004-.996 0-1.86-.73-2.004-1.73l-1.152-7.806H55.816l-1.152 7.805a2.026 2.026 0 01-2.148 1.727l-20.063-1.434a2.024 2.024 0 01-1.879-1.879l-.582-8.36-16.937-1.632c.008 1.82.03 3.816.03 4.211 0 17.887 22.692 26.484 50.88 26.582h.07c28.188-.098 50.871-8.695 50.871-26.582 0-.402.024-2.39.031-4.211zm0 0" fill="#478cbf" />
+      <path d="M48.652 65.895c0 6.27-5.082 11.351-11.351 11.351-6.266 0-11.348-5.082-11.348-11.351 0-6.266 5.082-11.344 11.348-11.344 6.27 0 11.351 5.078 11.351 11.344" fill="#fff" />
+      <path d="M45.922 66.566a7.531 7.531 0 01-7.535 7.532 7.534 7.534 0 01-7.535-7.532 7.534 7.534 0 017.535-7.53 7.531 7.531 0 017.535 7.53" fill="#414042" />
+      <path d="M64 78.277c-2.02 0-3.652-1.488-3.652-3.32v-10.45c0-1.831 1.632-3.32 3.652-3.32 2.016 0 3.656 1.489 3.656 3.32v10.45c0 1.832-1.64 3.32-3.656 3.32m15.348-12.382c0 6.27 5.082 11.351 11.351 11.351 6.266 0 11.348-5.082 11.348-11.351 0-6.266-5.082-11.344-11.348-11.344-6.27 0-11.351 5.078-11.351 11.344" fill="#fff" />
+      <path d="M82.078 66.566a7.53 7.53 0 007.531 7.532 7.531 7.531 0 100-15.063 7.53 7.53 0 00-7.53 7.531" fill="#414042" />
+    </svg>
+  );
+}
+
+function CodeIcon() {
+  // GDScript gak punya logo resmi sendiri di Devicon, jadi dipinjem dari Godot plain sebagai representasi bahasa scripting-nya
+  return (
+    <svg viewBox="0 0 128 128" width="16" height="16">
+      <path fill="#478cbf" d="M52.203 9.61c-5.3 1.18-10.543 2.816-15.457 5.292.113 4.34.395 8.496.961 12.72-1.906 1.222-3.914 2.273-5.695 3.702-1.813 1.395-3.66 2.727-5.301 4.36a101.543 101.543 0 00-10.316-6.004C12.543 33.824 8.94 38.297 6 43.305c2.313 3.629 4.793 7.273 7.086 10.117v30.723c.059 0 .113.003.168.007L32.09 85.97a2.027 2.027 0 011.828 1.875l.582 8.316 16.426 1.172 1.133-7.672a2.03 2.03 0 012.007-1.734h19.868a2.03 2.03 0 012.007 1.734l1.133 7.672 16.43-1.172.578-8.316a2.027 2.027 0 011.828-1.875l18.828-1.817c.055-.004.11-.007.168-.007V81.69h.008V53.42c2.652-3.335 5.16-7.019 7.086-10.116-2.941-5.008-6.543-9.48-10.395-13.625a101.543 101.543 0 00-10.316 6.004c-1.64-1.633-3.488-2.965-5.3-4.36-1.782-1.43-3.79-2.48-5.696-3.703.566-4.223.848-8.379.96-12.719-4.913-2.476-10.155-4.113-15.456-5.293-2.117 3.559-4.055 7.41-5.738 11.176-2-.332-4.008-.457-6.02-.48V20.3c-.016 0-.027.004-.039.004s-.023-.004-.04-.004v.004c-2.01.023-4.019.148-6.019.48-1.683-3.765-3.62-7.617-5.738-11.176zM37.301 54.55c6.27 0 11.351 5.079 11.351 11.345 0 6.27-5.082 11.351-11.351 11.351-6.266 0-11.348-5.082-11.348-11.351 0-6.266 5.082-11.344 11.348-11.344zm53.398 0c6.266 0 11.348 5.079 11.348 11.345 0 6.27-5.082 11.351-11.348 11.351-6.27 0-11.351-5.082-11.351-11.351 0-6.266 5.082-11.344 11.351-11.344zM64 61.189c2.016 0 3.656 1.488 3.656 3.32v10.449c0 1.832-1.64 3.32-3.656 3.32-2.02 0-3.652-1.488-3.652-3.32v-10.45c0-1.831 1.632-3.32 3.652-3.32zm0 0" />
+    </svg>
+  );
+}
+
+const TECH_META = {
+  laravel: { Icon: LaravelIcon },
+  inertia: { Icon: InertiaIcon },
+  react: { Icon: ReactIcon },
+  tailwind: { Icon: TailwindIcon },
+  mysql: { Icon: MysqlIcon },
+  gdscript: { Icon: CodeIcon },
+  godot: { Icon: GodotIcon },
+  default: { Icon: null },
+};
+
+function resolveTech(name) {
+  const key = name.toLowerCase();
+  if (key.includes("laravel")) return TECH_META.laravel;
+  if (key.includes("inertia")) return TECH_META.inertia;
+  if (key.includes("react")) return TECH_META.react;
+  if (key.includes("tailwind")) return TECH_META.tailwind;
+  if (key.includes("mysql")) return TECH_META.mysql;
+  if (key.includes("gdscript")) return TECH_META.gdscript;
+  if (key.includes("godot")) return TECH_META.godot;
+  return TECH_META.default;
+}
+
+export default function TechBadge({ tech }) {
+  const { Icon } = resolveTech(tech);
+  return (
+    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white font-[var(--font-mono)] text-[10px] font-bold text-[var(--color-ink)] uppercase">
+      {Icon && <Icon />}
+      {tech}
+    </span>
+  );
+}
+===== ./src/components/TechStack.jsx =====
+function IconLaravel() {
+  return (
+    <svg viewBox="0 0 128 128" width="16" height="16">
+      <path fill="#f0513f" d="M27.271.11c-.2.078-5.82 3.28-12.487 7.112-8.078 4.644-12.227 7.09-12.449 7.32-.19.225-.34.482-.438.76-.167.564-.179 82.985-.01 83.578.061.23.26.568.44.754.436.46 48.664 28.19 49.25 28.324.272.065.577.054.88-.03.658-.165 48.76-27.834 49.188-28.286.175-.195.375-.532.44-.761.084-.273.115-4.58.115-13.655v-13.26l11.726-6.735c11.056-6.357 11.733-6.755 12.017-7.191l.29-.47V43.287c0-15.548.03-14.673-.585-15.235-.165-.146-5.798-3.433-12.53-7.31L100.89 13.71h-1.359l-11.963 6.87c-6.586 3.788-12.184 7.027-12.457 7.203-.272.18-.597.512-.73.753l-.242.417-.054 13.455-.048 13.46-9.879 5.69c-5.434 3.124-9.957 5.71-10.053 5.734-.175.049-.187-1.232-.187-25.966V15.293l-.26-.447c-.326-.545 1.136.324-13.544-8.114C27.803-.348 28.098-.2 27.27.11zm11.317 10.307c5.15 2.955 9.364 5.4 9.364 5.43 0 .031-4.516 2.641-10.035 5.813l-10.041 5.765-10.023-5.764c-5.507-3.173-10.02-5.783-10.02-5.814 0-.03 4.505-2.64 10.013-5.805l9.999-5.752.69.376c3.357 1.907 6.708 3.824 10.053 5.751zm71.668 13.261c5.422 3.122 9.908 5.702 9.95 5.744.114.103-19.774 11.535-20.046 11.523-.272-.008-19.915-11.335-19.907-11.473.01-.157 19.773-11.527 19.973-11.496.091.022 4.607 2.59 10.03 5.702zM16.3 25.328l9.558 5.503.055 27.247.05 27.252.233.368c.122.194.352.459.52.581.158.115 5.477 3.146 11.818 6.724l11.52 6.506v11.527c0 6.326-.043 11.516-.097 11.516-.041 0-10-5.699-22.124-12.676L5.793 97.201l-.03-38.966-.019-38.954.49.271c.283.15 4.807 2.748 10.065 5.775zm33.754 19.18v25.109l-.387.253c-.525.332-19.667 11.335-19.732 11.335-.03 0-.054-11.336-.054-25.193l.012-25.182 10-5.752c5.499-3.165 10.034-5.733 10.088-5.714.039.024.073 11.34.073 25.144zm38.15-5.775 10.023 5.763V55.92c0 10.838-.011 11.42-.176 11.357-.107-.041-4.642-2.64-10.083-5.774l-9.91-5.69v-11.42c0-6.287.032-11.424.062-11.424.043 0 4.577 2.592 10.084 5.764zm34.164 5.587c0 6.254-.042 11.412-.084 11.462-.072.115-19.896 11.538-20.022 11.538-.031 0-.062-5.135-.062-11.423v-11.42l10-5.756c5.507-3.16 10.042-5.752 10.084-5.752.053 0 .084 5.105.084 11.351zM95.993 70.933 52.005 96.04 32.056 84.693S76 59.277 76.176 59.343zm2.215 14.827-.034 11.442-22.028 12.676c-12.12 6.976-22.082 12.675-22.132 12.675-.053 0-.095-4.658-.095-11.516V99.51l22.08-12.592c12.132-6.923 22.101-12.59 22.154-12.602.043 0 .062 5.148.054 11.443z" />
+    </svg>
+  );
+}
+
+function IconPHP() {
+  return (
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="#777BB4">
+      <path d="M7.01 10.207h-.944l-.515 2.648h.838c.556 0 .97-.105 1.242-.314.272-.21.455-.559.55-1.049.092-.47.05-.802-.124-.995-.175-.193-.523-.29-1.047-.29zM12 5.688C5.373 5.688 0 8.514 0 12s5.373 6.313 12 6.313S24 15.486 24 12c0-3.486-5.373-6.312-12-6.312zm-3.26 7.451c-.261.25-.575.438-.917.551-.336.108-.765.164-1.285.164H5.357l-.327 1.681H3.652l1.23-6.326h2.65c.797 0 1.378.209 1.744.628.366.418.476 1.002.33 1.752a2.836 2.836 0 0 1-.305.847c-.143.255-.33.49-.561.703zm4.024.715l.543-2.799c.063-.318.039-.536-.068-.651-.107-.116-.336-.174-.687-.174H11.46l-.704 3.625H9.388l1.23-6.327h1.367l-.327 1.682h1.218c.767 0 1.295.134 1.586.401s.378.7.263 1.299l-.572 2.944h-1.389zm7.597-2.265a2.782 2.782 0 0 1-.305.847c-.143.255-.33.49-.561.703a2.44 2.44 0 0 1-.917.551c-.336.108-.765.164-1.286.164h-1.18l-.327 1.682h-1.378l1.23-6.326h2.649c.797 0 1.378.209 1.744.628.366.417.477 1.001.331 1.751zM17.766 10.207h-.943l-.516 2.648h.838c.557 0 .971-.105 1.242-.314.272-.21.455-.559.551-1.049.092-.47.049-.802-.125-.995s-.524-.29-1.047-.29z" />
+    </svg>
+  );
+}
+
+function IconJS() {
+  return (
+    <svg viewBox="0 0 24 24" width="16" height="16">
+      <rect width="24" height="24" rx="5" fill="#f0db4f" />
+      <text x="12.5" y="16.5" textAnchor="middle" fontFamily="Arial, sans-serif" fontWeight="700" fontSize="8.5" fill="#141414">JS</text>
+    </svg>
+  );
+}
+
+function IconPython() {
+  return (
+    <svg viewBox="0 0 24 24" width="16" height="16">
+      <path fill="#3776AB" d="M11.9 1.3c-1 0-2 .1-2.8.3-2.5.4-3 1.3-3 3v2.2h6v.8H4.1c-1.7 0-3.2 1-3.7 3-.6 2.2-.6 3.6 0 5.9.4 1.7 1.5 3 3.2 3h2V17c0-2 1.7-3.7 3.7-3.7h5.9c1.6 0 2.9-1.3 2.9-2.9V4.6c0-1.6-1.3-2.9-2.9-3.1-1-.1-2.1-.2-3.2-.2zM8.6 3c.6 0 1.1.5 1.1 1.2 0 .6-.5 1.1-1.1 1.1-.6 0-1.1-.5-1.1-1.1 0-.7.5-1.2 1.1-1.2z" />
+      <path fill="#FFD43B" d="M12.1 22.7c1 0 2-.1 2.8-.3 2.5-.4 3-1.3 3-3v-2.2h-6v-.8h7.9c1.7 0 3.2-1 3.7-3 .6-2.2.6-3.6 0-5.9-.4-1.7-1.5-3-3.2-3h-2V7c0 2-1.7 3.7-3.7 3.7H8.7c-1.6 0-2.9 1.3-2.9 2.9v5.7c0 1.6 1.3 2.9 2.9 3.1 1 .1 2.1.3 3.2.3zm3.3-4.7c.6 0 1.1.5 1.1 1.1 0 .7-.5 1.2-1.1 1.2-.6 0-1.1-.5-1.1-1.2 0-.6.5-1.1 1.1-1.1z" />
+    </svg>
+  );
+}
+
+function IconTailwind() {
+  return (
+    <svg viewBox="0 0 128 128" width="16" height="16">
+      <path fill="#38bdf8" d="M64.004 25.602c-17.067 0-27.73 8.53-32 25.597 6.398-8.531 13.867-11.73 22.398-9.597 4.871 1.214 8.352 4.746 12.207 8.66C72.883 56.629 80.145 64 96.004 64c17.066 0 27.73-8.531 32-25.602-6.399 8.536-13.867 11.735-22.399 9.602-4.87-1.215-8.347-4.746-12.207-8.66-6.27-6.367-13.53-13.738-29.394-13.738zM32.004 64c-17.066 0-27.73 8.531-32 25.602C6.402 81.066 13.87 77.867 22.402 80c4.871 1.215 8.352 4.746 12.207 8.66 6.274 6.367 13.536 13.738 29.395 13.738 17.066 0 27.73-8.53 32-25.597-6.399 8.531-13.867 11.73-22.399 9.597-4.87-1.214-8.347-4.746-12.207-8.66C55.128 71.371 47.868 64 32.004 64zm0 0" />
+    </svg>
+  );
+}
+
+function IconHTML5() {
+  return (
+    <svg viewBox="0 0 128 128" width="16" height="16">
+      <path fill="#E44D26" d="M9.5 11.5l8.7 97L64 121l45.8-12.5 8.7-97z" />
+      <path fill="#F16529" d="M64 19.5v92.7l37-10.2 7.4-83z" />
+      <path fill="#EBEBEB" d="M64 51.9H45.3l-1.3-14.3H64V23.5H27.5l.3 3.9L31 66.3h33z" />
+      <path fill="#fff" d="M64 87.8l-15.7-4.2-1-11.3H33.1l2 22.3 28.8 8z" />
+      <path fill="#EBEBEB" d="M64 51.9v14.4h17.3l-1.6 18.3L64 87.8v15l28.9-8 .2-2.4L96.4 51z" />
+      <path fill="#fff" d="M64 23.5v14.1h35.3l.3-3.6.7-8.6.3-1.9z" />
+    </svg>
+  );
+}
+
+function IconCSS3() {
+  return (
+    <svg viewBox="0 0 128 128" width="16" height="16">
+      <path fill="#1572B6" d="M9.5 11.5l8.7 97L64 121l45.8-12.5 8.7-97z" />
+      <path fill="#33A9DC" d="M64 19.5v92.7l37-10.2 7.4-83z" />
+      <path fill="#fff" d="M64 51.9H45.3l-1.3-14.3H64V23.5H27.5l.3 3.9L31 66.3h33zM64 87.7l-15.6-4.2-1-11.2H33.1l2 22.2 28.8 8z" />
+      <path fill="#EBEBEB" d="M63.9 51.9v14.4h17.2l-1.6 18.2-15.6 4.2v15l28.8-8 .2-2.4L96.3 51z" />
+    </svg>
+  );
+}
+
+function IconMysql() {
+  return (
+    <svg viewBox="0 0 128 128" width="16" height="16">
+      <path fill="#00618A" d="M117.688 98.242c-6.973-.191-12.297.461-16.852 2.379-1.293.547-3.355.559-3.566 2.18.711.746.82 1.859 1.387 2.777 1.086 1.754 2.922 4.113 4.559 5.352 1.789 1.348 3.633 2.793 5.551 3.961 3.414 2.082 7.223 3.27 10.504 5.352 1.938 1.23 3.859 2.777 5.75 4.164.934.684 1.563 1.75 2.773 2.18v-.195c-.637-.812-.801-1.93-1.387-2.777l-2.578-2.578c-2.52-3.344-5.719-6.281-9.117-8.719-2.711-1.949-8.781-4.578-9.91-7.73l-.199-.199c1.922-.219 4.172-.914 5.949-1.391 2.98-.797 5.645-.59 8.719-1.387l4.164-1.187v-.793c-1.555-1.594-2.664-3.707-4.359-5.152-4.441-3.781-9.285-7.555-14.273-10.703-2.766-1.746-6.184-2.883-9.117-4.363-.988-.496-2.719-.758-3.371-1.586-1.539-1.961-2.379-4.449-3.566-6.738-2.488-4.793-4.93-10.023-7.137-15.066-1.504-3.437-2.484-6.828-4.359-9.91-9-14.797-18.687-23.73-33.695-32.508-3.195-1.867-7.039-2.605-11.102-3.57l-6.543-.395c-1.332-.555-2.715-2.184-3.965-2.977C16.977 3.52 4.223-3.312.539 5.672-1.785 11.34 4.016 16.871 6.09 19.746c1.457 2.012 3.32 4.273 4.359 6.539.688 1.492.805 2.984 1.391 4.559 1.438 3.883 2.695 8.109 4.559 11.695.941 1.816 1.98 3.727 3.172 5.352.727.996 1.98 1.438 2.18 2.973-1.227 1.715-1.297 4.375-1.984 6.543-3.098 9.77-1.926 21.91 2.578 29.137 1.383 2.223 4.641 6.98 9.117 5.156 3.918-1.598 3.043-6.539 4.164-10.902.254-.988.098-1.715.594-2.379v.199l3.57 7.133c2.641 4.254 7.324 8.699 11.297 11.699 2.059 1.555 3.68 4.242 6.344 5.152v-.199h-.199c-.516-.805-1.324-1.137-1.98-1.781-1.551-1.523-3.277-3.414-4.559-5.156-3.613-4.902-6.805-10.27-9.711-15.855-1.391-2.668-2.598-5.609-3.77-8.324-.453-1.047-.445-2.633-1.387-3.172-1.281 1.988-3.172 3.598-4.164 5.945-1.582 3.754-1.789 8.336-2.375 13.082-.348.125-.195.039-.398.199-2.762-.668-3.73-3.508-4.758-5.949-2.594-6.164-3.078-16.09-.793-23.191.59-1.836 3.262-7.617 2.18-9.316-.516-1.691-2.219-2.672-3.172-3.965-1.18-1.598-2.355-3.703-3.172-5.551-2.125-4.805-3.113-10.203-5.352-15.062-1.07-2.324-2.875-4.676-4.359-6.738-1.645-2.289-3.484-3.977-4.758-6.742-.453-.984-1.066-2.559-.398-3.566.215-.684.516-.969 1.191-1.191 1.148-.887 4.352.297 5.547.793 3.18 1.32 5.832 2.578 8.527 4.363 1.289.855 2.598 2.512 4.16 2.973h1.785c2.789.641 5.914.195 8.523.988 4.609 1.402 8.738 3.582 12.488 5.949 11.422 7.215 20.766 17.48 27.156 29.734 1.027 1.973 1.473 3.852 2.379 5.945 1.824 4.219 4.125 8.559 5.941 12.688 1.816 4.113 3.582 8.27 6.148 11.695 1.348 1.801 6.551 2.766 8.918 3.766 1.66.699 4.379 1.43 5.949 2.379 3 1.809 5.906 3.965 8.723 5.945 1.402.992 5.73 3.168 5.945 4.957zm-88.605-75.52c-1.453-.027-2.48.156-3.566.395v.199h.195c.695 1.422 1.918 2.34 2.777 3.566l1.98 4.164.199-.195c1.227-.867 1.789-2.25 1.781-4.363-.492-.52-.562-1.164-.992-1.785-.562-.824-1.66-1.289-2.375-1.98zm0 0" />
+    </svg>
+  );
+}
+
+function IconVSCode() {
+  return (
+    <svg viewBox="0 0 24 24" width="16" height="16">
+      <path fill="#007ACC" d="M17.5 1.5 8.4 9.9 3.6 6.2 1.5 7.2v9.6l2.1 1 4.8-3.7 9.1 8.4 4-2V3.5zM17.4 7v10L9.9 12z" />
+    </svg>
+  );
+}
+
+function IconGit() {
+  return (
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="#F05033">
+      <path d="M23.5 10.9 13.1.5a1.6 1.6 0 0 0-2.3 0L8.6 2.7l2.8 2.8a1.9 1.9 0 0 1 2.4 2.5l2.7 2.7a1.9 1.9 0 1 1-1.1 1.1l-2.5-2.5v6.6a1.9 1.9 0 1 1-1.6 0V8.7a1.9 1.9 0 0 1-1-2.5L7.5 3.4.5 10.4a1.6 1.6 0 0 0 0 2.3l10.4 10.4a1.6 1.6 0 0 0 2.3 0l10.3-10.3a1.6 1.6 0 0 0 0-2.9z" />
+    </svg>
+  );
+}
+
+function IconGithub() {
+  return (
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="#181717">
+      <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+    </svg>
+  );
+}
+
+function IconTablePlus() {
+  return (
+    <svg viewBox="0 0 24 24" width="16" height="16">
+      <rect width="24" height="24" rx="6" fill="#3A82F7" />
+      <text x="12" y="16" textAnchor="middle" fontFamily="Arial, sans-serif" fontWeight="700" fontSize="9" fill="#fff">TP</text>
+    </svg>
+  );
+}
+
+function IconLaragon() {
+  return (
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="#0E83CD">
+      <path d="M12.843.979c-2.12-.096-3.477 1.439-3.477 1.439C2.52 2.5.791 8.429.75 8.552l-.248.74c-2.268 8.78 3.889 12.22 3.889 12.22.188.091.375-.066.375-.066.5-.31.252-.53.252-.53-1.43-1.742-1.595-5.864-1.596-5.899-.64-.532-1.248-1.318-1.111-2.342 0 0 .084-.51.584-.197 0 0 1.186.644 2.123.83-.001 0 .476.043.5.177 0 0 .374 1.752-.78 2.32.745.437 1.465.85 1.465.85.124 1.263.81 5.32.81 5.32.064.797.906.954.906.954.483.172 4.12.062 4.12.062 1.014-.044 1.062-.953 1.062-.953.015-.545.03-3.62.03-3.62.096-.575.766-.5.766-.5.703-.03.688.454.688.454-.017.515.045 3.496.045 3.496.03.858.781 1.125.781 1.125.488 0 .828-.004 1.365 0 .252.002 1.473 0 1.473 0 .55-.307 1.377-.969 1.377-.969 5.868-4.91 4.135-11.9 4.135-11.9C22.93 5.88 17.792 5.1 17.792 5.1c-.582-1.811-1.643-2.682-1.643-2.682-1.222-1.015-2.343-1.396-3.306-1.44zm5.006 4.273s1.845 3.08-1.727 7.86c.001.001-2.94 4.116-8.232 1.223 1.084.523 5.536 2.312 8.375-1.98 0 0 2.632-3.437 1.584-7.103zM6.703 8.868s1.296.036 1.341 1.82c0 0-1.02-2.668-3.271-.2 0 0 .404-1.729 1.93-1.62z" />
+    </svg>
+  );
+}
+
+function IconFigma() {
+  return (
+    <svg viewBox="0 0 24 24" width="16" height="16">
+      <path fill="#0ACF83" d="M8 24c2.2 0 4-1.8 4-4v-4H8c-2.2 0-4 1.8-4 4s1.8 4 4 4z" />
+      <path fill="#A259FF" d="M4 12c0-2.2 1.8-4 4-4h4v8H8c-2.2 0-4-1.8-4-4z" />
+      <path fill="#F24E1E" d="M4 4c0-2.2 1.8-4 4-4h4v8H8C5.8 8 4 6.2 4 4z" />
+      <path fill="#FF7262" d="M12 0h4c2.2 0 4 1.8 4 4s-1.8 4-4 4h-4z" />
+      <path fill="#1ABCFE" d="M20 12c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4 4 1.8 4 4z" />
+    </svg>
+  );
+}
+
+function IconOffice() {
+  return (
+    <svg viewBox="0 0 24 24" width="16" height="16">
+      <rect x="1" y="1" width="10" height="10" fill="#EB3C00" />
+      <rect x="13" y="1" width="10" height="10" fill="#7FBA00" />
+      <rect x="1" y="13" width="10" height="10" fill="#00A4EF" />
+      <rect x="13" y="13" width="10" height="10" fill="#FFB900" />
+    </svg>
+  );
+}
+
+function IconGoogleWorkspace() {
+  return (
+    <svg viewBox="0 0 24 24" width="16" height="16">
+      <path fill="#4285F4" d="M22.5 12.3c0-.8-.1-1.5-.2-2.3H12v4.3h5.9c-.3 1.4-1 2.5-2.2 3.3v2.8h3.6c2.1-1.9 3.2-4.8 3.2-8.1z" />
+      <path fill="#34A853" d="M12 23c2.9 0 5.4-1 7.2-2.6l-3.6-2.8c-1 .7-2.2 1.1-3.6 1.1-2.8 0-5.1-1.9-6-4.4H2.3v2.9C4.1 20.6 7.8 23 12 23z" />
+      <path fill="#FBBC05" d="M6 14.3c-.2-.7-.4-1.5-.4-2.3s.1-1.6.4-2.3V6.8H2.3C1.5 8.4 1 10.2 1 12s.5 3.6 1.3 5.2z" />
+      <path fill="#EA4335" d="M12 5.4c1.6 0 3 .5 4.1 1.6l3.1-3.1C17.4 2.1 14.9 1 12 1 7.8 1 4.1 3.4 2.3 6.8l3.7 2.9c.9-2.5 3.2-4.3 6-4.3z" />
+    </svg>
+  );
+}
+
+function IconCanva() {
+  return (
+    <svg viewBox="0 0 128 128" width="16" height="16">
+      <g fill="#00c4cc">
+        <path d="M59.39.152c-.484.051-1.995.23-3.328.387-5.374.613-11.468 2.227-16.816 4.48C19.891 13.106 5.324 30.849 1.305 51.2.359 56.04.129 58.418.129 64c0 7.195.715 12.16 2.61 18.434 6.195 20.53 22.323 36.632 42.906 42.851 6.195 1.871 11.187 2.586 18.355 2.586 7.195 0 12.16-.715 18.434-2.61 20.53-6.195 36.632-22.323 42.851-42.906 1.871-6.195 2.586-11.187 2.586-18.355 0-3.047-.152-6.527-.332-7.809-2.074-14.796-8.168-27.238-18.328-37.402C99.07 8.703 86.68 2.586 72.19.512c-1.996-.282-11.238-.54-12.8-.36zm-20.863 40.32c1.36.41 1.996.794 2.918 1.715 1.793 1.82 2.203 2.817 2.203 5.555 0 2.051-.078 2.434-.691 3.508-1.18 1.996-3.918 3.84-5.812 3.89-1.333.028-1.278-.562.18-2.097 1.945-2.023 2.226-2.79 2.226-5.813-.024-2.917-.383-3.914-1.739-4.734-1.128-.691-2.355-.64-4.148.203-4.66 2.23-9.703 9.653-11.672 17.258-2.613 10.137 2.02 18.25 9.649 16.867 2.226-.41 6.425-2.558 8.246-4.25 1.508-1.379 1.508-1.406 1.66-3.12.336-3.587 2.867-7.169 6.25-8.833 1.558-.77 1.945-.844 4.043-.844 1.996 0 2.457.102 3.43.637 3.097 1.77 2.457 5.89-.895 5.89-1.945 0-2.945-1-1.535-1.534 1.383-.512.867-2.434-.742-2.868-1.895-.488-4.047.793-5.403 3.25-1.64 2.97-1.715 6.504-.156 8.114 1.512 1.613 3.406.336 4.867-3.329.766-1.867 1.867-2.867 3.149-2.867 1.125 0 1.332.692.843 2.793-.718 3.25-.23 4.094 1.793 3.098.664-.309 1.766-1.023 2.43-1.535l1.254-1 .848-4.43c.922-4.965 1.277-5.633 3.172-5.988 1.82-.336 2.23.562 1.562 3.402l-.36 1.59 1.333-1.36c3.148-3.226 7.015-4.812 8.347-3.48.715.715.637 1.613-.386 4.785-.485 1.512-1.153 3.895-1.457 5.25-.461 2.047-.489 2.535-.23 2.868.82.972 3.327-.028 5.554-2.204l1.305-1.277.156-2.844c.152-3.277.457-4.453 1.328-5.504.82-.972 2.305-1.687 3.098-1.484.793.207.793.973.078 3.227-1 3.097-.895 10.238.129 10.238.41 0 2.507-2.2 3.84-4.043l.996-1.36-.793-.816c-1.383-1.46-1.715-2.406-1.715-4.789 0-1.738.129-2.379.562-3.227.719-1.328 1.844-2.3 3.176-2.687 1.406-.434 3.148.281 3.863 1.562.719 1.305.54 4.223-.383 6.223l-.664 1.457h.895c1.23 0 1.715-.305 3.918-2.379 1.152-1.101 2.484-2.05 3.48-2.511 3.918-1.84 8.528-.895 9.293 1.921.64 2.254-.765 3.84-3.226 3.66-1.766-.128-2.098-.59-1.074-1.456 1.843-1.54 0-3.508-2.637-2.793-1.434.386-3.047 1.996-3.89 3.867-1.692 3.738-.794 8.14 1.636 8.14.973 0 2.691-1.921 3.355-3.789.793-2.152 2.457-3.507 3.711-3.02.692.255.743.946.309 3.122-.488 2.383-.563 4.61-.18 5.633.153.382.614 1.101 1.051 1.586.816.921.844 1.254.152 1.691-.332.23-.77.129-1.843-.46-1.485-.77-2.766-2.153-3.227-3.458l-.281-.766-1.024.766c-.59.41-1.511.871-2.047 1.023-2.125.563-4.738-.894-5.964-3.351-.489-.95-.641-3.738-.282-4.813.204-.59.204-.59-.617-.18-.433.231-1.355.485-2.07.563-1.18.13-1.36.258-2.535 1.742-1.664 2.07-4.61 4.864-5.813 5.454-2.558 1.277-3.402.918-4.07-1.72l-.461-1.765-1.102.973c-1.406 1.23-4.222 2.715-5.836 3.074-1.535.332-3.175-.156-3.84-1.18-.995-1.535-.663-4.785.922-9.164 1.176-3.25.333-3.3-2.636-.203-2.203 2.328-3.149 3.992-3.762 6.578-.64 2.688-1.41 3.66-3.148 4.07-1.051.231-1.54-.41-1.332-1.816l.152-1.129-.973.668c-1.383.946-3.125 1.817-4.328 2.149-1.203.332-2.789-.024-3.172-.692-.691-1.175-.691-1.175-1.765-.332-2.332 1.895-5.66 1.356-7.348-1.152l-.54-.793-1.687 1.562c-4.867 4.454-10.957 6.45-15.464 5.067-5.735-1.738-8.907-6.656-8.856-13.746.024-7.117 3.172-14.617 8.473-20.172 2.996-3.125 5.812-4.969 8.68-5.66 2.07-.512 3.328-.485 5.296.129zm0 0" />
+        <path d="M90.418 58.676c-.563.562-.356 2.816.36 4.25.359.742.742 1.332.87 1.332.102 0 .332-.59.512-1.309.64-2.66-.512-5.504-1.742-4.273zm0 0" />
+      </g>
+    </svg>
+  );
+}
+
+function IconCapCut() {
+  return (
+    <svg viewBox="0 0 24 24" width="16" height="16">
+      <defs>
+        <linearGradient id="capcut-grad" x1="0" x2="24" y1="0" y2="24" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stopColor="#00F0FF" />
+          <stop offset="1" stopColor="#000000" />
+        </linearGradient>
+      </defs>
+      <rect width="24" height="24" rx="6" fill="url(#capcut-grad)" />
+      <text x="12" y="16" textAnchor="middle" fontFamily="Arial, sans-serif" fontWeight="700" fontSize="8" fill="#fff">CC</text>
+    </svg>
+  );
+}
+
+const stack = [
+  { label: "Laravel", Icon: IconLaravel },
+  { label: "PHP", Icon: IconPHP },
+  { label: "JavaScript (React.js)", Icon: IconJS },
+  { label: "Python", Icon: IconPython },
+  { label: "Tailwind CSS", Icon: IconTailwind },
+  { label: "HTML5", Icon: IconHTML5 },
+  { label: "CSS3", Icon: IconCSS3 },
+  { label: "MySQL", Icon: IconMysql },
+  { label: "VS Code", Icon: IconVSCode },
+  { label: "Git", Icon: IconGit },
+  { label: "GitHub", Icon: IconGithub },
+  { label: "TablePlus", Icon: IconTablePlus },
+  { label: "Laragon", Icon: IconLaragon },
+  { label: "Figma", Icon: IconFigma },
+  { label: "Canva", Icon: IconCanva },
+  { label: "CapCut", Icon: IconCapCut },
+  { label: "Microsoft Office", Icon: IconOffice },
+  { label: "Google Workspace", Icon: IconGoogleWorkspace },
+];
+
+function StackBadge({ label, Icon }) {
+  return (
+    <span className="inline-flex items-center gap-1.5 px-2.5 py-1.5 border border-[var(--color-line)] bg-white font-[var(--font-mono)] text-[10px] font-bold text-[var(--color-ink)] uppercase -mt-px -ml-px">
+      <Icon />
+      {label}
+    </span>
+  );
+}
+
+export default function TechStack() {
+  return (
+    <section id="techstack" className="max-w-5xl mx-auto px-4 sm:px-6 py-10 sm:py-16 border-t border-[var(--color-line)]">
+      <h2 className="font-[var(--font-mono)] text-xs sm:text-sm text-[var(--color-muted)] mb-8 sm:mb-12">
+        02 / tech_stack
+      </h2>
+      <div className="flex flex-wrap justify-center">
+        {stack.map((item) => (
+          <StackBadge key={item.label} label={item.label} Icon={item.Icon} />
+        ))}
+      </div>
+    </section>
+  );
+}
+===== ./src/data/projects.js =====
+const base = import.meta.env.BASE_URL;
+
+export const projects = [
+  {
+    index: "01",
+    slug: "website-sekolah",
+    title: "MTs Al-Mukhsin Website Profile School",
+    period: "September 2025 — Februari 2026", // TODO: ganti ke rentang pengerjaan asli
+    description: "Official school website built for real-world use — from admissions info to academic content, optimized for performance and accessibility.",
+    stack: ["Laravel", "Inertia.js", "React", "Tailwind"],
+    detail: "Built as the official website for MTs Al-Mukhsin, covering school profile, admissions, and academic information. Focused on Lighthouse performance optimization — WebP image conversion, clean Form Request and Resource classes on the Laravel side.",
+    images: [
+      `${base}images/projects/mtsalmukhsin-profile1.webp`,
+      `${base}images/projects/mtsalmukhsin-profile2.webp`,
+    ],
+  },
+  {
+    index: "02",
+    slug: "sipamat",
+    title: "SIPAMAT — Eye Infection Diagnosis",
+    period: "Juli 2026", // TODO: ganti ke rentang pengerjaan asli
+    description: "Expert system web app using the Certainty Factor method, built with direct input from an eye specialist to model real diagnostic reasoning.",
+    stack: ["Laravel", "Inertia.js", "React", "MySQL"],
+    detail: "An expert system that diagnoses eye infections using the Certainty Factor method. Involved direct interviews with an eye specialist to translate real diagnostic reasoning into the system's rule base. Includes admin panel, landing page, and a PHP/MySQL prototype phase.",
+    images: [
+      `${base}images/projects/sipamat1.webp`,
+      `${base}images/projects/sipamat2.webp`,
+      `${base}images/projects/sipamat3.webp`,
+      `${base}images/projects/sipamat4.webp`,
+      `${base}images/projects/sipamat5.webp`,
+    ],
+  },
+  {
+  index: "03",
+  slug: "silent-screen",
+  title: "Silent Screen",
+  period: "Juli 2026 - Sekarang",
+  description: "Game horor psikologis first-person yang gue kembangkan sendirian (solo developer), mengangkat isu pelecehan seksual di lingkungan kampus — tiga chapter, tiga ending yang sepenuhnya ditentukan oleh pilihan pemain.",
+  stack: ["Godot 4.7", "GDScript"],
+  detail: [
+  "Silent Screen adalah game horor psikologis first-person yang gue kembangkan sendirian (solo developer) menggunakan Godot 4.7, mengangkat isu pelecehan seksual di lingkungan kampus sebagai inti ceritanya. Game ini dibangun dengan struktur naratif yang terdiri dari prolog berupa flashback, dilanjutkan tiga chapter utama yang membangun ketegangan psikologis secara bertahap. Pemain berperan sebagai karakter utama yang menjadi saksi dari sebuah kasus pelecehan yang menimpa mahasiswi lain di lingkungan kampus, dan dihadapkan pada dilema moral tentang bagaimana harus bersikap.",
+  "Yang membuat game ini berbeda adalah sistem percabangan cerita yang sepenuhnya ditentukan oleh pilihan pemain sepanjang permainan, bermuara pada tiga ending yang berbeda: memilih untuk diam dan tidak melakukan apa-apa, ikut terlibat dan melakukan pelecehan terhadap korban, atau memilih untuk melaporkan pelaku ke pihak berwenang. Setiap pilihan membawa konsekuensi naratif dan emosional yang berbeda, dirancang untuk membuat pemain merefleksikan dampak dari sikap diam maupun keberpihakan dalam situasi nyata semacam ini.",
+  "Selain aspek cerita, game ini juga menekankan atmosfer horor psikologis lewat elemen visual, suara, dan pacing yang dibangun manual — mulai dari desain level, scripting interaksi, hingga sistem branching ending — seluruhnya dikerjakan sendiri menggunakan GDScript.",
+],
+  images: [
+    `${base}images/projects/silent-screen1.webp`,
+    `${base}images/projects/silent-screen2.webp`,
+    `${base}images/projects/silent-screen3.webp`,
+    `${base}images/projects/silent-screen4.webp`,
+  ],
+},
+];
+===== ./src/index.css =====
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+@theme {
+  --color-bg: #F5F6F3;
+  --color-ink: #14181A;
+  --color-muted: #5C6560;
+  --color-accent: #245C4D;
+  --color-accent-soft: #DCE6E1;
+  --color-line: #DDE0DA;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+===== ./src/main.jsx =====
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import "./index.css";
+import App from "./App.jsx";
+
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <BrowserRouter basename="/portfolio">
+      <App />
+    </BrowserRouter>
+  </StrictMode>
+);
+===== ./src/pages/HomePage.jsx =====
+import { useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import Hero from "../components/Hero";
+import TechStack from "../components/TechStack";
+import Projects from "../components/Projects";
+import About from "../components/About";
+import Contact from "../components/Contact";
+
+const sectionMap = {
+  "/techstack": "techstack",
+  "/projects": "projects",
+  "/about": "about",
+  "/contact": "contact",
+};
+
+const idToPath = {
+  home: "/portfolio",
+  techstack: "/portfolio/techstack",
+  projects: "/portfolio/projects",
+  about: "/portfolio/about",
+  contact: "/portfolio/contact",
+};
+
+export default function HomePage() {
+  const location = useLocation();
+  const isProgrammaticScroll = useRef(false);
+
+  useEffect(() => {
+    const id = sectionMap[location.pathname];
+    isProgrammaticScroll.current = true;
+
+    if (id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    const timeout = setTimeout(() => {
+      isProgrammaticScroll.current = false;
+    }, 700);
+    return () => clearTimeout(timeout);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    const ids = ["home", "techstack", "projects", "about", "contact"];
+    const sections = ids.map((id) => document.getElementById(id)).filter(Boolean);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (isProgrammaticScroll.current) return;
+
+        const visible = entries.find((entry) => entry.isIntersecting);
+        if (!visible) return;
+
+        const nextPath = idToPath[visible.target.id];
+        if (nextPath && window.location.pathname !== nextPath) {
+          window.history.replaceState(null, "", nextPath);
+        }
+      },
+      { threshold: 0, rootMargin: "-45% 0px -45% 0px" }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <>
+      <Navbar />
+      <Hero />
+      <TechStack />
+      <Projects />
+      <About />
+      <Contact />
+    </>
+  );
+}
+===== ./src/pages/ProjectDetail.jsx =====
+import { useParams, Link, Navigate } from "react-router-dom";
+import { projects } from "../data/projects";
+import Navbar from "../components/Navbar";
+import TechBadge from "../components/TechBadge";
+import ImageSlider from "../components/ImageSlider";
+
+const HIGHLIGHT_WORDS = ["Silent Screen", "Godot 4.7", "pelecehan seksual", "GDScript", "horor", "horor psikologis", "psikologis", "kampus", "game"];
+
+function highlightText(text, words) {
+  if (!words || words.length === 0) return text;
+
+  // urutkan dari yang paling panjang biar "Godot 4.7" ke-match duluan sebelum "Godot"
+  const sorted = [...words].sort((a, b) => b.length - a.length);
+  const pattern = sorted.map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|");
+  const regex = new RegExp(`(${pattern})`, "gi");
+
+  const parts = text.split(regex);
+  const wordSet = new Set(words.map((w) => w.toLowerCase()));
+
+  return parts.map((part, i) => {
+    if (wordSet.has(part.toLowerCase())) {
+      return (
+        <span key={i} className="border-b-2 border-red-500 bg-red-500/10">
+          {part}
+        </span>
+      );
+    }
+    return part;
+  });
+}
+
+export default function ProjectDetail() {
+  const { slug } = useParams();
+  const project = projects.find((p) => p.slug === slug);
+
+  if (!project) return <Navigate to="/" replace />;
+
+  return (
+    <>
+      <Navbar />
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 pt-24 pb-16">
+        <Link to="/" className="font-[var(--font-mono)] text-sm text-[var(--color-muted)] hover:text-[var(--color-ink)]">
+          ← back
+        </Link>
+        <p className="font-[var(--font-mono)] text-sm text-[var(--color-accent)] mt-8 mb-2">
+          {project.index} / project_detail
+        </p>
+        <h1 className="font-[var(--font-display)] text-4xl md:text-5xl font-semibold tracking-tight">
+          {project.title}
+        </h1>
+        {project.period && (
+          <p className="font-[var(--font-mono)] text-sm text-[var(--color-muted)] mt-2">
+            {project.period}
+          </p>
+        )}
+        <div className="flex gap-2 flex-wrap mt-6">
+          {project.stack.map((tech) => (
+            <TechBadge key={tech} tech={tech} />
+          ))}
+        </div>
+        <ImageSlider images={project.images} alt={project.title} />
+        <div className="mt-8 space-y-4">
+          {(Array.isArray(project.detail) ? project.detail : [project.detail]).map((paragraph, i) => (
+            <p key={i} className="text-lg text-[var(--color-muted)] leading-relaxed text-justify">
+              {highlightText(paragraph, HIGHLIGHT_WORDS)}
+            </p>
+          ))}
+        </div>
+      </section>
+    </>
+  );
+}
+===== ./vite.config.js =====
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+  base: '/portfolio/',
+})

@@ -37,7 +37,7 @@ function IconInstagram() {
 const socials = [
   { label: "GitHub", href: "https://github.com/ralvihan", Icon: IconGithub },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/raihanalviannuryansyah/", Icon: IconLinkedin },
-  { label: "Instagram", href: "#", Icon: IconInstagram }, // ganti # ini ke link IG asli lo
+  { label: "Instagram", href: "/#", Icon: IconInstagram }, // ganti # ini ke link IG asli lo
 ];
 
 export default function Contact() {
@@ -46,7 +46,7 @@ export default function Contact() {
       <h2 className="font-[var(--font-mono)] text-xs sm:text-sm text-[var(--color-muted)] mb-6 sm:mb-8">
         05 / contact
       </h2>
-      <a href="mailto:raihanalvian20@gmail.com" className="font-[var(--font-display)] text-2xl sm:text-4xl md:text-6xl font-semibold tracking-tight hover:text-[var(--color-accent)] transition-colors break-all">
+      <a href="mailto:raihanalvian20@gmail.com" className="font-[var(--font-display)] text-2xl sm:text-4xl md:text-6xl font-semibold tracking-tight hover:text-[var(--color-accent)] transition-colors break-all hover:underline underline-offset-4">
         raihanalvian20@gmail.com
       </a>
       <div className="mt-6 sm:mt-8 flex flex-wrap gap-4 sm:gap-6 font-[var(--font-mono)] text-xs sm:text-sm text-[var(--color-muted)]">

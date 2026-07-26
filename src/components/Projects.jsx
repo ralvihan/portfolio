@@ -3,8 +3,9 @@ import { projects } from "../data/projects";
 import TechBadge from "./TechBadge";
 
 function truncate(text, max = 200) {
-  if (!text) return "";
-  return text.length > max ? `${text.slice(0, max).trimEnd()}...` : text;
+  const str = Array.isArray(text) ? text.join(" ") : text;
+  if (!str) return "";
+  return str.length > max ? `${str.slice(0, max).trimEnd()}...` : str;
 }
 
 export default function Projects() {

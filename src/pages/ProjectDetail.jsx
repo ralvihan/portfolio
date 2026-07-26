@@ -4,6 +4,31 @@ import Navbar from "../components/Navbar";
 import TechBadge from "../components/TechBadge";
 import ImageSlider from "../components/ImageSlider";
 
+const HIGHLIGHT_WORDS = ["Silent Screen", "Godot 4.7", "pelecehan seksual", "GDScript", "horor", "horor psikologis", "psikologis", "kampus", "game"];
+
+function highlightText(text, words) {
+  if (!words || words.length === 0) return text;
+
+  // urutkan dari yang paling panjang biar "Godot 4.7" ke-match duluan sebelum "Godot"
+  const sorted = [...words].sort((a, b) => b.length - a.length);
+  const pattern = sorted.map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|");
+  const regex = new RegExp(`(${pattern})`, "gi");
+
+  const parts = text.split(regex);
+  const wordSet = new Set(words.map((w) => w.toLowerCase()));
+
+  return parts.map((part, i) => {
+    if (wordSet.has(part.toLowerCase())) {
+      return (
+        <span key={i} className="border-b-2 border-red-500 bg-red-500/10">
+          {part}
+        </span>
+      );
+    }
+    return part;
+  });
+}
+
 export default function ProjectDetail() {
   const { slug } = useParams();
   const project = projects.find((p) => p.slug === slug);
@@ -34,9 +59,13 @@ export default function ProjectDetail() {
           ))}
         </div>
         <ImageSlider images={project.images} alt={project.title} />
-        <p className="mt-8 text-lg text-[var(--color-muted)] leading-relaxed">
-          {project.detail}
-        </p>
+        <div className="mt-8 space-y-4">
+          {(Array.isArray(project.detail) ? project.detail : [project.detail]).map((paragraph, i) => (
+            <p key={i} className="text-lg text-[var(--color-muted)] leading-relaxed text-justify">
+              {highlightText(paragraph, HIGHLIGHT_WORDS)}
+            </p>
+          ))}
+        </div>
       </section>
     </>
   );
