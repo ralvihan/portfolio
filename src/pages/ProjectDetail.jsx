@@ -13,7 +13,7 @@ export default function ProjectDetail() {
   return (
     <>
       <Navbar />
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 pt-28 pb-24">
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 pt-24 pb-16">
         <Link to="/" className="font-[var(--font-mono)] text-sm text-[var(--color-muted)] hover:text-[var(--color-ink)]">
           ← back
         </Link>
@@ -23,6 +23,11 @@ export default function ProjectDetail() {
         <h1 className="font-[var(--font-display)] text-4xl md:text-5xl font-semibold tracking-tight">
           {project.title}
         </h1>
+        {project.period && (
+          <p className="font-[var(--font-mono)] text-sm text-[var(--color-muted)] mt-2">
+            {project.period}
+          </p>
+        )}
         <div className="flex gap-2 flex-wrap mt-6">
           {project.stack.map((tech) => (
             <TechBadge key={tech} tech={tech} />

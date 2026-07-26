@@ -2,11 +2,16 @@ import { Link } from "react-router-dom";
 import { projects } from "../data/projects";
 import TechBadge from "./TechBadge";
 
+function truncate(text, max = 200) {
+  if (!text) return "";
+  return text.length > max ? `${text.slice(0, max).trimEnd()}...` : text;
+}
+
 export default function Projects() {
   return (
-    <section id="projects" className="max-w-5xl mx-auto px-4 sm:px-6 py-16 sm:py-24 border-t border-[var(--color-line)]">
+    <section id="projects" className="max-w-5xl mx-auto px-4 sm:px-6 py-10 sm:py-16 border-t border-[var(--color-line)]">
       <h2 className="font-[var(--font-mono)] text-xs sm:text-sm text-[var(--color-muted)] mb-8 sm:mb-12">
-        02 / selected_projects
+        03 / selected_projects
       </h2>
       <div className="space-y-px">
         {projects.map((project) => (
@@ -20,18 +25,23 @@ export default function Projects() {
             <div className="flex flex-col-reverse sm:flex-row sm:items-start sm:justify-between gap-4 sm:gap-6">
               <div className="flex-1 min-w-0">
                 <Link
-                  to={`/projects/${project.slug}`}
-                  className="inline-block font-[var(--font-display)] text-xl sm:text-2xl font-semibold tracking-tight hover:text-[var(--color-accent)] transition-colors"
-                >
-                  {project.title}
-                </Link>
+                    to={`/projects/${project.slug}`}
+                    className="inline-block font-[var(--font-display)] text-xl sm:text-2xl font-semibold tracking-tight hover:text-[var(--color-accent)] hover:underline underline-offset-4 decoration-2 transition-colors"
+                    >
+                    {project.title}
+                    </Link>
+                {project.period && (
+                  <p className="font-[var(--font-mono)] text-xs text-[var(--color-muted)] mt-1">
+                    {project.period}
+                  </p>
+                )}
                 <div className="flex flex-wrap gap-2 mt-3">
                   {project.stack.map((tech) => (
                     <TechBadge key={tech} tech={tech} />
                   ))}
                 </div>
                 <p className="mt-3 text-sm sm:text-base text-[var(--color-muted)]">
-                  {project.description}
+                  {truncate(project.detail)}
                 </p>
               </div>
               <Link to={`/projects/${project.slug}`} className="block shrink-0 w-full sm:w-56">

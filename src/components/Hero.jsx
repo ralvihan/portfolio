@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Hero() {
   return (
-    <section id="home" className="max-w-5xl mx-auto px-4 sm:px-6 pt-28 sm:pt-40 pb-16 sm:pb-24">
+    <section id="home" className="max-w-5xl mx-auto px-4 sm:px-6 pt-24 sm:pt-32 pb-10 sm:pb-16">
       <p className="font-[var(--font-mono)] text-xs sm:text-sm text-[var(--color-accent)] mb-4">
         status: available for internship
       </p>

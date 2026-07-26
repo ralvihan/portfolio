@@ -44,7 +44,7 @@ export default function Contact() {
   return (
     <section id="contact" className="max-w-5xl mx-auto px-4 sm:px-6 py-16 sm:py-24 border-t border-[var(--color-line)]">
       <h2 className="font-[var(--font-mono)] text-xs sm:text-sm text-[var(--color-muted)] mb-6 sm:mb-8">
-        04 / contact
+        05 / contact
       </h2>
       <a href="mailto:raihanalvian20@gmail.com" className="font-[var(--font-display)] text-2xl sm:text-4xl md:text-6xl font-semibold tracking-tight hover:text-[var(--color-accent)] transition-colors break-all">
         raihanalvian20@gmail.com
@@ -58,7 +58,7 @@ export default function Contact() {
         ))}
       </div>
       <p className="mt-10 sm:mt-16 font-[var(--font-mono)] text-xs text-[var(--color-muted)]">
-        © {new Date().getFullYear()} raihan alvian nuryansyah
+        © {new Date().getFullYear()} Jok
       </p>
     </section>
   );

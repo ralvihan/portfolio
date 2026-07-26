@@ -2,11 +2,13 @@ import { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
+import TechStack from "../components/TechStack";
 import Projects from "../components/Projects";
 import About from "../components/About";
 import Contact from "../components/Contact";
 
 const sectionMap = {
+  "/techstack": "techstack",
   "/projects": "projects",
   "/about": "about",
   "/contact": "contact",
@@ -14,6 +16,7 @@ const sectionMap = {
 
 const idToPath = {
   home: "/portfolio",
+  techstack: "/portfolio/techstack",
   projects: "/portfolio/projects",
   about: "/portfolio/about",
   contact: "/portfolio/contact",
@@ -41,7 +44,7 @@ export default function HomePage() {
   }, [location.pathname]);
 
   useEffect(() => {
-    const ids = ["home", "projects", "about", "contact"];
+    const ids = ["home", "techstack", "projects", "about", "contact"];
     const sections = ids.map((id) => document.getElementById(id)).filter(Boolean);
 
     const observer = new IntersectionObserver(
@@ -67,6 +70,7 @@ export default function HomePage() {
     <>
       <Navbar />
       <Hero />
+      <TechStack />
       <Projects />
       <About />
       <Contact />
