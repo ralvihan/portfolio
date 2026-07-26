@@ -60,11 +60,11 @@ export default function ProjectDetail() {
         </div>
         <ImageSlider images={project.images} alt={project.title} />
         <div className="mt-8 space-y-4">
-          {(Array.isArray(project.detail) ? project.detail : [project.detail]).map((paragraph, i) => (
-            <p key={i} className="text-lg text-[var(--color-muted)] leading-relaxed text-justify">
-              {highlightText(paragraph, HIGHLIGHT_WORDS)}
+        {(Array.isArray(project.detail) ? project.detail : [project.detail]).map((paragraph, i) => (
+            <p key={i} className="text-lg text-[var(--color-ink)] leading-relaxed text-justify">
+            {highlightText(paragraph, HIGHLIGHT_WORDS)}
             </p>
-          ))}
+        ))}
         </div>
       </section>
     </>

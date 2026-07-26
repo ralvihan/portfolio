@@ -2,7 +2,7 @@ import { useState } from "react";
 
 function IconChevronLeft() {
   return (
-    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M15 18l-6-6 6-6" />
     </svg>
   );
@@ -10,7 +10,7 @@ function IconChevronLeft() {
 
 function IconChevronRight() {
   return (
-    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M9 18l6-6-6-6" />
     </svg>
   );
@@ -24,51 +24,70 @@ export default function ImageSlider({ images, alt }) {
   const prev = () => setIndex((i) => (i === 0 ? images.length - 1 : i - 1));
   const next = () => setIndex((i) => (i === images.length - 1 ? 0 : i + 1));
 
+  const getOffset = (i) => {
+    const len = images.length;
+    let diff = i - index;
+    if (diff > len / 2) diff -= len;
+    if (diff < -len / 2) diff += len;
+    return diff;
+  };
+
   return (
     <div className="mt-8">
-      <div className="relative rounded-lg border border-[var(--color-line)] overflow-hidden">
-        <img
-          src={images[index]}
-          alt={`${alt} ${index + 1}`}
-          className="w-full aspect-video object-cover"
-        />
+      {/* wrapper penuh, cuma buat nge-clip biar ga bikin horizontal scroll di mobile */}
+      <div className="relative w-full overflow-hidden py-2">
+        {/* box ukuran TETAP buat gambar utama — sengaja lebih kecil dari full width biar ada ruang ngintip */}
+        <div className="relative mx-auto w-full max-w-full sm:max-w-2xl">
+          <div className="w-full aspect-video invisible" aria-hidden="true" />
 
-        {images.length > 1 && (
-          <>
-            <button
-              onClick={prev}
-              aria-label="Previous image"
-              className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[var(--color-bg)]/90 border border-[var(--color-line)] flex items-center justify-center text-[var(--color-ink)] hover:bg-[var(--color-bg)] transition-colors"
-            >
-              <IconChevronLeft />
-            </button>
-            <button
-              onClick={next}
-              aria-label="Next image"
-              className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[var(--color-bg)]/90 border border-[var(--color-line)] flex items-center justify-center text-[var(--color-ink)] hover:bg-[var(--color-bg)] transition-colors"
-            >
-              <IconChevronRight />
-            </button>
+          {images.map((src, i) => {
+            const offset = getOffset(i);
+            const isCenter = offset === 0;
+            const isSide = offset === -1 || offset === 1;
 
-            <span className="absolute bottom-3 right-3 font-[var(--font-mono)] text-xs bg-[var(--color-bg)]/90 border border-[var(--color-line)] rounded-full px-2.5 py-1 text-[var(--color-muted)]">
-              {index + 1} / {images.length}
-            </span>
-          </>
-        )}
+            if (!isCenter && !isSide) return null;
+
+            const posClass = isCenter
+            ? "z-30 opacity-100 scale-100 translate-x-0"
+            : offset === -1
+            ? "z-20 opacity-60 scale-[0.85] -translate-x-[58%] hidden sm:block"
+            : "z-20 opacity-60 scale-[0.85] translate-x-[58%] hidden sm:block";
+
+            return (
+                <div
+                    key={i}
+                    onClick={!isCenter ? () => setIndex(i) : undefined}
+                    className={`absolute inset-0 rounded-lg overflow-hidden bg-[var(--color-bg)] transition-all duration-500 ease-out ${
+                    isCenter ? "shadow-lg" : "shadow-sm cursor-pointer"
+                    } ${posClass}`}
+                >
+                    <img
+                    src={src}
+                    alt={`${alt} ${i + 1}`}
+                    className="w-full h-full object-cover"
+                    />
+                </div>
+                );
+          })}
+        </div>
       </div>
 
       {images.length > 1 && (
-        <div className="flex gap-2 mt-3 justify-center">
-          {images.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setIndex(i)}
-              aria-label={`Go to image ${i + 1}`}
-              className={`h-2 rounded-full transition-all ${
-                i === index ? "w-6 bg-[var(--color-ink)]" : "w-2 bg-[var(--color-line)]"
-              }`}
-            />
-          ))}
+        <div className="flex items-center justify-center gap-4 mt-6">
+          <button
+            onClick={prev}
+            aria-label="Previous image"
+            className="w-10 h-10 rounded-full border border-[var(--color-line)] flex items-center justify-center text-[var(--color-ink)] hover:bg-[var(--color-accent-soft)] transition-colors"
+          >
+            <IconChevronLeft />
+          </button>
+          <button
+            onClick={next}
+            aria-label="Next image"
+            className="w-10 h-10 rounded-full border border-[var(--color-line)] flex items-center justify-center text-[var(--color-ink)] hover:bg-[var(--color-accent-soft)] transition-colors"
+          >
+            <IconChevronRight />
+          </button>
         </div>
       )}
     </div>
