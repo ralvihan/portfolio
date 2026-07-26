@@ -1,5 +1,3 @@
-# Portfolio
-
 <div align="center">
 
 <img src=".github/images/preview.png" width="100%" alt="Portfolio preview" />
@@ -21,4 +19,4 @@ Personal portfolio site — built to showcase the projects I've worked on, highl
 **Raihan Alvian Nuryansyah**
 
 <a href="https://github.com/ralvihan"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" /></a>
-<a href="https://www.linkedin.com/in/raihanalviannuryansyah/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
+<a href="https://www.linkedin.com/in/raihanalviannuryansyah/"><img src="https://custom-icon-badges.demolab.com/badge/LinkedIn-0A66C2?logo=linkedin-white&logoColor=fff&style=for-the-badge" alt="LinkedIn" /></a>
