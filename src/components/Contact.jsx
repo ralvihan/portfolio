@@ -58,7 +58,7 @@ export default function Contact() {
         ))}
       </div>
       <p className="mt-10 sm:mt-16 font-[var(--font-mono)] text-xs text-[var(--color-muted)]">
-        © {new Date().getFullYear()} Jok
+        © {new Date().getFullYear()} raihan alvian nuryansyah
       </p>
     </section>
   );
