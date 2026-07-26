@@ -1,6 +1,8 @@
 import { useParams, Link, Navigate } from "react-router-dom";
 import { projects } from "../data/projects";
 import Navbar from "../components/Navbar";
+import TechBadge from "../components/TechBadge";
+import ImageSlider from "../components/ImageSlider";
 
 export default function ProjectDetail() {
   const { slug } = useParams();
@@ -11,7 +13,7 @@ export default function ProjectDetail() {
   return (
     <>
       <Navbar />
-      <section className="max-w-3xl mx-auto px-6 pt-40 pb-24">
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 pt-28 pb-24">
         <Link to="/" className="font-[var(--font-mono)] text-sm text-[var(--color-muted)] hover:text-[var(--color-ink)]">
           ← back
         </Link>
@@ -23,14 +25,10 @@ export default function ProjectDetail() {
         </h1>
         <div className="flex gap-2 flex-wrap mt-6">
           {project.stack.map((tech) => (
-            <span
-              key={tech}
-              className="font-[var(--font-mono)] text-xs px-2 py-1 bg-[var(--color-accent-soft)] text-[var(--color-accent)] rounded"
-            >
-              {tech}
-            </span>
+            <TechBadge key={tech} tech={tech} />
           ))}
         </div>
+        <ImageSlider images={project.images} alt={project.title} />
         <p className="mt-8 text-lg text-[var(--color-muted)] leading-relaxed">
           {project.detail}
         </p>

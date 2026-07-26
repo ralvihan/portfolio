@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
+
 export default function Hero() {
   return (
-    <section className="max-w-5xl mx-auto px-4 sm:px-6 pt-28 sm:pt-40 pb-16 sm:pb-24">
+    <section id="home" className="max-w-5xl mx-auto px-4 sm:px-6 pt-28 sm:pt-40 pb-16 sm:pb-24">
       <p className="font-[var(--font-mono)] text-xs sm:text-sm text-[var(--color-accent)] mb-4">
         status: available for internship
       </p>
@@ -12,12 +14,12 @@ export default function Hero() {
         from diagnostic systems to interactive 3D experiences.
       </p>
       <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4 font-[var(--font-mono)] text-sm">
-        <a href="#projects" className="px-5 py-3 bg-[var(--color-ink)] text-[var(--color-bg)] rounded-md hover:bg-[var(--color-accent)] transition-colors text-center">
+        <Link to="/projects" className="px-5 py-3 bg-[var(--color-ink)] text-[var(--color-bg)] rounded-md hover:bg-[var(--color-accent)] transition-colors text-center">
           view_projects()
-        </a>
-        <a href="#contact" className="px-5 py-3 border border-[var(--color-line)] rounded-md hover:border-[var(--color-ink)] transition-colors text-center">
+        </Link>
+        <Link to="/contact" className="px-5 py-3 border border-[var(--color-line)] rounded-md hover:border-[var(--color-ink)] transition-colors text-center">
           say_hello()
-        </a>
+        </Link>
       </div>
     </section>
   );
