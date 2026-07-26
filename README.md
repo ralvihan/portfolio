@@ -20,5 +20,5 @@ Personal portfolio site — built to showcase the projects I've worked on, highl
 
 **Raihan Alvian Nuryansyah**
 
-<a href="https://github.com/ralvihan"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white" alt="GitHub" /></a>
-<a href="https://www.linkedin.com/in/raihanalviannuryansyah/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
+<a href="https://github.com/ralvihan"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" /></a>
+<a href="https://www.linkedin.com/in/raihanalviannuryansyah/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
