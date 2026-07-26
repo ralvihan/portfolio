@@ -7,6 +7,8 @@
   <img src="https://img.shields.io/github/deployments/ralvihan/portfolio/github-pages?label=deploy&logo=github" alt="Deploy Status" />
 </p>
 
+<img src=".github/images/preview.png" width="600" alt="Portfolio preview" />
+
 Personal portfolio site — a spot to showcase the projects I've built, the stack I work with, and a way to reach me. Built with React, Vite, and Tailwind CSS.
 
 **[ralvihan.github.io/portfolio →](https://ralvihan.github.io/portfolio/)**
