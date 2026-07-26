@@ -12,11 +12,13 @@
 
 </div>
 
-Personal portfolio site — a spot to showcase the projects I've built, the stack I work with, and a way to reach me.
+Personal portfolio site — built to showcase the projects I've worked on, highlight the tools and technologies I use, and make it easy for recruiters, collaborators, or anyone curious to learn more about me and get in touch.
 
 **[ralvihan.github.io/portfolio →](https://ralvihan.github.io/portfolio/)**
 
 ---
 
 **Raihan Alvian Nuryansyah**
-[GitHub](https://github.com/ralvihan) · [LinkedIn](https://www.linkedin.com/in/raihanalviannuryansyah/)
+
+<a href="https://github.com/ralvihan"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white" alt="GitHub" /></a>
+<a href="https://www.linkedin.com/in/raihanalviannuryansyah/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
