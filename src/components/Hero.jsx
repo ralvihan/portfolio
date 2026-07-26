@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Hero() {
   return (
     <section className="max-w-5xl mx-auto px-6 pt-40 pb-24">
@@ -12,12 +14,12 @@ export default function Hero() {
         from diagnostic systems to interactive 3D experiences.
       </p>
       <div className="mt-10 flex gap-4 font-[var(--font-mono)] text-sm">
-        <a href="#projects" className="px-5 py-3 bg-[var(--color-ink)] text-[var(--color-bg)] rounded-md hover:bg-[var(--color-accent)] transition-colors">
+        <Link to="/projects" className="px-5 py-3 bg-[var(--color-ink)] text-[var(--color-bg)] rounded-md hover:bg-[var(--color-accent)] transition-colors">
           view_projects()
-        </a>
-        <a href="#contact" className="px-5 py-3 border border-[var(--color-line)] rounded-md hover:border-[var(--color-ink)] transition-colors">
+        </Link>
+        <Link to="/contact" className="px-5 py-3 border border-[var(--color-line)] rounded-md hover:border-[var(--color-ink)] transition-colors">
           say_hello()
-        </a>
+        </Link>
       </div>
     </section>
   );
