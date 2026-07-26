@@ -6,6 +6,7 @@ export default function App() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
+      <Route path="/techstack" element={<HomePage />} />
       <Route path="/projects" element={<HomePage />} />
       <Route path="/about" element={<HomePage />} />
       <Route path="/contact" element={<HomePage />} />
