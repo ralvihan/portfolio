@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function IconChevronLeft() {
   return (
@@ -18,6 +18,18 @@ function IconChevronRight() {
 
 export default function ImageSlider({ images, alt }) {
   const [index, setIndex] = useState(0);
+  const [ratio, setRatio] = useState(16 / 9);
+
+  useEffect(() => {
+    if (!images || images.length === 0) return;
+    const img = new Image();
+    img.onload = () => {
+      if (img.naturalWidth && img.naturalHeight) {
+        setRatio(img.naturalWidth / img.naturalHeight);
+      }
+    };
+    img.src = images[index];
+  }, [index, images]);
 
   if (!images || images.length === 0) return null;
 
@@ -36,10 +48,11 @@ export default function ImageSlider({ images, alt }) {
     <div className="mt-8">
       {/* wrapper penuh, cuma buat nge-clip biar ga bikin horizontal scroll di mobile */}
       <div className="relative w-full overflow-hidden py-2">
-        {/* box ukuran TETAP buat gambar utama — sengaja lebih kecil dari full width biar ada ruang ngintip */}
-        <div className="relative mx-auto w-full max-w-full sm:max-w-2xl">
-          <div className="w-full aspect-video invisible" aria-hidden="true" />
-
+        {/* tinggi box ngikut rasio gambar center, transisi halus pas ganti slide */}
+        <div
+          className="relative mx-auto w-full max-w-full sm:max-w-2xl transition-[aspect-ratio] duration-500 ease-out"
+          style={{ aspectRatio: ratio }}
+        >
           {images.map((src, i) => {
             const offset = getOffset(i);
             const isCenter = offset === 0;
@@ -48,26 +61,26 @@ export default function ImageSlider({ images, alt }) {
             if (!isCenter && !isSide) return null;
 
             const posClass = isCenter
-            ? "z-30 opacity-100 scale-100 translate-x-0"
-            : offset === -1
-            ? "z-20 opacity-60 scale-[0.85] -translate-x-[58%] hidden sm:block"
-            : "z-20 opacity-60 scale-[0.85] translate-x-[58%] hidden sm:block";
+              ? "z-30 opacity-100 scale-100 translate-x-0"
+              : offset === -1
+              ? "z-20 opacity-60 scale-[0.85] -translate-x-[58%] hidden sm:block"
+              : "z-20 opacity-60 scale-[0.85] translate-x-[58%] hidden sm:block";
 
             return (
-                <div
-                    key={i}
-                    onClick={!isCenter ? () => setIndex(i) : undefined}
-                    className={`absolute inset-0 rounded-lg overflow-hidden bg-[var(--color-bg)] transition-all duration-500 ease-out ${
-                    isCenter ? "shadow-lg" : "shadow-sm cursor-pointer"
-                    } ${posClass}`}
-                >
-                    <img
-                    src={src}
-                    alt={`${alt} ${i + 1}`}
-                    className="w-full h-full object-cover"
-                    />
-                </div>
-                );
+              <div
+                key={i}
+                onClick={!isCenter ? () => setIndex(i) : undefined}
+                className={`absolute inset-0 rounded-lg overflow-hidden bg-[var(--color-bg)] transition-all duration-500 ease-out ${
+                  isCenter ? "shadow-lg" : "shadow-sm cursor-pointer"
+                } ${posClass}`}
+              >
+                <img
+                  src={src}
+                  alt={`${alt} ${i + 1}`}
+                  className={`w-full h-full ${isCenter ? "object-contain" : "object-cover"}`}
+                />
+              </div>
+            );
           })}
         </div>
       </div>

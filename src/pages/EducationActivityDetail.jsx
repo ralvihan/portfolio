@@ -2,6 +2,7 @@ import { useParams, Link, Navigate } from "react-router-dom";
 import { education } from "../data/education";
 import Navbar from "../components/Navbar";
 import ImageSlider from "../components/ImageSlider";
+import { formatMonthYear } from "../utils/formatDate";
 
 export default function EducationActivityDetail() {
   const { slug, activitySlug } = useParams();
@@ -25,7 +26,7 @@ export default function EducationActivityDetail() {
           {activity.title}
         </h1>
         <p className="font-[var(--font-mono)] text-sm text-[var(--color-muted)] mt-2">
-          {activity.role} · {activity.period}
+          {activity.role} · {formatMonthYear(activity.date)}
         </p>
 
         <span className="inline-block mt-4 font-[var(--font-mono)] text-xs border border-[var(--color-line)] rounded-full px-3 py-1 text-[var(--color-muted)]">

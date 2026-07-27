@@ -44,7 +44,7 @@ export default function Contact() {
   return (
     <section id="contact" className="max-w-5xl mx-auto px-4 sm:px-6 py-16 sm:py-24 border-t border-[var(--color-line)]">
       <h2 className="font-[var(--font-mono)] text-xs sm:text-sm text-[var(--color-muted)] mb-6 sm:mb-8">
-        06 / contact
+        05 / contact
       </h2>
       <a href="mailto:raihanalvian20@gmail.com" className="font-[var(--font-display)] text-2xl sm:text-4xl md:text-6xl font-semibold tracking-tight hover:text-[var(--color-accent)] transition-colors break-all hover:underline underline-offset-4">
         raihanalvian20@gmail.com

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { education } from "../data/education";
 import Navbar from "../components/Navbar";
+import { formatMonthYear } from "../utils/formatDate";
 
 export default function EducationDetail() {
   const { slug } = useParams();
@@ -90,7 +91,7 @@ export default function EducationDetail() {
                     {activity.title}
                   </h3>
                   <p className="text-[var(--color-muted)] text-sm mt-1">
-                    {activity.role} · {activity.period}
+                    {activity.role} · {formatMonthYear(activity.date)}
                   </p>
                 </div>
                 <span className="font-[var(--font-mono)] text-xs text-[var(--color-muted)] whitespace-nowrap border border-[var(--color-line)] rounded-full px-2.5 py-1">
