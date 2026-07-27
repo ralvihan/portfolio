@@ -3,6 +3,7 @@ import { projects } from "../data/projects";
 import Navbar from "../components/Navbar";
 import TechBadge from "../components/TechBadge";
 import ImageSlider from "../components/ImageSlider";
+import Footer from "../components/Footer";
 
 const HIGHLIGHT_WORDS = ["Silent Screen", "Godot 4.7", "pelecehan seksual", "GDScript", "horor", "horor psikologis", "psikologis", "kampus", "game"];
 
@@ -67,6 +68,7 @@ export default function ProjectDetail() {
         ))}
         </div>
       </section>
+      <Footer />
     </>
   );
 }

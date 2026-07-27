@@ -3,6 +3,7 @@ import { projects } from "../data/projects";
 import { sortProjects } from "../utils/sortProjects";
 import Navbar from "../components/Navbar";
 import TechBadge from "../components/TechBadge";
+import Footer from "../components/Footer";
 
 function truncate(text, max = 200) {
   const str = Array.isArray(text) ? text.join(" ") : text;
@@ -66,6 +67,7 @@ export default function AllProjects() {
           ))}
         </div>
       </section>
+      <Footer />
     </>
   );
 }

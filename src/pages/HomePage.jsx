@@ -6,6 +6,7 @@ import TechStack from "../components/TechStack";
 import Projects from "../components/Projects";
 import About from "../components/About";
 import Contact from "../components/Contact";
+import Footer from "../components/Footer";
 
 const sectionMap = {
   "/techstack": "techstack",
@@ -74,6 +75,7 @@ export default function HomePage() {
       <Projects />
       <About />
       <Contact />
+      <Footer />
     </>
   );
 }

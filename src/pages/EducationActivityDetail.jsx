@@ -3,6 +3,7 @@ import { education } from "../data/education";
 import Navbar from "../components/Navbar";
 import ImageSlider from "../components/ImageSlider";
 import { formatMonthYear } from "../utils/formatDate";
+import Footer from "../components/Footer";
 
 export default function EducationActivityDetail() {
   const { slug, activitySlug } = useParams();
@@ -45,6 +46,7 @@ export default function EducationActivityDetail() {
           ))}
         </div>
       </section>
+      <Footer />
     </>
   );
 }

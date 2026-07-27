@@ -3,6 +3,7 @@ import { useParams, Link, Navigate } from "react-router-dom";
 import { education } from "../data/education";
 import Navbar from "../components/Navbar";
 import { formatMonthYear } from "../utils/formatDate";
+import Footer from "../components/Footer";
 
 export default function EducationDetail() {
   const { slug } = useParams();
@@ -111,6 +112,7 @@ export default function EducationDetail() {
           )}
         </div>
       </section>
+      <Footer />
     </>
   );
 }
