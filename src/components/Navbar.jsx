@@ -51,12 +51,16 @@ export default function Navbar() {
     <nav className="fixed top-4 sm:top-6 inset-x-0 z-50 px-4">
       <div className="max-w-3xl mx-auto bg-[var(--color-ink)] rounded-full shadow-lg flex items-center justify-between gap-2 pl-2 pr-4 py-2">
         <Link
-          to="/"
-          onClick={() => setOpen(false)}
-          className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white flex items-center justify-center shrink-0 font-[var(--font-display)] font-semibold text-sm text-[var(--color-ink)]"
-        >
-          r
-        </Link>
+  to="/"
+  onClick={() => setOpen(false)}
+  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white flex items-center justify-center shrink-0 overflow-hidden"
+>
+  <img
+    src={`${import.meta.env.BASE_URL}favicon.svg`}
+    alt="Logo"
+    className="w-full h-full object-contain p-1"
+  />
+</Link>
 
         {/* nav links desktop */}
         <div className="hidden sm:flex items-center gap-6 font-[var(--font-mono)] text-sm text-white/70">
