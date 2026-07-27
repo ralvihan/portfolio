@@ -8,9 +8,7 @@ export default function About() {
         04 / about
       </h2>
       <p className="text-xl sm:text-2xl md:text-3xl font-[var(--font-display)] font-medium leading-snug max-w-3xl">
-        I study Informatics Engineering and build across the stack — Laravel,
-        React, and beyond — with a habit of picking projects that need
-        something more thoughtful than a CRUD app.
+        Informatics Engineering student and Full-Stack Web Developer — focused on building reliable web systems, from designing backend architecture and database management to delivering responsive user interfaces.
       </p>
 
       <div className="relative mt-16">
