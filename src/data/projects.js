@@ -19,13 +19,13 @@ export const projects = [
     title: "SIPAMAT — Eye Infection Diagnosis",
     period: "Juli 2026",
     stack: ["Laravel", "Inertia.js", "React", "Tailwind", "MySQL"],
-    detail: "An expert system that diagnoses eye infections using the Certainty Factor method. Involved direct interviews with an eye specialist to translate real diagnostic reasoning into the system's rule base. Includes admin panel, landing page, and a PHP/MySQL prototype phase.",
+    detail: ["SIPAMAT adalah aplikasi web sistem pakar untuk membantu deteksi dini infeksi mata menggunakan metode Certainty Factor (CF). Pasien memilih gejala yang dialami, lalu sistem menghitung tingkat keyakinan (confidence value) untuk 4 jenis penyakit — Ulkus Kornea Bakterial, Ulkus Kornea Fungal, Konjungtivitis Bakterial, dan Infeksi Mata Akibat Lensa Kontak — berdasarkan basis pengetahuan (knowledge base) hasil wawancara dengan analis laboratorium mata berpengalaman, mencakup 15 gejala.", 
+    "Dibangun dengan Laravel 11 sebagai backend dan React (Inertia.js) sebagai frontend, dilengkapi fitur autentikasi lengkap, riwayat diagnosis dengan ekspor PDF, serta panel admin untuk mengelola data penyakit, gejala, dan basis pengetahuan CF. Sistem ini mendukung dua peran pengguna (admin dan pasien) dengan middleware terpisah untuk masing-masing akses.",
+    ],
     images: [
       `${base}images/projects/sipamat1.webp`,
       `${base}images/projects/sipamat2.webp`,
       `${base}images/projects/sipamat3.webp`,
-      `${base}images/projects/sipamat4.webp`,
-      `${base}images/projects/sipamat5.webp`,
     ],
   },
   {
