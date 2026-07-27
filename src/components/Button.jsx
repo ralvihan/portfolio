@@ -9,7 +9,7 @@ function IconArrow() {
 }
 
 export default function Button({ to, href, children, className = "" }) {
-  const classes = `group relative inline-flex items-center gap-3 pl-1.5 pr-6 py-1.5 rounded-full border-2 border-[var(--color-ink)] font-[var(--font-mono)] text-sm font-bold uppercase tracking-wide text-[var(--color-ink)] overflow-hidden transition-colors duration-300 hover:text-[var(--color-bg)] ${className}`;
+  const classes = `group relative inline-flex items-center gap-3 pl-0 pr-6 py-0 rounded-full border-2 border-[var(--color-ink)] font-[var(--font-mono)] text-sm font-bold uppercase tracking-wide text-[var(--color-ink)] overflow-hidden transition-colors duration-300 hover:text-[var(--color-bg)] ${className}`;
 
   const content = (
     <>
