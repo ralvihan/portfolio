@@ -8,6 +8,7 @@ export default function Education() {
         05 / education
       </h2>
 
+      {/* garis + titik — cuma muncul di desktop */}
       <div className="relative h-4 mb-8 hidden sm:block">
         <div className="absolute top-1/2 left-[15%] right-[15%] h-0.5 bg-black -translate-y-1/2" />
         <div className="relative grid grid-cols-2 h-full">
@@ -19,22 +20,18 @@ export default function Education() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-0">
+      {/* logo + teks digabung per institusi dalam 1 grid, biar urutannya bener pas stack di mobile */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 sm:gap-0">
         {education.map((item, i) => (
-          <div key={`logo-${i}`} className="flex justify-center items-center h-32 sm:h-36">
-            <img
-              src={item.logo}
-              alt={item.institution}
-              className={`${item.logoClass} object-contain`}
-            />
-          </div>
-        ))}
-      </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-0 text-center mt-6">
-        {education.map((item, i) => (
-          <div key={`text-${i}`}>
-            <h3 className="text-lg sm:text-xl font-[var(--font-display)] font-bold hover:underline cursor-pointer">
+          <div key={i} className="flex flex-col items-center text-center">
+            <div className="flex justify-center items-center h-32 sm:h-36">
+              <img
+                src={item.logo}
+                alt={item.institution}
+                className={`${item.logoClass} object-contain`}
+              />
+            </div>
+            <h3 className="text-lg sm:text-xl font-[var(--font-display)] font-bold hover:underline cursor-pointer mt-4">
               {item.institution}
             </h3>
             <p className="text-[var(--color-muted)] mt-1">
