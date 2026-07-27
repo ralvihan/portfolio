@@ -11,7 +11,6 @@ export default function App() {
       <Route path="/techstack" element={<HomePage />} />
       <Route path="/projects" element={<HomePage />} />
       <Route path="/about" element={<HomePage />} />
-      <Route path="/education" element={<HomePage />} />
       <Route path="/contact" element={<HomePage />} />
       <Route path="/projects/:slug" element={<ProjectDetail />} />
       <Route path="/education/:slug" element={<EducationDetail />} />
