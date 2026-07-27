@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import HomePage from "./pages/HomePage";
 import ProjectDetail from "./pages/ProjectDetail";
+import AllProjects from "./pages/AllProjects";
 import EducationDetail from "./pages/EducationDetail";
 import EducationActivityDetail from "./pages/EducationActivityDetail";
 import NotFound from "./pages/NotFound";
@@ -14,6 +15,7 @@ export default function App() {
       <Route path="/projects" element={<HomePage />} />
       <Route path="/about" element={<HomePage />} />
       <Route path="/contact" element={<HomePage />} />
+      <Route path="/all-projects" element={<AllProjects />} />
       <Route path="/projects/:slug" element={<ProjectDetail />} />
       <Route path="/education/:slug" element={<EducationDetail />} />
       <Route path="/education/:slug/:activitySlug" element={<EducationActivityDetail />} />
