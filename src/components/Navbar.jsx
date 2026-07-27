@@ -21,6 +21,7 @@ const links = [
   { label: "Tech Stack", to: "/techstack", id: "techstack" },
   { label: "Projects", to: "/projects", id: "projects" },
   { label: "About", to: "/about", id: "about" },
+  { label: "Education", to: "/education", id: "education" },
   { label: "Contact", to: "/contact", id: "contact" },
 ];
 
