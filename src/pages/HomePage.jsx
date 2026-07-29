@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
+import { getLenis } from "../lib/lenis";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import TechStack from "../components/TechStack";
@@ -31,11 +32,17 @@ export default function HomePage() {
     const id = sectionMap[location.pathname];
     isProgrammaticScroll.current = true;
 
+    const lenis = getLenis();
+
     if (id) {
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: "smooth" });
+    const el = document.getElementById(id);
+    if (el) {
+        if (lenis) lenis.scrollTo(el);
+        else el.scrollIntoView({ behavior: "smooth" });
+    }
     } else {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+    if (lenis) lenis.scrollTo(0);
+    else window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
     const timeout = setTimeout(() => {

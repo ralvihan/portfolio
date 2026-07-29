@@ -1,5 +1,7 @@
+import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
+import { initLenis, destroyLenis } from "./lib/lenis";
 import HomePage from "./pages/HomePage";
 import ProjectDetail from "./pages/ProjectDetail";
 import AllProjects from "./pages/AllProjects";
@@ -8,6 +10,11 @@ import EducationActivityDetail from "./pages/EducationActivityDetail";
 import NotFound from "./pages/NotFound";
 
 export default function App() {
+    useEffect(() => {
+    initLenis();
+    return () => destroyLenis();
+  }, []);
+
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />

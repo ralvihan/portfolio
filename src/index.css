@@ -14,6 +14,13 @@
 }
 
 body {
+  html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
   background-color: var(--color-bg);
   color: var(--color-ink);
   font-family: var(--font-body);
