@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment.js";
+import cvPdf from "/public/pdf/CV_RaihanAlvianNuryansyah.pdf";
 import cardFrontImg from "/public/card-front.png";
 import cardBackImg from "/public/card-back.png";
 import strapImg from "/public/strap.png";
@@ -107,6 +108,16 @@ function buildClipMesh() {
   clipGroup.add(hookMesh);
 
   return clipGroup;
+}
+
+function IconDownload() {
+  return (
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 3v12" />
+      <path d="M7 10l5 5 5-5" />
+      <path d="M5 21h14" />
+    </svg>
+  );
 }
 
 export default function Hero() {
@@ -574,6 +585,17 @@ export default function Hero() {
           <p className="mt-4 max-w-xl text-sm text-neutral-500 sm:text-base">
             Informatics Engineering student building reliable web systems — from designing backend architecture to delivering responsive, user-focused interfaces.
           </p>
+          <a
+  href={cvPdf}
+  download="CV_RaihanAlvianNuryansyah.pdf"
+  className="group relative mt-6 inline-flex items-center gap-3 overflow-hidden rounded-full border-2 border-[var(--color-ink)] pl-5 pr-6 py-2.5 font-[var(--font-mono)] text-xs font-bold uppercase tracking-wide text-[var(--color-ink)] transition-colors duration-300 hover:text-[var(--color-bg)]"
+>
+  <span className="absolute inset-0 origin-left scale-x-0 bg-[var(--color-ink)] transition-transform duration-300 ease-out group-hover:scale-x-100 -z-10" />
+  <span className="relative z-10 flex items-center gap-3">
+    <IconDownload />
+    Download CV
+  </span>
+</a>
         </div>
       </div>
 
