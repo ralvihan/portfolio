@@ -34,10 +34,27 @@ function IconInstagram() {
   );
 }
 
+function IconSend() {
+  return (
+    <svg 
+      viewBox="0 0 24 24" 
+      className="w-7 h-7 sm:w-10 sm:h-10 md:w-12 md:h-12 shrink-0" 
+      fill="none" 
+      stroke="currentColor" 
+      strokeWidth="2" 
+      strokeLinecap="round" 
+      strokeLinejoin="round"
+    >
+      <path d="M22 2L11 13" />
+      <path d="M22 2l-7 20-4-9-9-4 20-7z" />
+    </svg>
+  );
+}
+
 const socials = [
   { label: "GitHub", href: "https://github.com/ralvihan", Icon: IconGithub },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/raihanalviannuryansyah/", Icon: IconLinkedin },
-  { label: "Instagram", href: "/#", Icon: IconInstagram }, // ganti # ini ke link IG asli lo
+  { label: "Instagram", href: "/#", Icon: IconInstagram },
 ];
 
 export default function Contact() {
@@ -46,9 +63,17 @@ export default function Contact() {
       <h2 className="font-[var(--font-mono)] text-xs sm:text-sm text-[var(--color-muted)] mb-6 sm:mb-8">
         05 / contact
       </h2>
-      <a href="mailto:raihanalvian20@gmail.com" className="font-[var(--font-display)] text-2xl sm:text-4xl md:text-6xl font-semibold tracking-tight hover:text-[var(--color-accent)] transition-colors break-all hover:underline underline-offset-4">
-        raihanalvian20@gmail.com
+      
+      <a 
+        href="mailto:raihanalvian20@gmail.com" 
+        className="group inline-flex items-center gap-3 sm:gap-4 font-[var(--font-display)] text-2xl sm:text-4xl md:text-6xl font-semibold tracking-tight hover:text-[var(--color-accent)] transition-colors break-all border-b-2 border-transparent hover:border-[var(--color-accent)] pb-1"
+      >
+        <span>raihanalvian20@gmail.com</span>
+        <span className="transition-transform duration-300 group-hover:translate-x-1.5 group-hover:-translate-y-1.5">
+          <IconSend />
+        </span>
       </a>
+
       <div className="mt-6 sm:mt-8 flex flex-wrap gap-4 sm:gap-6 font-[var(--font-mono)] text-xs sm:text-sm text-[var(--color-muted)]">
         {socials.map(({ label, href, Icon }) => (
           <a key={label} href={href} className="flex items-center gap-1.5 hover:text-[var(--color-ink)] transition-colors">
