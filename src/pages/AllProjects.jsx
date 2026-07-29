@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { projects } from "../data/projects";
 import { sortProjects } from "../utils/sortProjects";
 import Navbar from "../components/Navbar";
 import TechBadge from "../components/TechBadge";
 import Footer from "../components/Footer";
+
+const VISIBLE_COUNT = 5;
 
 function truncate(text, max = 200) {
   const str = Array.isArray(text) ? text.join(" ") : text;
@@ -13,6 +16,10 @@ function truncate(text, max = 200) {
 
 export default function AllProjects() {
   const sortedProjects = sortProjects(projects);
+  const [visibleCount, setVisibleCount] = useState(VISIBLE_COUNT);
+
+  const visibleProjects = sortedProjects.slice(0, visibleCount);
+  const hasMore = visibleCount < sortedProjects.length;
 
   return (
     <>
@@ -25,7 +32,7 @@ export default function AllProjects() {
           All Projects
         </h1>
         <div className="space-y-px">
-          {sortedProjects.map((project, i) => (
+          {visibleProjects.map((project, i) => (
             <div
               key={project.slug}
               className="py-6 sm:py-8 border-b border-[var(--color-line)] grid grid-cols-1 md:grid-cols-[80px_1fr] gap-2 sm:gap-3 items-start"
@@ -66,6 +73,17 @@ export default function AllProjects() {
             </div>
           ))}
         </div>
+
+        {hasMore && (
+          <div className="flex justify-center mt-8">
+            <button
+              onClick={() => setVisibleCount((c) => c + VISIBLE_COUNT)}
+              className="font-[var(--font-mono)] text-sm border border-[var(--color-line)] rounded-full px-6 py-2.5 hover:bg-[var(--color-accent-soft)] transition-colors"
+            >
+              Muat Lebih Banyak ({sortedProjects.length - visibleCount} lagi)
+            </button>
+          </div>
+        )}
       </section>
       <Footer />
     </>

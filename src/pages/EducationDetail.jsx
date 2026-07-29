@@ -2,14 +2,23 @@ import { useState } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { education } from "../data/education";
 import Navbar from "../components/Navbar";
-import { formatMonthYear } from "../utils/formatDate";
+import { formatDateRange } from "../utils/formatDate";
 import Footer from "../components/Footer";
+
+const VISIBLE_COUNT = 5;
+
+function truncate(text, max = 200) {
+  const str = Array.isArray(text) ? text.join(" ") : text;
+  if (!str) return "";
+  return str.length > max ? `${str.slice(0, max).trimEnd()}...` : str;
+}
 
 export default function EducationDetail() {
   const { slug } = useParams();
   const edu = education.find((e) => e.slug === slug);
   const [sort, setSort] = useState("newest");
   const [category, setCategory] = useState("Semua");
+  const [visibleCount, setVisibleCount] = useState(VISIBLE_COUNT);
 
   if (!edu) return <Navigate to="/" replace />;
 
@@ -18,10 +27,32 @@ export default function EducationDetail() {
   const filtered = edu.activities
     .filter((a) => category === "Semua" || a.category === category)
     .sort((a, b) => {
-      const da = new Date(a.date);
-      const db = new Date(b.date);
-      return sort === "newest" ? db - da : da - db;
+      const aEnd = a.endDate ? new Date(a.endDate).getTime() : Infinity;
+      const bEnd = b.endDate ? new Date(b.endDate).getTime() : Infinity;
+      const aStart = new Date(a.startDate).getTime();
+      const bStart = new Date(b.startDate).getTime();
+
+      if (sort === "newest") {
+        if (bEnd !== aEnd) return bEnd - aEnd;
+        return bStart - aStart;
+      } else {
+        if (aEnd !== bEnd) return aEnd - bEnd;
+        return aStart - bStart;
+      }
     });
+
+  const visibleActivities = filtered.slice(0, visibleCount);
+  const hasMore = visibleCount < filtered.length;
+
+  const handleCategoryChange = (value) => {
+    setCategory(value);
+    setVisibleCount(VISIBLE_COUNT);
+  };
+
+  const handleSortChange = (value) => {
+    setSort(value);
+    setVisibleCount(VISIBLE_COUNT);
+  };
 
   return (
     <>
@@ -60,7 +91,7 @@ export default function EducationDetail() {
           <div className="flex flex-wrap gap-2">
             <select
               value={category}
-              onChange={(e) => setCategory(e.target.value)}
+              onChange={(e) => handleCategoryChange(e.target.value)}
               className="font-[var(--font-mono)] text-xs border border-[var(--color-line)] rounded-full px-3 py-1.5 bg-transparent"
             >
               {categories.map((c) => (
@@ -70,7 +101,7 @@ export default function EducationDetail() {
 
             <select
               value={sort}
-              onChange={(e) => setSort(e.target.value)}
+              onChange={(e) => handleSortChange(e.target.value)}
               className="font-[var(--font-mono)] text-xs border border-[var(--color-line)] rounded-full px-3 py-1.5 bg-transparent"
             >
               <option value="newest">Terbaru</option>
@@ -80,7 +111,7 @@ export default function EducationDetail() {
         </div>
 
         <div className="space-y-4">
-          {filtered.map((activity) => (
+          {visibleActivities.map((activity) => (
             <Link
               key={activity.slug}
               to={`/education/${edu.slug}/${activity.slug}`}
@@ -92,16 +123,16 @@ export default function EducationDetail() {
                     {activity.title}
                   </h3>
                   <p className="text-[var(--color-muted)] text-sm mt-1">
-                    {activity.role} · {formatMonthYear(activity.date)}
+                    {activity.role} · {formatDateRange(activity.startDate, activity.endDate)}
                   </p>
                 </div>
                 <span className="font-[var(--font-mono)] text-xs text-[var(--color-muted)] whitespace-nowrap border border-[var(--color-line)] rounded-full px-2.5 py-1">
                   {activity.category}
                 </span>
               </div>
-              {activity.summary && (
+              {activity.detail && (
                 <p className="text-[var(--color-muted)] mt-3 text-sm">
-                  {activity.summary}
+                  {truncate(activity.detail)}
                 </p>
               )}
             </Link>
@@ -111,6 +142,17 @@ export default function EducationDetail() {
             <p className="text-[var(--color-muted)] text-sm">Belum ada kegiatan di kategori ini.</p>
           )}
         </div>
+
+        {hasMore && (
+          <div className="flex justify-center mt-8">
+            <button
+              onClick={() => setVisibleCount((c) => c + VISIBLE_COUNT)}
+              className="font-[var(--font-mono)] text-sm border border-[var(--color-line)] rounded-full px-6 py-2.5 hover:bg-[var(--color-accent-soft)] transition-colors"
+            >
+              Muat Lebih Banyak ({filtered.length - visibleCount} lagi)
+            </button>
+          </div>
+        )}
       </section>
       <Footer />
     </>

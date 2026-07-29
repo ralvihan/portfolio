@@ -2,7 +2,7 @@ import { useParams, Link, Navigate } from "react-router-dom";
 import { education } from "../data/education";
 import Navbar from "../components/Navbar";
 import ImageSlider from "../components/ImageSlider";
-import { formatMonthYear } from "../utils/formatDate";
+import { formatDateRange } from "../utils/formatDate";
 import Footer from "../components/Footer";
 
 export default function EducationActivityDetail() {
@@ -27,7 +27,7 @@ export default function EducationActivityDetail() {
           {activity.title}
         </h1>
         <p className="font-[var(--font-mono)] text-sm text-[var(--color-muted)] mt-2">
-          {activity.role} · {formatMonthYear(activity.date)}
+          {activity.role} · {formatDateRange(activity.startDate, activity.endDate)}
         </p>
 
         <span className="inline-block mt-4 font-[var(--font-mono)] text-xs border border-[var(--color-line)] rounded-full px-3 py-1 text-[var(--color-muted)]">
