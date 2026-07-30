@@ -85,6 +85,26 @@ export default function AllProjects() {
           </div>
         )}
       </section>
+
+      <div className="flex items-center justify-center gap-2 text-[var(--color-muted)] pb-20">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <rect x="2" y="6" width="20" height="8" rx="2" />
+    <path d="M17 14v7M7 14v7M17 3v3M7 3v3M10 14 2.3 6.3M14 14l7.7-7.7" />
+  </svg>
+  <p className="font-[var(--font-mono)] text-sm">
+    Masih ada beberapa project lain yang lagi dirapiin & didokumentasi ulang — bakal nyusul ke sini.
+  </p>
+</div>
       <Footer />
     </>
   );
