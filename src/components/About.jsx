@@ -3,7 +3,7 @@ import { education } from "../data/education";
 
 export default function About() {
   return (
-    <section id="about" className="max-w-5xl mx-auto px-4 sm:px-6 py-16 sm:py-24 border-t border-[var(--color-line)]">
+    <section id="about" className="max-w-5xl mx-auto px-4 sm:px-6 py-10 sm:py-16 border-t border-[var(--color-line)]">
       <h2 className="font-[var(--font-mono)] text-xs sm:text-sm text-[var(--color-muted)] mb-6 sm:mb-8">
         04 / about
       </h2>

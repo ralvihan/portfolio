@@ -64,4 +64,18 @@ export const projects = [
     `${base}images/projects/sisma4.webp`,
   ],
 },
+{
+    index: "05",
+    slug: "portfolio",
+    title: "Personal Portfolio Website",
+    period: "Juli 2026 - Sekarang",
+    stack: ["React", "Tailwind  "],
+    detail: [
+      "Website portfolio pribadi yang dibangun menggunakan React dan Vite, menampilkan showcase project, tech stack, riwayat pendidikan, hingga kontak dalam satu halaman single-page. Setiap section (home, techstack, projects, about, contact) tersinkronisasi dengan URL menggunakan IntersectionObserver, sehingga URL berubah otomatis mengikuti section yang sedang dilihat tanpa reload halaman.",
+      "Struktur routing memakai React Router dengan halaman detail terpisah untuk setiap project dan riwayat pendidikan/kegiatan, lengkap dengan image slider dan highlight kata kunci otomatis pada deskripsi. Seluruh tampilan didesain responsif dan di-styling penuh menggunakan Tailwind CSS.",
+    ],
+    images: [
+      `${base}images/projects/portfolio1.webp`,
+    ],
+  },
 ];
