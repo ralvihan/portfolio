@@ -20,6 +20,7 @@ function IconClose() {
 const links = [
   { label: "Tech Stack", to: "/techstack", id: "techstack" },
   { label: "Projects", to: "/projects", id: "projects" },
+  { label: "Experience", to: "/experience", id: "experience" },
   { label: "About", to: "/about", id: "about" },
   { label: "Contact", to: "/contact", id: "contact" },
 ];

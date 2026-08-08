@@ -5,8 +5,8 @@ import { initLenis, destroyLenis } from "./lib/lenis";
 import HomePage from "./pages/HomePage";
 import ProjectDetail from "./pages/ProjectDetail";
 import AllProjects from "./pages/AllProjects";
-import EducationDetail from "./pages/EducationDetail";
-import EducationActivityDetail from "./pages/EducationActivityDetail";
+import ExperienceDetail from "./pages/ExperienceDetail";
+import AllExperience from "./pages/AllExperience";
 import NotFound from "./pages/NotFound";
 
 export default function App() {
@@ -20,12 +20,13 @@ export default function App() {
       <Route path="/" element={<HomePage />} />
       <Route path="/techstack" element={<HomePage />} />
       <Route path="/projects" element={<HomePage />} />
+      <Route path="/experience" element={<HomePage />} />
       <Route path="/about" element={<HomePage />} />
       <Route path="/contact" element={<HomePage />} />
       <Route path="/all-projects" element={<AllProjects />} />
       <Route path="/projects/:slug" element={<ProjectDetail />} />
-      <Route path="/education/:slug" element={<EducationDetail />} />
-      <Route path="/education/:slug/:activitySlug" element={<EducationActivityDetail />} />
+      <Route path="/experience/:slug" element={<ExperienceDetail />} />
+      <Route path="/all-experience" element={<AllExperience />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import TechStack from "../components/TechStack";
 import Projects from "../components/Projects";
+import Experience from "../components/Experience";
 import About from "../components/About";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
@@ -12,6 +13,7 @@ import Footer from "../components/Footer";
 const sectionMap = {
   "/techstack": "techstack",
   "/projects": "projects",
+  "/experience": "experience",
   "/about": "about",
   "/contact": "contact",
 };
@@ -20,6 +22,7 @@ const idToPath = {
   home: "/portfolio",
   techstack: "/portfolio/techstack",
   projects: "/portfolio/projects",
+  experience: "/portfolio/experience",
   about: "/portfolio/about",
   contact: "/portfolio/contact",
 };
@@ -52,7 +55,7 @@ export default function HomePage() {
   }, [location.pathname]);
 
   useEffect(() => {
-    const ids = ["home", "techstack", "projects", "about", "contact"];
+    const ids = ["home", "techstack", "projects", "experience", "about", "contact"];
     const sections = ids.map((id) => document.getElementById(id)).filter(Boolean);
 
     const observer = new IntersectionObserver(
@@ -80,6 +83,7 @@ export default function HomePage() {
       <Hero />
       <TechStack />
       <Projects />
+      <Experience />
       <About />
       <Contact />
       <Footer />
